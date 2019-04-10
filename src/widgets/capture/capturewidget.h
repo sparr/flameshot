@@ -1,4 +1,4 @@
-// Copyright(c) 2017-2018 Alejandro Sirgo Rica & Contributors
+// Copyright(c) 2017-2019 Alejandro Sirgo Rica & Contributors
 //
 // This file is part of Flameshot.
 //
@@ -97,6 +97,7 @@ protected:
     void mouseMoveEvent(QMouseEvent *);
     void mouseReleaseEvent(QMouseEvent *);
     void keyPressEvent(QKeyEvent *);
+    void keyReleaseEvent(QKeyEvent *);
     void wheelEvent(QWheelEvent *);
     void resizeEvent(QResizeEvent *);
     void moveEvent(QMoveEvent *);
@@ -119,6 +120,7 @@ protected:
     bool m_showInitialMsg;
     bool m_captureDone;
     bool m_previewEnabled;
+    bool m_adjustmentButtonPressed;
 
 private:
     void initContext(const QString &savePath, bool fullscreen);

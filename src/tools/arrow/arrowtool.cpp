@@ -1,4 +1,4 @@
-// Copyright(c) 2017-2018 Alejandro Sirgo Rica & Contributors
+// Copyright(c) 2017-2019 Alejandro Sirgo Rica & Contributors
 //
 // This file is part of Flameshot.
 //
@@ -70,6 +70,8 @@ QLine getShorterLine(QPoint p1, QPoint p2, const int thickness) {
 
 ArrowTool::ArrowTool(QObject *parent) : AbstractTwoPointTool(parent) {
     m_padding = ArrowWidth / 2;
+    m_supportsOrthogonalAdj = true;
+    m_supportsDiagonalAdj = true;
 }
 
 QIcon ArrowTool::icon(const QColor &background, bool inEditor) const {

@@ -25,8 +25,13 @@
     <a href="https://github.com/lupoDharkael/flameshot/blob/master/LICENSE">
       <img src="https://img.shields.io/github/license/lupoDharkael/flameshot.svg?style=flat-square" alt="License" />
     </a>
+    <a href="https://github.com/flameshotapp/flameshotapp.github.io">
+      <img src="https://img.shields.io/github/release/lupoDharkael/flameshot.svg?style=flat-square&label=docs" alt="Docs" />
+    </a>
   </p>
 </div>
+
+
 
 ## Preview
 
@@ -147,16 +152,17 @@ You can use the graphical menu to configure Flameshot, but alternatively you can
 
 These shortcuts are available in GUI mode:
 
-|  Keys                                                                     |  Description                         |
-|---                                                                        |---                                   |
-| <kbd>←</kbd>, <kbd>↓</kbd>, <kbd>↑</kbd>, <kbd>→</kbd>                    | Move selection 1px                   |
-| <kbd>Shift</kbd> + <kbd>←</kbd>, <kbd>↓</kbd>, <kbd>↑</kbd>, <kbd>→</kbd> | Resize selection 1px                 |
-| <kbd>Esc</kbd>                                                            | Quit capture                         |
-| <kbd>Ctrl</kbd> + <kbd>C</kbd>                                            | Copy to clipboard                    |
-| <kbd>Ctrl</kbd> + <kbd>S</kbd>                                            | Save selection as a file             |
-| <kbd>Ctrl</kbd> + <kbd>Z</kbd>                                            | Undo the last modification           |
-| Right Click                                                               | Show color picker                    |
-| Mouse Wheel                                                               | Change the tool's thickness          |
+|  Keys                                                                     |  Description                                                   |
+|---                                                                        |---                                                             |
+| <kbd>←</kbd>, <kbd>↓</kbd>, <kbd>↑</kbd>, <kbd>→</kbd>                    | Move selection 1px                                             |
+| <kbd>Shift</kbd> + <kbd>←</kbd>, <kbd>↓</kbd>, <kbd>↑</kbd>, <kbd>→</kbd> | Resize selection 1px                                           |
+| <kbd>Esc</kbd>                                                            | Quit capture                                                   |
+| <kbd>Ctrl</kbd> + <kbd>C</kbd>                                            | Copy to clipboard                                              |
+| <kbd>Ctrl</kbd> + <kbd>S</kbd>                                            | Save selection as a file                                       |
+| <kbd>Ctrl</kbd> + <kbd>Z</kbd>                                            | Undo the last modification                                     |
+| <kbd>Spacebar</kbd>                                                       | Toggle visibility of sidebar with options of the selected tool, color picker for the drawing color and history menu |
+| Right Click                                                               | Show the color wheel                                              |
+| Mouse Wheel                                                               | Change the tool's thickness                                    |
 
 <kbd>Shift</kbd> + drag a handler of the selection area: mirror redimension in the opposite handler.
 
@@ -202,7 +208,7 @@ Steps for using the configuration:
 
 - Experimental Gnome Wayland and Plasma Wayland support.
 
-- If you are using Gnome you need to install the [TopIcons](https://extensions.gnome.org/extension/1031/topicons/) extension in order to see the systemtray icon.
+- If you are using Gnome you need to install the [Gnome Shell Extension Appindicator](https://github.com/Ubuntu/gnome-shell-extension-appindicator) extension in order to see the systemtray icon.
 
 - In order to speed up the first launch of Flameshot (DBus init of the app can be slow), consider starting the application automatically on boot.
 
@@ -220,9 +226,18 @@ There are packages available for a few distros:
   + Package for Debian 9 ("Stretch") also [available via stretch-backports](https://backports.debian.org/).
 - [Ubuntu 18.04+](https://launchpad.net/ubuntu/+source/flameshot): `apt install flameshot`
 - [openSUSE](https://software.opensuse.org/package/flameshot)
-- [Void Linux](https://github.com/voidlinux/void-packages/tree/master/srcpkgs/flameshot) (`xbps-install flameshot`)
+- [Void Linux](https://github.com/void-linux/void-packages/tree/master/srcpkgs/flameshot) (`xbps-install flameshot`)
 - [Docker](https://github.com/ManuelLR/docker-flameshot)
 - Fedora: `dnf install flameshot`
+- [Snap/Flatpak/AppImage](https://github.com/flameshotapp/packages)
+- Besides, generic packages available via [opensuse software repository](https://software.opensuse.org//download.html?project=home%3AVitzy&package=flameshot)
+
+<details>
+  <summary>Expand this section to see what distros are using an up to date version of flameshot</summary>
+  <a href="https://repology.org/metapackage/flameshot/versions">
+    <img src="https://repology.org/badge/vertical-allrepos/flameshot.svg" alt="Packaging status">
+  </a>
+</details>
 
 ## Compilation
 
