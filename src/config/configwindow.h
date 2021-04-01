@@ -10,6 +10,7 @@ class ShortcutsWidget;
 class GeneralConf;
 class QFileSystemWatcher;
 class VisualsEditor;
+class ImgurConf;
 
 class ConfigWindow : public QTabWidget
 {
@@ -29,4 +30,5 @@ private:
     GeneralConf* m_generalConfig;
     VisualsEditor* m_visuals;
     QFileSystemWatcher* m_configWatcher;
+    ImgurConf *m_imgurConfig;
 };

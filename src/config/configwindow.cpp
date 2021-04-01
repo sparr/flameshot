@@ -7,6 +7,7 @@
 #include "src/config/shortcutswidget.h"
 #include "src/config/strftimechooserwidget.h"
 #include "src/config/visualseditor.h"
+#include "src/config/imgurconf.h"
 #include "src/utils/colorutils.h"
 #include "src/utils/confighandler.h"
 #include "src/utils/globalvalues.h"
@@ -61,6 +62,11 @@ ConfigWindow::ConfigWindow(QWidget* parent)
     // shortcuts
     m_shortcuts = new ShortcutsWidget();
     addTab(m_shortcuts, QIcon(modifier + "shortcut.svg"), tr("Shortcuts"));
+
+    // imgur
+    m_imgurConfig = new ImgurConf();
+    addTab(m_imgurConfig, QIcon(modifier + "cloud-upload.svg"),
+           tr("Imgur"));
 
     // connect update sigslots
     connect(this,

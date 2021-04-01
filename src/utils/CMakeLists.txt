@@ -24,6 +24,7 @@ target_sources(
           pathinfo.cpp
           colorutils.cpp
           history.cpp
+          imgurconfighandler.cpp
           configshortcuts.cpp
           strfparse.cpp
         request.cpp
