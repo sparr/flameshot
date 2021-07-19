@@ -294,7 +294,7 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Visszaállítás</translation>
+        <translation type="vanished">Visszaállítás</translation>
     </message>
     <message>
         <source>Restores the saved pattern</source>
@@ -307,6 +307,10 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     <message>
         <source>Deletes the name</source>
         <translation>Törli a nevet</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -528,6 +532,14 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
         <source>Use JPG format for clipboard (PNG default)</source>
         <translation>JPG formátum használata vágolapra másoláskor (PNG az alapértelmezett)</translation>
     </message>
+    <message>
+        <source>Latest Uploads Max Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Undo limit</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>HistoryWidget</name>
@@ -604,6 +616,10 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     <message>
         <source>Image to Clipboard.</source>
         <translation type="obsolete">Kép a vágolapra.</translation>
+    </message>
+    <message>
+        <source>Delete image</source>
+        <translation type="obsolete">Kép törlése</translation>
     </message>
 </context>
 <context>
@@ -833,7 +849,7 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     </message>
     <message>
         <source>Capture saved to clipboard</source>
-        <translation>Felvétel mentve a vágólapra</translation>
+        <translation type="vanished">Felvétel mentve a vágólapra</translation>
     </message>
     <message>
         <source>URL copied to clipboard.</source>
@@ -1063,6 +1079,18 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
         <source>Error while saving to clipboard</source>
         <translation>Hiba a vágolapra másolás közben</translation>
     </message>
+    <message>
+        <source>Delete current tool</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Saving canceled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save canceled</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RectangleTool</name>
@@ -1129,6 +1157,10 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
         <source>Press Esc to cancel or Backspace to disable the keyboard shortcut.</source>
         <translation>Nyomd meg az Esc billentyűt a kilépéshet vagy a Backspace-t a gyorsbillentyűk kikapcsolásához.</translation>
     </message>
+    <message>
+        <source>Press Esc to cancel or ⌘+Backspace to disable the keyboard shortcut.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ShortcutsWidget</name>
@@ -1166,6 +1198,28 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
     <message>
         <source>Grab Color</source>
         <translation>Szín választása</translation>
+    </message>
+</context>
+<context>
+    <name>SizeDecreaseTool</name>
+    <message>
+        <source>Decrease Tool Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Decrease the size of the other tools</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SizeIncreaseTool</name>
+    <message>
+        <source>Increase Tool Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increase the size of the other tools</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1377,6 +1431,10 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
     <message>
         <source>Close</source>
         <translation>Bezárás</translation>
+    </message>
+    <message>
+        <source>&lt;Empty&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

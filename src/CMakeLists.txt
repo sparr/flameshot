@@ -113,7 +113,7 @@ endif ()
 
 target_sources(
         flameshot
-        PRIVATE # ${CMAKE_CURRENT_SOURCE_DIR}/../external/singleapplication/singleapplication.cpp
+        PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/../external/Qt-Color-Widgets/src/color_utils.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/../external/Qt-Color-Widgets/src/color_wheel.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/../external/Qt-Color-Widgets/include/color_wheel.hpp
@@ -126,7 +126,6 @@ target_include_directories(
   flameshot
   PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/>
-         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../external/singleapplication/>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../external/Qt-Color-Widgets/include>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../dbus/>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/cli>
@@ -161,6 +160,15 @@ target_include_directories(
          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/widgets/capture>
          $<INSTALL_INTERFACE:include/mylib>)
 
+if (USE_EXTERNAL_SINGLEAPPLICATION)
+    add_compile_definitions(USE_EXTERNAL_SINGLEAPPLICATION=1)
+else ()
+    target_include_directories(
+        flameshot
+        PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../external/singleapplication>)
+endif()
+
 target_link_libraries(
         flameshot
         project_warnings
@@ -169,7 +177,7 @@ target_link_libraries(
         Qt5::DBus
         Qt5::Network
         Qt5::Widgets
-        SingleApplication::SingleApplication
+        ${QTSINGLEAPPLICATION_LIBRARY}
         spdlog::spdlog
 )
 
@@ -197,6 +205,17 @@ if (WIN32)
     endif ()
 endif ()
 
+find_package (Git)
+if (GIT_FOUND)
+    message("git found: ${GIT_EXECUTABLE} in version     ${GIT_VERSION_STRING}")
+    execute_process(COMMAND ${GIT_EXECUTABLE} rev-parse --short HEAD OUTPUT_VARIABLE FLAMESHOT_GIT_HASH)
+    string(REGEX REPLACE "\r*\n$" "" FLAMESHOT_GIT_HASH "${FLAMESHOT_GIT_HASH}")
+    target_compile_definitions(flameshot PRIVATE FLAMESHOT_GIT_HASH="${FLAMESHOT_GIT_HASH}")
+    message("FLAMESHOT_GIT_HASH: ${FLAMESHOT_GIT_HASH}")
+else()
+    target_compile_definitions(flameshot PRIVATE FLAMESHOT_GIT_HASH="-")
+    message("git command is not found")
+endif ()
 target_compile_definitions(flameshot PRIVATE APP_PREFIX="${CMAKE_INSTALL_PREFIX}")
 target_compile_definitions(flameshot PRIVATE APP_VERSION="v${PROJECT_VERSION}")
 target_compile_definitions(flameshot PRIVATE IMGUR_CLIENT_ID="313baf0c7b4d3ff")
@@ -297,7 +316,7 @@ if (WIN32)
         install(DIRECTORY ${CMAKE_BINARY_DIR}/windeployqt_stuff/ DESTINATION bin)
 
 
-        STRING(REGEX REPLACE "\\\\" "/" OPENSSL_ROOT_DIR $ENV{OPENSSL_ROOT_DIR} )
+        STRING(REGEX REPLACE "\\\\" "/" OPENSSL_ROOT_DIR "$ENV{OPENSSL_ROOT_DIR}" )
  
         if (ENABLE_OPENSSL)
             if (EXISTS ${OPENSSL_ROOT_DIR}/bin)

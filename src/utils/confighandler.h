@@ -34,6 +34,9 @@ public:
     QColor drawColorValue();
     void setDrawColor(const QColor&);
 
+    void setFontFamily(const QString&);
+    const QString& fontFamily();
+
     bool showHelpValue();
     void setShowHelp(const bool);
 
@@ -52,6 +55,9 @@ public:
 
     int drawThicknessValue();
     void setDrawThickness(const int);
+
+    int drawFontSizeValue();
+    void setDrawFontSize(const int);
 
     bool keepOpenAppLauncherValue();
     void setKeepOpenAppLauncher(const bool);
@@ -86,12 +92,17 @@ public:
 
     bool useJpgForClipboard() const;
     void setUseJpgForClipboard(const bool);
+    void setSaveAsFileExtension(const QString& extension);
+    QString getSaveAsFileExtension();
 
     void setDefaultSettings();
     void setAllTheButtons();
 
     void setIgnoreUpdateToVersion(const QString& text);
     QString ignoreUpdateToVersion();
+
+    void setUndoLimit(int value);
+    int undoLimit();
 
     QVector<QStringList> shortcuts();
     void setShortcutsDefault();

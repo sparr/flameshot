@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ja_JP">
+<TS version="2.1" language="he">
 <context>
     <name>AppLauncher</name>
     <message>
         <location filename="../../src/tools/launcher/applaunchertool.cpp" line="23"/>
         <source>App Launcher</source>
-        <translation>アプリケーションランチャー</translation>
+        <translation>משגר יישום</translation>
     </message>
     <message>
         <location filename="../../src/tools/launcher/applaunchertool.cpp" line="33"/>
         <source>Choose an app to open the capture</source>
-        <translation>キャプチャーを開くアプリケーションを選択する</translation>
+        <translation>בחירת יישום לפתיחת הלכידה</translation>
     </message>
 </context>
 <context>
@@ -19,57 +19,57 @@
     <message>
         <location filename="../../src/tools/launcher/applauncherwidget.cpp" line="42"/>
         <source>Open With</source>
-        <translation>次で開く</translation>
+        <translation>פתיחה באמצעות</translation>
     </message>
     <message>
         <location filename="../../src/tools/launcher/applauncherwidget.cpp" line="57"/>
         <source>Launch in terminal</source>
-        <translation>端末内で起動する</translation>
+        <translation>שיגור במסוף</translation>
     </message>
     <message>
         <location filename="../../src/tools/launcher/applauncherwidget.cpp" line="58"/>
         <source>Keep open after selection</source>
-        <translation>選択後も開いたままにする</translation>
+        <translation>להשאיר פתוח לאחר בחירה</translation>
     </message>
     <message>
         <location filename="../../src/tools/launcher/applauncherwidget.cpp" line="94"/>
         <location filename="../../src/tools/launcher/applauncherwidget.cpp" line="109"/>
         <source>Error</source>
-        <translation>エラー</translation>
+        <translation>שגיאה</translation>
     </message>
     <message>
         <location filename="../../src/tools/launcher/applauncherwidget.cpp" line="109"/>
         <source>Unable to launch in terminal.</source>
-        <translation>端末内で起動できません。</translation>
+        <translation>לא ניתן לשגר במסוף.</translation>
     </message>
     <message>
         <location filename="../../src/tools/launcher/applauncherwidget.cpp" line="94"/>
         <source>Unable to write in</source>
-        <translation>書き込めません:</translation>
+        <translation>לא ניתן לכתוב ב־</translation>
     </message>
 </context>
 <context>
     <name>ArrowTool</name>
     <message>
-        <location filename="../../src/tools/arrow/arrowtool.cpp" line="72"/>
+        <location filename="../../src/tools/arrow/arrowtool.cpp" line="75"/>
         <source>Arrow</source>
-        <translation>矢印</translation>
+        <translation>חץ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/arrow/arrowtool.cpp" line="82"/>
+        <location filename="../../src/tools/arrow/arrowtool.cpp" line="85"/>
         <source>Set the Arrow as the paint tool</source>
-        <translation>ペイントツールとして「矢印」をセットする</translation>
+        <translation>הגדרת החץ ככלי לצבע</translation>
     </message>
 </context>
 <context>
     <name>BlurTool</name>
     <message>
         <source>Blur</source>
-        <translation type="vanished">ぼかし</translation>
+        <translation type="vanished">Desenfocament</translation>
     </message>
     <message>
         <source>Set Blur as the paint tool</source>
-        <translation type="vanished">ペイントツールとして「ぼかし」をセットする</translation>
+        <translation type="vanished">Estableix el desenfocament com a eina de dibuix</translation>
     </message>
 </context>
 <context>
@@ -77,78 +77,79 @@
     <message>
         <location filename="../../src/widgets/capturelauncher.cpp" line="41"/>
         <source>&lt;b&gt;Capture Mode&lt;/b&gt;</source>
-        <translation>&lt;b&gt;キャプチャーモード&lt;/b&gt;</translation>
+        <translation>&lt;b&gt;מצב לכידה&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.cpp" line="47"/>
         <source>Rectangular Region</source>
-        <translation>四角形選択</translation>
+        <translation>אזור מרובע</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.cpp" line="53"/>
         <source>Full Screen (Current Display)</source>
-        <translation>全画面（このディスプレイ）</translation>
+        <translation>מסך מלא (מצג נוכחי)</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.cpp" line="56"/>
         <source>Full Screen (All Monitors)</source>
-        <translation>全画面（すべてのディスプレイ）</translation>
+        <translation>מסך מלא (כל הצגים)</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.cpp" line="65"/>
         <source>No Delay</source>
-        <translation>ディレイなし</translation>
+        <translation>ללא השהייה</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.cpp" line="72"/>
         <source> second</source>
-        <translation> 秒</translation>
+        <translation> שניה</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.cpp" line="72"/>
         <source> seconds</source>
-        <translation> 秒</translation>
+        <translation> שניות</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.cpp" line="76"/>
         <source>Take new screenshot</source>
-        <translation>新しいキャプチャー</translation>
+        <translation>לכידת מסך חדשה</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.cpp" line="85"/>
         <source>Area:</source>
-        <translation>選択タイプ：</translation>
+        <translation>אזור:</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.cpp" line="86"/>
         <source>Delay:</source>
-        <translation>ディレイ：</translation>
+        <translation>אזור:</translation>
     </message>
 </context>
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../../src/widgets/capture/capturewidget.cpp" line="99"/>
+        <location filename="../../src/widgets/capture/capturewidget.cpp" line="95"/>
         <source>Unable to capture screen</source>
-        <translation>画面をキャプチャーできません</translation>
+        <translatorcomment>Impossible capturar la pantalla</translatorcomment>
+        <translation>לא ניתן ללכוד מסך</translation>
     </message>
     <message>
-        <location filename="../../src/widgets/capture/capturewidget.cpp" line="1671"/>
+        <location filename="../../src/widgets/capture/capturewidget.cpp" line="1586"/>
         <source>Select an area with the mouse, or press Esc to exit.
 Press Enter to capture the screen.
 Press Right Click to show the color picker.
 Use the Mouse Wheel to change the thickness of your tool.
 Press Space to open the side panel.</source>
-        <translation>マウスで領域を選択、Esc を押すと終了。
-Enter を押すと画面をキャプチャー。
-マウスの右ボタンでカラーピッカーを表示。
-マウスホイールでツールの太さ等を変更。
-スペースを押すとサイドパネルを開く。</translation>
+        <translation>בחירת אזור באמצעות העכבר, או הקשה על &apos;Esc&apos; כדי לצאת.
+הקשה על &apos;Enter&apos; כדי ללכוד את המסך.
+לחצה באמצעות לחצן העכבר הימני כדי להציג את דוגם הצבע.
+נא להשתמש בגלגל העכבר כדי לשנות את עובי כלי הציור.
+הקשה על &apos;Space&apos; לפתיחת חלונית הצד.</translation>
     </message>
     <message>
-        <location filename="../../src/widgets/capture/capturewidget.cpp" line="902"/>
+        <location filename="../../src/widgets/capture/capturewidget.cpp" line="851"/>
         <source>Tool Settings</source>
-        <translation>ツール設定</translation>
+        <translation>הגדרות כלי</translation>
     </message>
 </context>
 <context>
@@ -156,25 +157,25 @@ Enter を押すと画面をキャプチャー。
     <message>
         <location filename="../../src/tools/circlecount/circlecounttool.cpp" line="33"/>
         <source>Circle Counter</source>
-        <translation>丸カウンター</translation>
+        <translation>מונה עיגולים</translation>
     </message>
     <message>
         <location filename="../../src/tools/circlecount/circlecounttool.cpp" line="43"/>
         <source>Add an autoincrementing counter bubble</source>
-        <translation>自動的に増加する丸カウンターを追加する</translation>
+        <translation>הוספת בועת־מניה אוטומטית</translation>
     </message>
 </context>
 <context>
     <name>CircleTool</name>
     <message>
-        <location filename="../../src/tools/circle/circletool.cpp" line="20"/>
+        <location filename="../../src/tools/circle/circletool.cpp" line="24"/>
         <source>Circle</source>
-        <translation>円形</translation>
+        <translation>עיגול</translation>
     </message>
     <message>
-        <location filename="../../src/tools/circle/circletool.cpp" line="30"/>
+        <location filename="../../src/tools/circle/circletool.cpp" line="34"/>
         <source>Set the Circle as the paint tool</source>
-        <translation>ペイントツールとして「円形」をセットする</translation>
+        <translation>הגדרת העיגול ככלי לצביעה</translation>
     </message>
 </context>
 <context>
@@ -182,27 +183,27 @@ Enter を押すと画面をキャプチャー。
     <message>
         <location filename="../../src/config/configwindow.cpp" line="28"/>
         <source>Configuration</source>
-        <translation>設定</translation>
+        <translation>תצור</translation>
     </message>
     <message>
         <location filename="../../src/config/configwindow.cpp" line="49"/>
         <source>Interface</source>
-        <translation>インターフェース</translation>
+        <translation>מנשק</translation>
     </message>
     <message>
         <location filename="../../src/config/configwindow.cpp" line="55"/>
         <source>Filename Editor</source>
-        <translation>ファイル名エディター</translation>
+        <translation>עורך שם קובץ</translation>
     </message>
     <message>
         <location filename="../../src/config/configwindow.cpp" line="59"/>
         <source>General</source>
-        <translation>全般</translation>
+        <translation>כללי</translation>
     </message>
     <message>
         <location filename="../../src/config/configwindow.cpp" line="63"/>
         <source>Shortcuts</source>
-        <translation>ショートカット</translation>
+        <translation>קיצורי־דרך</translation>
     </message>
 </context>
 <context>
@@ -210,66 +211,66 @@ Enter を押すと画面をキャプチャー。
     <message>
         <location filename="../../src/core/controller.cpp" line="198"/>
         <source>New version %1 is available</source>
-        <translation>新しいバージョン%1が公開されました</translation>
+        <translation>זמינה גרסה חדשה %1</translation>
     </message>
     <message>
         <location filename="../../src/core/controller.cpp" line="205"/>
         <source>You have the latest version</source>
-        <translation>最新バージョンです</translation>
+        <translation>הגרסה העדכנית ביותר כבר מותקנת</translation>
     </message>
     <message>
         <location filename="../../src/core/controller.cpp" line="213"/>
         <source>Failed to get information about the latest version.</source>
-        <translation>最新バージョン情報を取得に失敗しました。</translation>
+        <translation>קבלת מידע אודות הגרסה העדכנית ביותר, כשלה.</translation>
     </message>
     <message>
         <location filename="../../src/core/controller.cpp" line="294"/>
         <source>Error</source>
-        <translation>エラー</translation>
+        <translation>שגיאה</translation>
     </message>
     <message>
         <location filename="../../src/core/controller.cpp" line="294"/>
         <source>Unable to close active modal widgets</source>
-        <translation>アクティブなモーダルを閉じることができません</translation>
-    </message>
-    <message>
-        <location filename="../../src/core/controller.cpp" line="399"/>
-        <source>&amp;Take Screenshot</source>
-        <translation>スクリーンショットを撮る(&amp;T)</translation>
+        <translation>לא ניתן לסגור ווידג&apos;טים מודאליים</translation>
     </message>
     <message>
         <location filename="../../src/core/controller.cpp" line="415"/>
         <source>&amp;Open Launcher</source>
-        <translation>ランチャーを開く(&amp;O)</translation>
+        <translation>&amp;פתיחת משגר</translation>
     </message>
     <message>
         <location filename="../../src/core/controller.cpp" line="420"/>
         <source>&amp;Configuration</source>
-        <translation>設定(&amp;C)</translation>
+        <translation>&amp;תצור</translation>
     </message>
     <message>
         <location filename="../../src/core/controller.cpp" line="423"/>
         <source>&amp;About</source>
-        <translation>ついて(&amp;A)</translation>
+        <translation>&amp;אודות</translation>
     </message>
     <message>
         <location filename="../../src/core/controller.cpp" line="426"/>
         <source>Check for updates</source>
-        <translation>更新をチェックする</translation>
+        <translation>בדיקת זמינות עדכונים</translation>
     </message>
     <message>
         <location filename="../../src/core/controller.cpp" line="433"/>
         <source>&amp;Latest Uploads</source>
-        <translation>最新アップロード(&amp;L)</translation>
+        <translation>&amp;עדכונים אחרונים</translation>
     </message>
     <message>
         <source>&amp;Information</source>
-        <translation type="vanished">情報(&amp;I)</translation>
+        <translation type="vanished">&amp;Informació</translation>
     </message>
     <message>
         <location filename="../../src/core/controller.cpp" line="429"/>
         <source>&amp;Quit</source>
-        <translation>終了(&amp;Q)</translation>
+        <translation>&amp;יציאה</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/controller.cpp" line="399"/>
+        <source>&amp;Take Screenshot</source>
+        <translation>&amp;לכידת מסך</translation>
     </message>
 </context>
 <context>
@@ -277,12 +278,12 @@ Enter を押すと画面をキャプチャー。
     <message>
         <location filename="../../src/tools/copy/copytool.cpp" line="24"/>
         <source>Copy</source>
-        <translation>コピー</translation>
+        <translation>העתקה</translation>
     </message>
     <message>
         <location filename="../../src/tools/copy/copytool.cpp" line="34"/>
         <source>Copy the selection into the clipboard</source>
-        <translation>選択範囲をクリップボードにコピーする</translation>
+        <translation>העתקת הבחירה ללוח־הגזירים</translation>
     </message>
 </context>
 <context>
@@ -290,7 +291,7 @@ Enter を押すと画面をキャプチャー。
     <message>
         <location filename="../../src/utils/dbusutils.cpp" line="56"/>
         <source>Unable to connect via DBus</source>
-        <translation>DBus に接続できません</translation>
+        <translation>לא ניתן להתחבר דרך DBus</translation>
     </message>
 </context>
 <context>
@@ -298,12 +299,12 @@ Enter を押すと画面をキャプチャー。
     <message>
         <location filename="../../src/tools/exit/exittool.cpp" line="23"/>
         <source>Exit</source>
-        <translation>終了</translation>
+        <translation>יציאה</translation>
     </message>
     <message>
         <location filename="../../src/tools/exit/exittool.cpp" line="33"/>
         <source>Leave the capture screen</source>
-        <translation>画面キャプチャーを終了する</translation>
+        <translation>עזיבת מסך הלכידה</translation>
     </message>
 </context>
 <context>
@@ -311,311 +312,302 @@ Enter を押すと画面をキャプチャー。
     <message>
         <location filename="../../src/config/filenameeditor.cpp" line="24"/>
         <source>Edit the name of your captures:</source>
-        <translation>キャプチャー名の編集:</translation>
+        <translation>עריכת שם הלכידות:</translation>
     </message>
     <message>
         <location filename="../../src/config/filenameeditor.cpp" line="28"/>
         <source>Edit:</source>
-        <translation>編集:</translation>
+        <translation>עריכה:</translation>
     </message>
     <message>
         <location filename="../../src/config/filenameeditor.cpp" line="30"/>
         <source>Preview:</source>
-        <translation>プレビュー:</translation>
+        <translation>תצוגה מקדימה:</translation>
     </message>
     <message>
         <location filename="../../src/config/filenameeditor.cpp" line="73"/>
         <source>Save</source>
-        <translation>保存</translation>
+        <translation>שמירה</translation>
     </message>
     <message>
         <location filename="../../src/config/filenameeditor.cpp" line="76"/>
         <source>Saves the pattern</source>
-        <translation>パターンを保存する</translation>
+        <translation>שמירת הדפוס</translation>
     </message>
     <message>
         <location filename="../../src/config/filenameeditor.cpp" line="78"/>
         <source>Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>שחזור</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="vanished">リセット</translation>
+        <translation type="vanished">Reinicialitza</translation>
     </message>
     <message>
         <location filename="../../src/config/filenameeditor.cpp" line="81"/>
         <source>Restores the saved pattern</source>
-        <translation>保存されたパターンに戻す</translation>
+        <translation>שחזור דפוס שמור</translation>
     </message>
     <message>
         <location filename="../../src/config/filenameeditor.cpp" line="83"/>
         <source>Clear</source>
-        <translation>消去</translation>
+        <translation>ניקוי</translation>
     </message>
     <message>
         <location filename="../../src/config/filenameeditor.cpp" line="89"/>
         <source>Deletes the name</source>
-        <translation>名前を削除する</translation>
+        <translation>מחיקת השם</translation>
     </message>
 </context>
 <context>
     <name>GeneneralConf</name>
     <message>
         <source>Show help message</source>
-        <translation type="vanished">ヘルプメッセージを表示する</translation>
+        <translation type="vanished">Mostra el missatge d&apos;ajuda</translation>
     </message>
     <message>
         <source>Show the help message at the beginning in the capture mode.</source>
-        <translation type="vanished">キャプチャーモード開始時にヘルプメッセージを表示する。</translation>
+        <translation type="vanished">Mostra el missatge d&apos;ajuda en iniciar el mode de captura.</translation>
     </message>
     <message>
         <source>Show desktop notifications</source>
-        <translation type="vanished">デスクトップの通知を表示する</translation>
+        <translation type="vanished">Mostra les notificacions d&apos;escriptori</translation>
     </message>
     <message>
         <source>Show tray icon</source>
-        <translation type="vanished">トレイアイコンを表示する</translation>
+        <translation type="vanished">Mostra la icona en la barra de tasques</translation>
     </message>
     <message>
         <source>Show the systemtray icon</source>
-        <translation type="vanished">システムトレイアイコンを表示する</translation>
+        <translation type="vanished">Mostra la icona en la barra de tasques</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">インポート</translation>
+        <translation type="vanished">Importar</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="vanished">エラー</translation>
+        <translation type="vanished">Error</translation>
     </message>
     <message>
         <source>Unable to read file.</source>
-        <translation type="vanished">ファイルを読み込めません。</translation>
+        <translation type="vanished">Impossible llegir el fitxer.</translation>
     </message>
     <message>
         <source>Unable to write file.</source>
-        <translation type="vanished">ファイルに書き込めません。</translation>
+        <translation type="vanished">Impossible escriure al fitxer.</translation>
     </message>
     <message>
         <source>Save File</source>
-        <translation type="vanished">ファイルを保存</translation>
+        <translation type="vanished">Guardar Arxiu</translation>
     </message>
     <message>
         <source>Confirm Reset</source>
-        <translation type="vanished">リセットの確認</translation>
+        <translation type="vanished">Confirmar Reset</translation>
     </message>
     <message>
         <source>Are you sure you want to reset the configuration?</source>
-        <translation type="vanished">設定をリセットしてもよろしいですか?</translation>
+        <translation type="vanished">Esteu segur que voleu reiniciar la configuració?</translation>
     </message>
     <message>
         <source>Configuration File</source>
-        <translation type="vanished">設定ファイル</translation>
+        <translation type="vanished">Fitxer de Configuració</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">エクスポート</translation>
+        <translation type="vanished">Exportar</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="vanished">リセット</translation>
+        <translation type="vanished">Reset</translation>
     </message>
     <message>
         <source>Launch at startup</source>
-        <translation type="vanished">スタートアップ時に起動する</translation>
-    </message>
-    <message>
-        <source>Launch Flameshot</source>
-        <translation type="vanished">Flameshot を起動する</translation>
+        <translation type="vanished">Llançament a l&apos;inici</translation>
     </message>
 </context>
 <context>
     <name>GeneralConf</name>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="112"/>
-        <location filename="../../src/config/generalconf.cpp" line="284"/>
+        <location filename="../../src/config/generalconf.cpp" line="107"/>
+        <location filename="../../src/config/generalconf.cpp" line="279"/>
         <source>Import</source>
-        <translation>インポート</translation>
+        <translation>ייבוא</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="119"/>
-        <location filename="../../src/config/generalconf.cpp" line="127"/>
-        <location filename="../../src/config/generalconf.cpp" line="150"/>
-        <location filename="../../src/config/generalconf.cpp" line="537"/>
+        <location filename="../../src/config/generalconf.cpp" line="114"/>
+        <location filename="../../src/config/generalconf.cpp" line="122"/>
+        <location filename="../../src/config/generalconf.cpp" line="145"/>
+        <location filename="../../src/config/generalconf.cpp" line="510"/>
         <source>Error</source>
-        <translation>エラー</translation>
+        <translation>שגיאה</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="119"/>
+        <location filename="../../src/config/generalconf.cpp" line="114"/>
         <source>Unable to read file.</source>
-        <translation>ファイルを読み込みに失敗しました。</translation>
+        <translation>לא ניתן לקרוא קובץ.</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="127"/>
-        <location filename="../../src/config/generalconf.cpp" line="150"/>
+        <location filename="../../src/config/generalconf.cpp" line="122"/>
+        <location filename="../../src/config/generalconf.cpp" line="145"/>
         <source>Unable to write file.</source>
-        <translation>ファイルを書き込みに失敗しました。</translation>
+        <translation>לא ניתן לכתוב קובץ.</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="137"/>
+        <location filename="../../src/config/generalconf.cpp" line="132"/>
         <source>Save File</source>
-        <translation>ファイルを保存する</translation>
+        <translation>שמירת קובץ</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="159"/>
+        <location filename="../../src/config/generalconf.cpp" line="154"/>
         <source>Confirm Reset</source>
-        <translation>よろしい</translation>
+        <translation>אישור איפוס</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="160"/>
+        <location filename="../../src/config/generalconf.cpp" line="155"/>
         <source>Are you sure you want to reset the configuration?</source>
-        <translation>設定をリセットしてよろしいですか?</translation>
+        <translation>האם לאפס את התצורה?</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="196"/>
+        <location filename="../../src/config/generalconf.cpp" line="190"/>
         <source>Show help message</source>
-        <translation>ヘルプメッセージを表示する</translation>
+        <translation>הצגת הודעת עזרה זו</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="200"/>
+        <location filename="../../src/config/generalconf.cpp" line="194"/>
         <source>Show the help message at the beginning in the capture mode.</source>
-        <translation>キャプチャーモード開始時にヘルプメッセージを表示する。</translation>
+        <translation>הצגת הודעת העזרה באתחול, במצב לכידה.</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="210"/>
+        <location filename="../../src/config/generalconf.cpp" line="204"/>
         <source>Show the side panel button</source>
-        <translation>サイドパネルのボタンを表示する</translation>
+        <translation>הצגת לחצן חלונית־הצד</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="213"/>
+        <location filename="../../src/config/generalconf.cpp" line="207"/>
         <source>Show the side panel toggle button in the capture mode.</source>
-        <translation>キャプチャーモードでサイドパネルのトグルボタンを表示する。</translation>
+        <translation>הצגת לחצן ברר לוחית־צד במצב הלכידה.</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="223"/>
-        <location filename="../../src/config/generalconf.cpp" line="227"/>
+        <location filename="../../src/config/generalconf.cpp" line="217"/>
+        <location filename="../../src/config/generalconf.cpp" line="221"/>
         <source>Show desktop notifications</source>
-        <translation>デスクトップ通知を表示する</translation>
+        <translation>הצגת התראות שולחן־עבודה</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="239"/>
+        <location filename="../../src/config/generalconf.cpp" line="233"/>
         <source>Show tray icon</source>
-        <translation>トレイアイコンを表示する</translation>
+        <translation>הצגת סמל מגש</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="242"/>
+        <location filename="../../src/config/generalconf.cpp" line="236"/>
         <source>Show the systemtray icon</source>
-        <translation>システムトレイにアプリアイコンを表示する</translation>
+        <translation>הצגת סמל מגש־מערכת</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="255"/>
-        <location filename="../../src/config/generalconf.cpp" line="260"/>
+        <location filename="../../src/config/generalconf.cpp" line="249"/>
+        <location filename="../../src/config/generalconf.cpp" line="254"/>
         <source>Confirmation required to delete screenshot from the latest uploads</source>
-        <translation>最新アップロードからのキャプチャーを削除する前に確認が必要</translation>
+        <translation>נדרש אישור למחיקת צילום מסך, מההעלאות האחרונות</translation>
+    </message>
+    <message>
+        <location filename="../../src/config/generalconf.cpp" line="267"/>
+        <source>Configuration File</source>
+        <translation>קובץ תצורה</translation>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="272"/>
-        <source>Configuration File</source>
-        <translation>設定ファイル</translation>
-    </message>
-    <message>
-        <location filename="../../src/config/generalconf.cpp" line="277"/>
         <source>Export</source>
-        <translation>エクスポート</translation>
+        <translation>ייצוא</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="291"/>
+        <location filename="../../src/config/generalconf.cpp" line="286"/>
         <source>Reset</source>
-        <translation>リセット</translation>
+        <translation>איפוס</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="301"/>
-        <location filename="../../src/config/generalconf.cpp" line="303"/>
+        <location filename="../../src/config/generalconf.cpp" line="296"/>
+        <location filename="../../src/config/generalconf.cpp" line="298"/>
         <source>Automatic check for updates</source>
-        <translation>自動的に更新を検索する</translation>
+        <translation>בדיקת עדכונים אוטומטית</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="314"/>
+        <location filename="../../src/config/generalconf.cpp" line="309"/>
         <source>Launch at startup</source>
-        <translation>システム起動時に起動する</translation>
+        <translation>שיגור באתחול</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="317"/>
-        <location filename="../../src/config/generalconf.cpp" line="331"/>
+        <location filename="../../src/config/generalconf.cpp" line="312"/>
+        <location filename="../../src/config/generalconf.cpp" line="326"/>
         <source>Launch Flameshot</source>
-        <translation>Flameshotを起動する</translation>
+        <translation>שיגור Flameshot</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="327"/>
+        <location filename="../../src/config/generalconf.cpp" line="322"/>
         <source>Show welcome message on launch</source>
-        <translation>起動時にようこそメッセージを表示する</translation>
+        <translation>הצגת הודעת ברכה בעת השיגור</translation>
+    </message>
+    <message>
+        <location filename="../../src/config/generalconf.cpp" line="337"/>
+        <source>Copy URL after upload</source>
+        <translation>העתקת מען URL לאחר ההעלאה</translation>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="342"/>
-        <source>Copy URL after upload</source>
-        <translation>アップロードあとでURLをコピーする</translation>
-    </message>
-    <message>
-        <location filename="../../src/config/generalconf.cpp" line="347"/>
         <source>Copy URL and close window after upload</source>
-        <translation>アップロードあとでURLをコピーしてウィンドウを閉じる</translation>
+        <translation>העתקת מען URL וסגירת חלון לאחר ההעלאה</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="357"/>
+        <location filename="../../src/config/generalconf.cpp" line="352"/>
         <source>Save image after copy</source>
-        <translation>コピーあとで画像を保存する</translation>
+        <translation>שמירת תמונה לאחר העתקה</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="358"/>
+        <location filename="../../src/config/generalconf.cpp" line="353"/>
         <source>Save image file after copying it</source>
-        <translation>コピーあとで、画像ファイルを保存する</translation>
+        <translation>שמירת קובץ תמונה לאחר העתקתו</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="365"/>
+        <location filename="../../src/config/generalconf.cpp" line="360"/>
         <source>Save Path</source>
-        <translation>パスを保存する</translation>
+        <translation>שמירת נתיב</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="385"/>
+        <location filename="../../src/config/generalconf.cpp" line="384"/>
         <source>Change...</source>
-        <translation>変更…</translation>
+        <translation>שינוי...</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="393"/>
+        <location filename="../../src/config/generalconf.cpp" line="392"/>
         <source>Use fixed path for screenshots to save</source>
-        <translation>一定なパスにキャプチャーを保存する</translation>
+        <translation>שימוש בנתיב קבוע לשמירת צילומי מסך</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="411"/>
+        <location filename="../../src/config/generalconf.cpp" line="410"/>
         <source>Latest Uploads Max Size</source>
-        <translation type="unfinished"></translation>
+        <translation>גודל מרבי של העלאות אחרונות</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="441"/>
-        <source>Undo limit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/config/generalconf.cpp" line="470"/>
-        <location filename="../../src/config/generalconf.cpp" line="475"/>
+        <location filename="../../src/config/generalconf.cpp" line="443"/>
+        <location filename="../../src/config/generalconf.cpp" line="448"/>
         <source>Use JPG format for clipboard (PNG default)</source>
-        <translation>JPEGフォーマットでクリップボードにコピーする（PNG規定）</translation>
+        <translation>שימוש בתבנית JPG עבור לוח־הגזירים (ברירת המחדל היא PNG)</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="509"/>
-        <location filename="../../src/config/generalconf.cpp" line="512"/>
+        <location filename="../../src/config/generalconf.cpp" line="482"/>
+        <location filename="../../src/config/generalconf.cpp" line="485"/>
         <source>Copy file path after save</source>
-        <translation>保存するあとでファイルパスをコピーする</translation>
+        <translation>העתקת נתיב קובץ לאחר השמירה</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="528"/>
+        <location filename="../../src/config/generalconf.cpp" line="501"/>
         <source>Choose a Folder</source>
-        <translation>フォルダーを選択</translation>
+        <translation>בחירת תיקייה</translation>
     </message>
     <message>
-        <location filename="../../src/config/generalconf.cpp" line="537"/>
+        <location filename="../../src/config/generalconf.cpp" line="510"/>
         <source>Unable to write to directory.</source>
-        <translation>フォルダーで書き込みに失敗しました。</translation>
+        <translation>לא ניתן לכתוב למחיצה.</translation>
     </message>
 </context>
 <context>
@@ -623,87 +615,87 @@ Enter を押すと画面をキャプチャー。
     <message>
         <location filename="../../src/widgets/historywidget.cpp" line="26"/>
         <source>Latest Uploads</source>
-        <translation>最新のアップロード</translation>
+        <translation>עדכונים אחרונים</translation>
     </message>
     <message>
         <location filename="../../src/widgets/historywidget.cpp" line="90"/>
         <source>Screenshots history is empty</source>
-        <translation>キャプチャー歴史がない</translation>
+        <translation>היסטוריית צילומי מסך ריקה</translation>
     </message>
     <message>
         <location filename="../../src/widgets/historywidget.cpp" line="141"/>
         <source>Copy URL</source>
-        <translation>URL をコピーする</translation>
+        <translation>העתקת מען URL</translation>
     </message>
     <message>
         <location filename="../../src/widgets/historywidget.cpp" line="145"/>
         <source>URL copied to clipboard.</source>
-        <translation>URL がクリップボードにコピーされました。</translation>
+        <translation>מען URL הועתק ללוח הגזירים.</translation>
     </message>
     <message>
         <location filename="../../src/widgets/historywidget.cpp" line="151"/>
         <source>Open in browser</source>
-        <translation>ブラウザーで開く</translation>
+        <translation>פתיחה בדפדפן</translation>
     </message>
     <message>
         <location filename="../../src/widgets/historywidget.cpp" line="167"/>
         <source>Confirm to delete</source>
-        <translation>よろしい</translation>
+        <translation>אישור מחיקה</translation>
     </message>
     <message>
         <location filename="../../src/widgets/historywidget.cpp" line="168"/>
         <source>Are you sure you want to delete a screenshot from the latest uploads and server?</source>
-        <translation>サーバーとローカルからのキャプチャーを削除してよろしいですか？</translation>
+        <translation>האם למחוק צילום מסך מההעלאות האחרונות ומהשרת?</translation>
     </message>
 </context>
 <context>
     <name>ImgS3Uploader</name>
     <message>
         <source>Uploading Image</source>
-        <translation type="obsolete">画像をアップロード中</translation>
+        <translation type="obsolete">S&apos;està pujant la imatge</translation>
     </message>
     <message>
         <source>URL copied to clipboard.</source>
-        <translation type="obsolete">URL をクリップボードにコピーしました。</translation>
+        <translation type="obsolete">L&apos;URL s&apos;ha copiat al porta-retalls.</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="obsolete">エラー</translation>
+        <translation type="obsolete">Error</translation>
     </message>
 </context>
 <context>
     <name>ImgUploader</name>
     <message>
         <source>Uploading Image</source>
-        <translation type="obsolete">画像をアップロード中</translation>
-    </message>
-    <message>
-        <source>Unable to open the URL.</source>
-        <translation type="obsolete">URL を開けません。</translation>
-    </message>
-    <message>
-        <source>URL copied to clipboard.</source>
-        <translation type="obsolete">URL をクリップボードにコピーしました。</translation>
-    </message>
-    <message>
-        <source>Screenshot copied to clipboard.</source>
-        <translation type="obsolete">スクリーンショットをクリップボードにコピーしました。</translation>
-    </message>
-    <message>
-        <source>Copy URL</source>
-        <translation type="obsolete">URL をコピー</translation>
-    </message>
-    <message>
-        <source>Open URL</source>
-        <translation type="obsolete">URL を開く</translation>
+        <translation type="obsolete">S&apos;està pujant la imatge</translation>
     </message>
     <message>
         <source>Delete image</source>
-        <translation type="obsolete">画像を削除</translation>
+        <translation type="obsolete">Esborra la imatge</translation>
+    </message>
+    <message>
+        <source>Unable to open the URL.</source>
+        <translation type="obsolete">No es pot obrir l&apos;URL.</translation>
+    </message>
+    <message>
+        <source>URL copied to clipboard.</source>
+        <translation type="obsolete">L&apos;URL s&apos;ha copiat al porta-retalls.</translation>
+    </message>
+    <message>
+        <source>Screenshot copied to clipboard.</source>
+        <translation type="obsolete">La captura s&apos;ha copiat al porta-retalls.</translation>
+    </message>
+    <message>
+        <source>Copy URL</source>
+        <translation type="obsolete">Copia l&apos;URL</translation>
+    </message>
+    <message>
+        <source>Open URL</source>
+        <translation type="obsolete">Obri l&apos;URL</translation>
     </message>
     <message>
         <source>Image to Clipboard.</source>
-        <translation type="obsolete">画像をクリップボードへ。</translation>
+        <translation type="obsolete">Imatge al porta-retalls.</translation>
     </message>
 </context>
 <context>
@@ -711,48 +703,48 @@ Enter を押すと画面をキャプチャー。
     <message>
         <location filename="../../src/tools/imgur/imguruploader.cpp" line="39"/>
         <source>Upload to Imgur</source>
-        <translation>Imgur にアップロード</translation>
+        <translation>העלאה ל־Imgur</translation>
     </message>
     <message>
         <location filename="../../src/tools/imgur/imguruploader.cpp" line="53"/>
         <source>Uploading Image</source>
-        <translation>画像をアップロード中</translation>
+        <translation>העלאת תמונה</translation>
     </message>
     <message>
         <location filename="../../src/tools/imgur/imguruploader.cpp" line="165"/>
         <source>Copy URL</source>
-        <translation>URL をコピー</translation>
+        <translation>העתקת מען URL</translation>
     </message>
     <message>
         <location filename="../../src/tools/imgur/imguruploader.cpp" line="166"/>
         <source>Open URL</source>
-        <translation>URL を開く</translation>
+        <translation>פתיחת מען URL</translation>
     </message>
     <message>
         <location filename="../../src/tools/imgur/imguruploader.cpp" line="167"/>
         <source>Delete image</source>
-        <translation>画像を削除</translation>
+        <translation>מחיקת תמונה</translation>
     </message>
     <message>
         <location filename="../../src/tools/imgur/imguruploader.cpp" line="168"/>
         <source>Image to Clipboard.</source>
-        <translation>画像をクリップボードへ。</translation>
+        <translation>תמונה ללוח־גזירים.</translation>
     </message>
     <message>
         <location filename="../../src/tools/imgur/imguruploader.cpp" line="192"/>
         <location filename="../../src/tools/imgur/imguruploader.cpp" line="206"/>
         <source>Unable to open the URL.</source>
-        <translation>URL を開けません。</translation>
+        <translation>לא ניתן לפתוח את מען ה־URL.</translation>
     </message>
     <message>
         <location filename="../../src/tools/imgur/imguruploader.cpp" line="199"/>
         <source>URL copied to clipboard.</source>
-        <translation>URL をクリップボードにコピーしました。</translation>
+        <translation>מען URL הועתק ללוח הגזירים.</translation>
     </message>
     <message>
         <location filename="../../src/tools/imgur/imguruploader.cpp" line="213"/>
         <source>Screenshot copied to clipboard.</source>
-        <translation>スクリーンショットをクリップボードにコピーしました。</translation>
+        <translation>צילום מסך הועתק ללוח.</translation>
     </message>
 </context>
 <context>
@@ -760,12 +752,12 @@ Enter を押すと画面をキャプチャー。
     <message>
         <location filename="../../src/tools/imgur/imguruploadertool.cpp" line="24"/>
         <source>Image Uploader</source>
-        <translation>画像アップローダー</translation>
+        <translation>מעלה תמונות</translation>
     </message>
     <message>
         <location filename="../../src/tools/imgur/imguruploadertool.cpp" line="34"/>
         <source>Upload the selection to Imgur</source>
-        <translation>Imgur に選択範囲をアップロードする</translation>
+        <translation>העלאת הבחירה ל־Imgur</translation>
     </message>
 </context>
 <context>
@@ -773,86 +765,86 @@ Enter を押すと画面をキャプチャー。
     <message>
         <location filename="../../src/widgets/infowindow.cpp" line="24"/>
         <source>About</source>
-        <translation>このアプリケーションについて</translation>
+        <translation>אודות</translation>
     </message>
     <message>
         <source>Right Click</source>
-        <translation type="vanished">右クリック</translation>
+        <translation type="vanished">Clic dret</translation>
     </message>
     <message>
         <source>Mouse Wheel</source>
-        <translation type="vanished">マウスホイール</translation>
+        <translation type="vanished">Roda del ratolí</translation>
     </message>
     <message>
         <source>Move selection 1px</source>
-        <translation type="vanished">選択範囲を 1px 動かす</translation>
+        <translation type="vanished">Mou la selecció 1 px</translation>
     </message>
     <message>
         <source>Resize selection 1px</source>
-        <translation type="vanished">選択範囲を 1px リサイズする</translation>
+        <translation type="vanished">Redimensiona la selecció 1 px</translation>
     </message>
     <message>
         <source>Quit capture</source>
-        <translation type="vanished">キャプチャーを終了する</translation>
+        <translation type="vanished">Ix de la captura</translation>
     </message>
     <message>
         <source>Copy to clipboard</source>
-        <translation type="vanished">クリップボードにコピーする</translation>
+        <translation type="vanished">Copia al porta-retalls</translation>
     </message>
     <message>
         <source>Save selection as a file</source>
-        <translation type="vanished">選択範囲をファイルに保存する</translation>
+        <translation type="vanished">Guarda la selecció com a fitxer</translation>
     </message>
     <message>
         <source>Undo the last modification</source>
-        <translation type="vanished">最後の変更を元に戻す</translation>
+        <translation type="vanished">Desfés l&apos;última modificació</translation>
     </message>
     <message>
         <source>Show color picker</source>
-        <translation type="vanished">カラーピッカーを表示する</translation>
+        <translation type="vanished">Mostra el selector de color</translation>
     </message>
     <message>
         <source>Change the tool&apos;s thickness</source>
-        <translation type="vanished">ツールの値 (太さや濃さ) を変更する</translation>
+        <translation type="vanished">Canvia el gruix de l&apos;eina</translation>
     </message>
     <message>
         <source>Key</source>
-        <translation type="vanished">キー</translation>
+        <translation type="vanished">Tecla</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="vanished">説明</translation>
+        <translation type="vanished">Descripció</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.cpp" line="46"/>
         <source>&lt;u&gt;&lt;b&gt;License&lt;/b&gt;&lt;/u&gt;</source>
-        <translation>&lt;u&gt;&lt;b&gt;ライセンス&lt;/b&gt;&lt;/u&gt;</translation>
+        <translation>&lt;u&gt; &lt;b&gt;רישיון&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.cpp" line="55"/>
         <source>&lt;u&gt;&lt;b&gt;Version&lt;/b&gt;&lt;/u&gt;</source>
-        <translation>&lt;u&gt;&lt;b&gt;バージョン&lt;/b&gt;&lt;/u&gt;</translation>
+        <translation>&lt;u&gt; &lt;b&gt;גרסה&lt;/b&gt; &lt;/u&gt;</translation>
     </message>
     <message>
         <source>&lt;u&gt;&lt;b&gt;Shortcuts&lt;/b&gt;&lt;/u&gt;</source>
-        <translation type="vanished">&lt;u&gt;&lt;b&gt;ショートカット&lt;/b&gt;&lt;/u&gt;</translation>
+        <translation type="vanished">&lt;u&gt;&lt;b&gt;Dreceres&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
         <source>Available shortcuts in the screen capture mode.</source>
-        <translation type="vanished">スクリーンキャプチャーモードで利用可能なショートカット。</translation>
+        <translation type="vanished">Dreceres disponibles en el mode de captura de pantalla.</translation>
     </message>
 </context>
 <context>
     <name>LineTool</name>
     <message>
-        <location filename="../../src/tools/line/linetool.cpp" line="22"/>
+        <location filename="../../src/tools/line/linetool.cpp" line="28"/>
         <source>Line</source>
-        <translation>直線</translation>
+        <translation>קו</translation>
     </message>
     <message>
-        <location filename="../../src/tools/line/linetool.cpp" line="32"/>
+        <location filename="../../src/tools/line/linetool.cpp" line="38"/>
         <source>Set the Line as the paint tool</source>
-        <translation>ペイントツールとして「直線」をセットする</translation>
+        <translation>הגדרת &apos;קו&apos; ככלי הצביעה</translation>
     </message>
 </context>
 <context>
@@ -860,12 +852,12 @@ Enter を押すと画面をキャプチャー。
     <message>
         <location filename="../../src/tools/marker/markertool.cpp" line="27"/>
         <source>Marker</source>
-        <translation>マーカー</translation>
+        <translation>מדגש</translation>
     </message>
     <message>
         <location filename="../../src/tools/marker/markertool.cpp" line="37"/>
         <source>Set the Marker as the paint tool</source>
-        <translation>ペイントツールとして「マーカー」をセットする</translation>
+        <translation>הגדרת &apos;מדגש&apos; ככלי הצביע</translation>
     </message>
 </context>
 <context>
@@ -873,25 +865,25 @@ Enter を押すと画面をキャプチャー。
     <message>
         <location filename="../../src/tools/move/movetool.cpp" line="23"/>
         <source>Move</source>
-        <translation>移動</translation>
+        <translation>העברה</translation>
     </message>
     <message>
         <location filename="../../src/tools/move/movetool.cpp" line="33"/>
         <source>Move the selection area</source>
-        <translation>選択範囲を移動する</translation>
+        <translation>העברת אזור הבחירה</translation>
     </message>
 </context>
 <context>
     <name>PencilTool</name>
     <message>
-        <location filename="../../src/tools/pencil/penciltool.cpp" line="18"/>
+        <location filename="../../src/tools/pencil/penciltool.cpp" line="20"/>
         <source>Pencil</source>
-        <translation>鉛筆</translation>
+        <translation>עפרון</translation>
     </message>
     <message>
-        <location filename="../../src/tools/pencil/penciltool.cpp" line="28"/>
+        <location filename="../../src/tools/pencil/penciltool.cpp" line="30"/>
         <source>Set the Pencil as the paint tool</source>
-        <translation>ペイントツールとして「鉛筆」をセットする</translation>
+        <translation>הגדרת &apos;עיפרון&apos; ככלי הצביע</translation>
     </message>
 </context>
 <context>
@@ -899,12 +891,12 @@ Enter を押すと画面をキャプチャー。
     <message>
         <location filename="../../src/tools/pin/pintool.cpp" line="25"/>
         <source>Pin Tool</source>
-        <translation>固定ツール</translation>
+        <translation>נעיצת כלי</translation>
     </message>
     <message>
         <location filename="../../src/tools/pin/pintool.cpp" line="35"/>
         <source>Pin image on the desktop</source>
-        <translation>選択範囲をデスクトップ上に配置する</translation>
+        <translation>נעיצת תמונה על שולחן־העבודה</translation>
     </message>
 </context>
 <context>
@@ -912,12 +904,12 @@ Enter を押すと画面をキャプチャー。
     <message>
         <location filename="../../src/tools/pixelate/pixelatetool.cpp" line="23"/>
         <source>Pixelate</source>
-        <translation>ピクセル化する</translation>
+        <translation>פיקסול</translation>
     </message>
     <message>
         <location filename="../../src/tools/pixelate/pixelatetool.cpp" line="33"/>
         <source>Set Pixelate as the paint tool</source>
-        <translation>ピクセル化がペイントツールとして設定する</translation>
+        <translation>הגדרת &apos;פיקסול&apos; ככלי הצביע</translation>
     </message>
 </context>
 <context>
@@ -925,184 +917,179 @@ Enter を押すと画面をキャプチャー。
     <message>
         <location filename="../../external/QHotkey/qhotkey.cpp" line="307"/>
         <source>Failed to register %1. Error: %2</source>
-        <translation>ショートカット%1を設定に失敗しました。エラー%2</translation>
+        <translation>רישום %1 כשל. שגיאה: %2</translation>
     </message>
     <message>
         <location filename="../../external/QHotkey/qhotkey.cpp" line="329"/>
         <source>Failed to unregister %1. Error: %2</source>
-        <translation>ショートカット%1を削除に失敗しました。エラー%2</translation>
+        <translation>ביטול רישום %1 כשל. שגיאה: %2</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../src/utils/screenshotsaver.cpp" line="221"/>
-        <source>Save Error</source>
-        <translation>保存エラー</translation>
-    </message>
-    <message>
-        <location filename="../../src/utils/screenshotsaver.cpp" line="99"/>
-        <location filename="../../src/utils/screenshotsaver.cpp" line="201"/>
-        <source>Capture saved as </source>
-        <translation>キャプチャーを保存しました: </translation>
-    </message>
-    <message>
-        <location filename="../../src/utils/screenshotsaver.cpp" line="62"/>
-        <location filename="../../src/utils/screenshotsaver.cpp" line="65"/>
+        <location filename="../../src/utils/screenshotsaver.cpp" line="38"/>
         <source>Capture saved to clipboard.</source>
-        <translation>キャプチャーがクリップボードにコピーされました。</translation>
+        <translation>לכידה נשמרה בלוח־הגזירים.</translation>
     </message>
     <message>
-        <source>Capture saved to clipboard</source>
-        <translation type="vanished">キャプチャーをクリップボードに保存しました</translation>
-    </message>
-    <message>
-        <location filename="../../src/utils/screenshotsaver.cpp" line="48"/>
+        <location filename="../../src/utils/screenshotsaver.cpp" line="63"/>
         <source>Error while saving to clipboard</source>
-        <translation>コピーに失敗しました</translation>
+        <translation>שגיאה בעת שמירה בלוח־הגזירים</translation>
     </message>
     <message>
-        <location filename="../../src/utils/screenshotsaver.cpp" line="103"/>
-        <location filename="../../src/utils/screenshotsaver.cpp" line="219"/>
-        <source>Error trying to save as </source>
-        <translation>保存時にエラーが発生しました: </translation>
-    </message>
-    <message>
-        <location filename="../../src/utils/screenshotsaver.cpp" line="175"/>
+        <location filename="../../src/utils/screenshotsaver.cpp" line="166"/>
         <source>Save screenshot</source>
-        <translation>キャプチャーを保存する</translation>
+        <translation>שמירת לכידה</translation>
     </message>
     <message>
-        <location filename="../../src/utils/screenshotsaver.cpp" line="181"/>
+        <location filename="../../src/utils/screenshotsaver.cpp" line="172"/>
         <source>Saving canceled</source>
-        <translation type="unfinished"></translation>
+        <translation>שמירה בוטלה</translation>
     </message>
     <message>
-        <location filename="../../src/utils/screenshotsaver.cpp" line="183"/>
+        <location filename="../../src/utils/screenshotsaver.cpp" line="174"/>
         <source>Save canceled</source>
+        <translation>שמירה בוטלה</translation>
+    </message>
+    <message>
+        <location filename="../../src/utils/screenshotsaver.cpp" line="196"/>
+        <source>Capture is saved and copied to the clipboard as </source>
+        <translation>הלכידה נשמרת והועתקה ללוח־הגזירים כ־ </translation>
+    </message>
+    <message>
+        <location filename="../../src/utils/screenshotsaver.cpp" line="212"/>
+        <source>Save Error</source>
+        <translation>שגיאת שמירה</translation>
+    </message>
+    <message>
+        <location filename="../../src/utils/screenshotsaver.cpp" line="90"/>
+        <location filename="../../src/utils/screenshotsaver.cpp" line="192"/>
+        <source>Capture saved as </source>
+        <translation>לכידה נשמרה כ־ </translation>
+    </message>
+    <message>
+        <location filename="../../src/utils/screenshotsaver.cpp" line="94"/>
+        <location filename="../../src/utils/screenshotsaver.cpp" line="210"/>
+        <source>Error trying to save as </source>
+        <translation>שגיאה בניסיון שמירה כ־ </translation>
+    </message>
+    <message>
+        <location filename="../../src/main.cpp" line="102"/>
+        <location filename="../../src/main.cpp" line="277"/>
+        <location filename="../../src/main.cpp" line="439"/>
+        <location filename="../../src/main.cpp" line="467"/>
+        <location filename="../../src/main.cpp" line="499"/>
+        <source>Unable to connect via DBus</source>
+        <translation>לא ניתן להתחבר דרך DBus</translation>
+    </message>
+    <message>
+        <location filename="../../src/main.cpp" line="124"/>
+        <source>Powerful yet simple to use screenshot software.</source>
+        <translation>בתכנת לכידת־מסך רבת עצמה אך פשוטה לשימוש.</translation>
+    </message>
+    <message>
+        <location filename="../../src/main.cpp" line="125"/>
+        <source>See</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/utils/screenshotsaver.cpp" line="205"/>
-        <source>Capture is saved and copied to the clipboard as </source>
-        <translation>キャプチャーがコピーされて として保存されました </translation>
+        <location filename="../../src/main.cpp" line="128"/>
+        <source>Capture the entire desktop.</source>
+        <translation>לכידת שולחן־העבודה כולו.</translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="111"/>
-        <location filename="../../src/main.cpp" line="286"/>
-        <location filename="../../src/main.cpp" line="448"/>
-        <location filename="../../src/main.cpp" line="476"/>
-        <location filename="../../src/main.cpp" line="508"/>
-        <source>Unable to connect via DBus</source>
-        <translation>DBus に接続できません</translation>
+        <location filename="../../src/main.cpp" line="130"/>
+        <source>Open the capture launcher.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/main.cpp" line="133"/>
-        <source>Powerful yet simple to use screenshot software.</source>
+        <source>Start a manual capture in GUI mode.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="134"/>
-        <source>See</source>
-        <translation>見る</translation>
+        <location filename="../../src/main.cpp" line="135"/>
+        <source>Configure</source>
+        <translation>תצור</translation>
     </message>
     <message>
         <location filename="../../src/main.cpp" line="137"/>
-        <source>Capture the entire desktop.</source>
-        <translation>デスクトップをキャプチャー。</translation>
-    </message>
-    <message>
-        <location filename="../../src/main.cpp" line="139"/>
-        <source>Open the capture launcher.</source>
-        <translation>キャプチャーランチャーを開く。</translation>
+        <source>Capture a single screen.</source>
+        <translation>לכידת מסך יחיד.</translation>
     </message>
     <message>
         <location filename="../../src/main.cpp" line="142"/>
-        <source>Start a manual capture in GUI mode.</source>
-        <translation>手動的にGUIキャプチャーを開始する。</translation>
-    </message>
-    <message>
-        <location filename="../../src/main.cpp" line="144"/>
-        <source>Configure</source>
-        <translation>設定</translation>
-    </message>
-    <message>
-        <location filename="../../src/main.cpp" line="146"/>
-        <source>Capture a single screen.</source>
-        <translation>単一のディスプレイをキャプチャー。</translation>
-    </message>
-    <message>
-        <location filename="../../src/main.cpp" line="151"/>
         <source>Path where the capture will be saved</source>
-        <translation>キャプチャーの保存パス</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="154"/>
+        <location filename="../../src/main.cpp" line="145"/>
         <source>Save the capture to the clipboard</source>
-        <translation>キャプチャーがクリップボードにコピーする</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="156"/>
+        <location filename="../../src/main.cpp" line="147"/>
         <source>Delay time in milliseconds</source>
-        <translation>ミリ秒でディレイ時間</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="159"/>
+        <location filename="../../src/main.cpp" line="150"/>
         <source>Set the filename pattern</source>
-        <translation>ファイル名のパターンを設定する</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="162"/>
+        <location filename="../../src/main.cpp" line="153"/>
         <source>Enable or disable the trayicon</source>
-        <translation>トレイアイコンを無効・有効</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="166"/>
+        <location filename="../../src/main.cpp" line="157"/>
         <source>Enable or disable run at startup</source>
-        <translation>スタートアップに起動を無効・有効</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="170"/>
+        <location filename="../../src/main.cpp" line="161"/>
         <source>Show the help message in the capture mode</source>
-        <translation>キャプチャーでヘルプメッセージを表示</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="173"/>
+        <location filename="../../src/main.cpp" line="164"/>
         <source>Define the main UI color</source>
-        <translation>マインのUI色を設定する</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="177"/>
+        <location filename="../../src/main.cpp" line="168"/>
         <source>Define the contrast UI color</source>
-        <translation>コントラストのUI色を設定する</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="180"/>
+        <location filename="../../src/main.cpp" line="171"/>
         <source>Print raw PNG capture</source>
-        <translation type="unfinished">PNGのキャプチャーを印刷する</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="183"/>
+        <location filename="../../src/main.cpp" line="174"/>
         <source>Print geometry of the selection in the format W H X Y. Does nothing if raw is specified</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="187"/>
+        <location filename="../../src/main.cpp" line="178"/>
         <source>Define the screen to capture</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="188"/>
+        <location filename="../../src/main.cpp" line="179"/>
         <source>default: screen containing the cursor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="189"/>
+        <location filename="../../src/main.cpp" line="180"/>
         <source>Screen number</source>
-        <translation type="unfinished"></translation>
+        <translation>מספר צג</translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="198"/>
+        <location filename="../../src/main.cpp" line="189"/>
         <source>Invalid color, this flag supports the following formats:
 - #RGB (each of R, G, and B is a single hex digit)
 - #RRGGBB
@@ -1113,64 +1100,70 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="207"/>
+        <location filename="../../src/main.cpp" line="198"/>
         <source>Invalid delay, it must be higher than 0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="209"/>
+        <location filename="../../src/main.cpp" line="200"/>
         <source>Invalid screen number, it must be non negative</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="216"/>
+        <location filename="../../src/main.cpp" line="207"/>
         <source>Invalid path, it must be a real path in the system</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="227"/>
+        <location filename="../../src/main.cpp" line="218"/>
         <source>Invalid value, it must be defined as &apos;true&apos; or &apos;false&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/tools/launcher/openwithprogram.cpp" line="30"/>
         <source>Error</source>
-        <translation>エラー</translation>
+        <translation>שגיאה</translation>
     </message>
     <message>
         <location filename="../../src/tools/launcher/openwithprogram.cpp" line="31"/>
         <source>Unable to write in</source>
-        <translation>書き込めません:</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/utils/screenshotsaver.cpp" line="56"/>
+        <location filename="../../src/utils/screenshotsaver.cpp" line="69"/>
+        <source>Capture saved to clipboard</source>
+        <translation>לכידה נשמרה ללוח־הגזירים</translation>
     </message>
     <message>
         <location filename="../../src/tools/imgur/imguruploader.cpp" line="99"/>
         <source>URL copied to clipboard.</source>
-        <translation type="unfinished">URL をクリップボードにコピーしました。</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/cli/commandlineparser.cpp" line="50"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>אפשרויות</translation>
     </message>
     <message>
         <location filename="../../src/cli/commandlineparser.cpp" line="64"/>
         <source>Arguments</source>
-        <translation type="unfinished"></translation>
+        <translation>משתנים</translation>
     </message>
     <message>
         <location filename="../../src/cli/commandlineparser.cpp" line="323"/>
         <source>arguments</source>
-        <translation type="unfinished"></translation>
+        <translation>משתנים</translation>
     </message>
     <message>
         <location filename="../../src/cli/commandlineparser.cpp" line="324"/>
         <source>Usage</source>
-        <translation type="unfinished"></translation>
+        <translation>שימוש</translation>
     </message>
     <message>
         <location filename="../../src/cli/commandlineparser.cpp" line="324"/>
         <source>options</source>
-        <translation type="unfinished"></translation>
+        <translation>אפשרויות</translation>
     </message>
     <message>
         <location filename="../../src/cli/commandlineparser.cpp" line="331"/>
@@ -1246,7 +1239,7 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</source>
     <message>
         <location filename="../../src/utils/configshortcuts.cpp" line="74"/>
         <source>Quit capture</source>
-        <translation type="unfinished">キャプチャーを終了する</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/utils/configshortcuts.cpp" line="80"/>
@@ -1263,25 +1256,25 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</source>
     <message>
         <location filename="../../src/utils/configshortcuts.cpp" line="94"/>
         <source>Show color picker</source>
-        <translation type="unfinished">カラーピッカーを表示する</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/utils/configshortcuts.cpp" line="96"/>
         <source>Change the tool&apos;s thickness</source>
-        <translation type="unfinished">ツールの値 (太さや濃さ) を変更する</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>RectangleTool</name>
     <message>
-        <location filename="../../src/tools/rectangle/rectangletool.cpp" line="22"/>
+        <location filename="../../src/tools/rectangle/rectangletool.cpp" line="26"/>
         <source>Rectangle</source>
-        <translation>矩形</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/rectangle/rectangletool.cpp" line="32"/>
+        <location filename="../../src/tools/rectangle/rectangletool.cpp" line="36"/>
         <source>Set the Rectangle as the paint tool</source>
-        <translation>ペイントツールとして「矩形」をセットする</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1289,12 +1282,12 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</source>
     <message>
         <location filename="../../src/tools/redo/redotool.cpp" line="23"/>
         <source>Redo</source>
-        <translation>やり直し</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/tools/redo/redotool.cpp" line="33"/>
         <source>Redo the next modification</source>
-        <translation>次の変更にやり直す</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1302,12 +1295,12 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</source>
     <message>
         <location filename="../../src/tools/save/savetool.cpp" line="29"/>
         <source>Save</source>
-        <translation>保存</translation>
+        <translation>שמירה</translation>
     </message>
     <message>
         <location filename="../../src/tools/save/savetool.cpp" line="39"/>
         <source>Save the capture</source>
-        <translation>キャプチャーを保存する</translation>
+        <translation>שמירת הלכידה</translation>
     </message>
 </context>
 <context>
@@ -1315,20 +1308,20 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</source>
     <message>
         <location filename="../../src/utils/screengrabber.cpp" line="143"/>
         <source>Unable to capture screen</source>
-        <translation>画面をキャプチャーできません</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SelectionTool</name>
     <message>
-        <location filename="../../src/tools/selection/selectiontool.cpp" line="25"/>
+        <location filename="../../src/tools/selection/selectiontool.cpp" line="29"/>
         <source>Rectangular Selection</source>
-        <translation>矩形選択</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/selection/selectiontool.cpp" line="35"/>
+        <location filename="../../src/tools/selection/selectiontool.cpp" line="39"/>
         <source>Set Selection as the paint tool</source>
-        <translation>ペイントツールとして「矩形選択」をセットする</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1364,40 +1357,40 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</source>
     <message>
         <location filename="../../src/config/shortcutswidget.cpp" line="52"/>
         <source>Available shortcuts in the screen capture mode.</source>
-        <translation type="unfinished">スクリーンキャプチャーモードで利用可能なショートカット。</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/shortcutswidget.cpp" line="64"/>
         <source>Description</source>
-        <translation type="unfinished">説明</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/shortcutswidget.cpp" line="64"/>
         <source>Key</source>
-        <translation type="unfinished">キー</translation>
+        <translation>מקש</translation>
     </message>
 </context>
 <context>
     <name>SidePanelWidget</name>
     <message>
-        <location filename="../../src/widgets/panel/sidepanelwidget.cpp" line="63"/>
+        <location filename="../../src/widgets/panel/sidepanelwidget.cpp" line="62"/>
         <source>Active thickness:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/widgets/panel/sidepanelwidget.cpp" line="64"/>
+        <location filename="../../src/widgets/panel/sidepanelwidget.cpp" line="63"/>
         <source>Active color:</source>
-        <translation>アクティブな色:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/widgets/panel/sidepanelwidget.cpp" line="208"/>
+        <location filename="../../src/widgets/panel/sidepanelwidget.cpp" line="207"/>
         <source>Press ESC to cancel</source>
-        <translation>ESC でキャンセル</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/widgets/panel/sidepanelwidget.cpp" line="210"/>
+        <location filename="../../src/widgets/panel/sidepanelwidget.cpp" line="209"/>
         <source>Grab Color</source>
-        <translation>色の取得</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1431,12 +1424,12 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</source>
     <message>
         <location filename="../../src/tools/sizeindicator/sizeindicatortool.cpp" line="23"/>
         <source>Selection Size Indicator</source>
-        <translation>選択サイズインジケーター</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/tools/sizeindicator/sizeindicatortool.cpp" line="33"/>
         <source>Show the dimensions of the selection (X Y)</source>
-        <translation>選択範囲の寸法 (X Y) を表示する</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1444,107 +1437,107 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</source>
     <message>
         <location filename="../../src/config/strftimechooserwidget.cpp" line="37"/>
         <source>Century (00-99)</source>
-        <translation>世紀 (00-99)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/strftimechooserwidget.cpp" line="38"/>
         <source>Year (00-99)</source>
-        <translation>年 (00-99)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/strftimechooserwidget.cpp" line="39"/>
         <source>Year (2000)</source>
-        <translation>年 (2000)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/strftimechooserwidget.cpp" line="42"/>
         <source>Month Name (jan)</source>
-        <translation>月 (jan)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/strftimechooserwidget.cpp" line="43"/>
         <source>Month Name (january)</source>
-        <translation>月 (january)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/strftimechooserwidget.cpp" line="45"/>
         <source>Month (01-12)</source>
-        <translation>月 (01-12)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/strftimechooserwidget.cpp" line="46"/>
         <source>Week Day (1-7)</source>
-        <translation>週日 (1-7)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/strftimechooserwidget.cpp" line="47"/>
         <source>Week (01-53)</source>
-        <translation>週 (01-53)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/strftimechooserwidget.cpp" line="50"/>
         <source>Day Name (mon)</source>
-        <translation>曜日 (月)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/strftimechooserwidget.cpp" line="51"/>
         <source>Day Name (monday)</source>
-        <translation>曜日 (月曜日)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/strftimechooserwidget.cpp" line="53"/>
         <source>Day (01-31)</source>
-        <translation>日 (01-31)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/strftimechooserwidget.cpp" line="54"/>
         <source>Day of Month (1-31)</source>
-        <translation>日 (1-31)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/strftimechooserwidget.cpp" line="55"/>
         <source>Day (001-366)</source>
-        <translation>日 (001-366)</translation>
-    </message>
-    <message>
-        <location filename="../../src/config/strftimechooserwidget.cpp" line="58"/>
-        <source>Time (%H-%M-%S)</source>
-        <translation>時刻 (%H-%M-%S)</translation>
-    </message>
-    <message>
-        <location filename="../../src/config/strftimechooserwidget.cpp" line="59"/>
-        <source>Time (%H-%M)</source>
-        <translation>時刻 (%H-%M)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/strftimechooserwidget.cpp" line="61"/>
         <source>Hour (00-23)</source>
-        <translation>時 (00-23)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/strftimechooserwidget.cpp" line="62"/>
         <source>Hour (01-12)</source>
-        <translation>時 (01-12)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/strftimechooserwidget.cpp" line="63"/>
         <source>Minute (00-59)</source>
-        <translation>分 (00-59)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/strftimechooserwidget.cpp" line="64"/>
         <source>Second (00-59)</source>
-        <translation>秒 (00-59)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/strftimechooserwidget.cpp" line="67"/>
         <source>Full Date (%m/%d/%y)</source>
-        <translation>年月日 (%m/%d/%y)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/strftimechooserwidget.cpp" line="69"/>
         <source>Full Date (%Y-%m-%d)</source>
-        <translation>年月日 (%Y-%m-%d)</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/config/strftimechooserwidget.cpp" line="58"/>
+        <source>Time (%H-%M-%S)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/config/strftimechooserwidget.cpp" line="59"/>
+        <source>Time (%H-%M)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1552,43 +1545,43 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</source>
     <message>
         <location filename="../../src/utils/systemnotification.cpp" line="30"/>
         <source>Flameshot Info</source>
-        <translation>Flameshot の情報</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>TextConfig</name>
     <message>
-        <location filename="../../src/tools/text/textconfig.cpp" line="44"/>
+        <location filename="../../src/tools/text/textconfig.cpp" line="45"/>
         <source>StrikeOut</source>
-        <translation>取り消し線</translation>
+        <translation>קו־חוצה</translation>
     </message>
     <message>
-        <location filename="../../src/tools/text/textconfig.cpp" line="53"/>
+        <location filename="../../src/tools/text/textconfig.cpp" line="54"/>
         <source>Underline</source>
-        <translation>下線</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/text/textconfig.cpp" line="62"/>
+        <location filename="../../src/tools/text/textconfig.cpp" line="63"/>
         <source>Bold</source>
-        <translation>太字</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/text/textconfig.cpp" line="71"/>
+        <location filename="../../src/tools/text/textconfig.cpp" line="72"/>
         <source>Italic</source>
-        <translation>斜体</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>TextTool</name>
     <message>
-        <location filename="../../src/tools/text/texttool.cpp" line="66"/>
+        <location filename="../../src/tools/text/texttool.cpp" line="60"/>
         <source>Text</source>
-        <translation>テキスト</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/text/texttool.cpp" line="90"/>
+        <location filename="../../src/tools/text/texttool.cpp" line="84"/>
         <source>Add text to your capture</source>
-        <translation>キャプチャーにテキストを追加する</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1596,37 +1589,37 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</source>
     <message>
         <location filename="../../src/config/uicoloreditor.cpp" line="18"/>
         <source>UI Color Editor</source>
-        <translation>UI カラーエディター</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/uicoloreditor.cpp" line="89"/>
         <source>Change the color moving the selectors and see the changes in the preview buttons.</source>
-        <translation>セレクターを動かして色を変更し、プレビューボタンの色がどう変化するか確認してください。</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/uicoloreditor.cpp" line="100"/>
         <source>Select a Button to modify it</source>
-        <translation>変更するボタンを選択してください</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/uicoloreditor.cpp" line="110"/>
         <source>Main Color</source>
-        <translation>メインカラー</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/uicoloreditor.cpp" line="114"/>
         <source>Click on this button to set the edition mode of the main color.</source>
-        <translation>このボタンをクリックすると、メインカラーの編集モードをセットします。</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/uicoloreditor.cpp" line="125"/>
         <source>Contrast Color</source>
-        <translation>コントラストカラー</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/uicoloreditor.cpp" line="130"/>
         <source>Click on this button to set the edition mode of the contrast color.</source>
-        <translation>このボタンをクリックすると、コントラストカラーの編集モードをセットします。</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1634,12 +1627,12 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</source>
     <message>
         <location filename="../../src/tools/undo/undotool.cpp" line="23"/>
         <source>Undo</source>
-        <translation>元に戻す</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/tools/undo/undotool.cpp" line="33"/>
         <source>Undo the last modification</source>
-        <translation>最後の変更を元に戻す</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1683,17 +1676,17 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</source>
     <message>
         <location filename="../../src/config/visualseditor.cpp" line="40"/>
         <source>Opacity of area outside selection:</source>
-        <translation>選択範囲外の不透明度:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/visualseditor.cpp" line="65"/>
         <source>Button Selection</source>
-        <translation>ボタンの選択</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/config/visualseditor.cpp" line="71"/>
         <source>Select All</source>
-        <translation>すべて選択</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
