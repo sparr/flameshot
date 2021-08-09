@@ -4,10 +4,10 @@
 #include "configwindow.h"
 #include "src/config/filenameeditor.h"
 #include "src/config/generalconf.h"
+#include "src/config/imgurconf.h"
 #include "src/config/shortcutswidget.h"
 #include "src/config/strftimechooserwidget.h"
 #include "src/config/visualseditor.h"
-#include "src/config/imgurconf.h"
 #include "src/utils/colorutils.h"
 #include "src/utils/confighandler.h"
 #include "src/utils/globalvalues.h"
@@ -73,8 +73,8 @@ ConfigWindow::ConfigWindow(QWidget* parent)
 
     // imgur
     m_imgurConfig = new ImgurConf();
-    m_tabs->addTab(m_imgurConfig, QIcon(modifier + "cloud-upload.svg"),
-           tr("Imgur"));
+    m_tabs->addTab(
+      m_imgurConfig, QIcon(modifier + "cloud-upload.svg"), tr("Imgur"));
 
     // connect update sigslots
     connect(this,
