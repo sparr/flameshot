@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include <QScrollArea>
 #include <QWidget>
 
 class QVBoxLayout;
@@ -42,6 +43,7 @@ private slots:
 private:
     const QString chooseFolder(const QString currentPath = "");
 
+    void initScrollArea();
     void initShowHelp();
     void initShowSidePanelButton();
     void initShowDesktopNotification();
@@ -58,10 +60,12 @@ private:
     void initCopyPathAfterSave();
     void initUseJpgForClipboard();
 
-    void setActualFormData();
+    void _updateComponents(bool allowEmptySavePath);
 
     // class members
     QVBoxLayout* m_layout;
+    QVBoxLayout* m_scrollAreaLayout;
+    QScrollArea* m_scrollArea;
     QCheckBox* m_sysNotifications;
     QCheckBox* m_showTray;
     QCheckBox* m_helpMessage;

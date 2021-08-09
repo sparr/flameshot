@@ -12,9 +12,11 @@ const QVector<QStringList>& ConfigShortcuts::captureShortcutsDefault(
         CaptureToolButton* b = new CaptureToolButton(t, nullptr);
         QString shortcutName = QVariant::fromValue(t).toString();
         QKeySequence ks = captureShortcutDefault(t);
-        m_shortcuts << (QStringList()
-                        << shortcutName << b->tool()->description()
-                        << ks.toString());
+        if (shortcutName != "TYPE_IMAGEUPLOADER") {
+            m_shortcuts << (QStringList()
+                            << shortcutName << b->tool()->description()
+                            << ks.toString());
+        }
         delete b;
     }
 
@@ -141,9 +143,9 @@ const QKeySequence& ConfigShortcuts::captureShortcutDefault(
             m_ks = QKeySequence(Qt::CTRL + Qt::Key_Q);
             break;
         case CaptureToolButton::ButtonType::TYPE_IMAGEUPLOADER:
-            m_ks = QKeySequence(Qt::Key_Return);
+            m_ks = QKeySequence(Qt::CTRL + Qt::Key_U);
             break;
-#if not defined(Q_OS_MACOS)
+#if !defined(Q_OS_MACOS)
         case CaptureToolButton::ButtonType::TYPE_OPEN_APP:
             m_ks = QKeySequence(Qt::CTRL + Qt::Key_O);
             break;

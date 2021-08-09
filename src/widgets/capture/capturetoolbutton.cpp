@@ -58,7 +58,14 @@ void CaptureToolButton::initButton()
                           GlobalValues::buttonBaseSize() + 2),
                     QRegion::Ellipse));
 
-    setToolTip(m_tool->description());
+    // Set a tooltip showing a shortcut in parentheses (if there is a shortcut)
+    QString tooltip = m_tool->description();
+    QString shortcut =
+      ConfigHandler().shortcut(QVariant::fromValue(m_buttonType).toString());
+    if (!shortcut.isEmpty()) {
+        tooltip += QString(" (%1)").arg(shortcut);
+    }
+    setToolTip(tooltip);
 
     m_emergeAnimation = new QPropertyAnimation(this, "size", this);
     m_emergeAnimation->setEasingCurve(QEasingCurve::InOutQuad);
@@ -137,7 +144,7 @@ static std::map<CaptureToolButton::ButtonType, int> buttonTypeOrder
       { CaptureToolButton::TYPE_COPY, 14 },
       { CaptureToolButton::TYPE_SAVE, 15 },
       { CaptureToolButton::TYPE_IMAGEUPLOADER, 16 },
-#if not defined(Q_OS_MACOS)
+#if !defined(Q_OS_MACOS)
       { CaptureToolButton::TYPE_OPEN_APP, 17 },
       { CaptureToolButton::TYPE_EXIT, 18 }, { CaptureToolButton::TYPE_PIN, 19 },
 #else
@@ -174,7 +181,7 @@ QVector<CaptureToolButton::ButtonType>
       CaptureToolButton::TYPE_SAVE,
       CaptureToolButton::TYPE_EXIT,
       CaptureToolButton::TYPE_IMAGEUPLOADER,
-#if not defined(Q_OS_MACOS)
+#if !defined(Q_OS_MACOS)
       CaptureToolButton::TYPE_OPEN_APP,
 #endif
       CaptureToolButton::TYPE_PIN,
