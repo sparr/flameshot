@@ -91,7 +91,7 @@ ConfigWindow::ConfigWindow(QWidget* parent)
 
     // imgur
     m_imgurConfig = new ImgurConf();
-    m_tabs->addTab(
+    m_tabWidget->addTab(
       m_imgurConfig, QIcon(modifier + "cloud-upload.svg"), tr("Imgur"));
 
     // connect update sigslots
