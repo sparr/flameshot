@@ -10,6 +10,10 @@ find_package(
         DBus
         LinguistTools)
 
+if (USE_WAYLAND_CLIPBOARD)
+    find_package(KF5GuiAddons)
+endif()
+
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
@@ -21,18 +25,20 @@ if (APPLE)
             COMMAND bash "-c" "mkdir -p flameshot.iconset"
     )
     execute_process(
-            COMMAND bash "-c" "sips -z 16 16     ../data/img/app/flameshot.png --out flameshot.iconset/icon_16x16.png"
-            COMMAND bash "-c" "sips -z 32 32     ../data/img/app/flameshot.png --out flameshot.iconset/icon_16x16@2x.png"
-            COMMAND bash "-c" "sips -z 32 32     ../data/img/app/flameshot.png --out flameshot.iconset/icon_32x32.png"
-            COMMAND bash "-c" "sips -z 64 64     ../data/img/app/flameshot.png --out flameshot.iconset/icon_32x32@2x.png"
-            COMMAND bash "-c" "sips -z 64 64     ../data/img/app/flameshot.png --out flameshot.iconset/icon_64x64x.png"
-            COMMAND bash "-c" "sips -z 128 128   ../data/img/app/flameshot.png --out flameshot.iconset/icon_64x64@2.png"
-            COMMAND bash "-c" "sips -z 128 128   ../data/img/app/flameshot.png --out flameshot.iconset/icon_128x128.png"
-            COMMAND bash "-c" "sips -z 256 256   ../data/img/app/org.flameshot.Flameshot-1024.png --out flameshot.iconset/icon_128x128@2x.png"
-            COMMAND bash "-c" "sips -z 256 256   ../data/img/app/org.flameshot.Flameshot-1024.png --out flameshot.iconset/icon_256x256.png"
-            COMMAND bash "-c" "sips -z 512 512   ../data/img/app/org.flameshot.Flameshot-1024.png --out flameshot.iconset/icon_256x256@2x.png"
-            COMMAND bash "-c" "sips -z 512 512   ../data/img/app/org.flameshot.Flameshot-1024.png --out flameshot.iconset/icon_512x512.png"
-            COMMAND bash "-c" "sips -z 1024 1024 ../data/img/app/org.flameshot.Flameshot-1024.png --out flameshot.iconset/icon_512x512@2x.png"
+            COMMAND bash "-c" "sips -z 16 16     \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome.png --out flameshot.iconset/icon_16x16.png"
+            COMMAND bash "-c" "sips -z 32 32     \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome.png --out flameshot.iconset/icon_16x16@2x.png"
+            COMMAND bash "-c" "sips -z 32 32     \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome.png --out flameshot.iconset/icon_32x32.png"
+            COMMAND bash "-c" "sips -z 64 64     \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome.png --out flameshot.iconset/icon_32x32@2x.png"
+            COMMAND bash "-c" "sips -z 64 64     \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome.png --out flameshot.iconset/icon_64x64x.png"
+            COMMAND bash "-c" "sips -z 128 128   \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome.png --out flameshot.iconset/icon_64x64@2.png"
+            COMMAND bash "-c" "sips -z 128 128   \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome-1024.png --out flameshot.iconset/icon_128x128.png"
+            COMMAND bash "-c" "sips -z 256 256   \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome-1024.png --out flameshot.iconset/icon_128x128@2x.png"
+            COMMAND bash "-c" "sips -z 256 256   \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome-1024.png --out flameshot.iconset/icon_256x256.png"
+            COMMAND bash "-c" "sips -z 512 512   \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome-1024.png --out flameshot.iconset/icon_256x256@2x.png"
+            COMMAND bash "-c" "sips -z 512 512   \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome-1024.png --out flameshot.iconset/icon_512x512.png"
+            COMMAND bash "-c" "sips -z 1024 1024 \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome-1024.png --out flameshot.iconset/icon_512x512@2x.png"
+
+
             COMMAND bash "-c" "iconutil -c icns flameshot.iconset"
     )
 
@@ -42,7 +48,7 @@ if (APPLE)
 
     execute_process(
             # copy icon from cache generated on the localhost if generation on CI failed
-            COMMAND bash "-c" "[[ -r 'flameshot.icns' ]] || cp ../packaging/macos/flameshot.icns ./"
+            COMMAND bash "-c" "[[ -r 'flameshot.icns' ]] || cp \"${CMAKE_SOURCE_DIR}\"/packaging/macos/flameshot.icns ./"
     )
 
     # Set application icon
@@ -74,36 +80,42 @@ add_subdirectory(widgets)
 add_subdirectory(tools)
 
 
-
-
 set(FLAMESHOT_TS_FILES
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_ca.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_cs.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_de_DE.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_el.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_es.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_eu.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_fr.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_hu.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_it_IT.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_ja.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_ka.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_ko.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_nl.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_nb_NO.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_nl_NL.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_nl.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_pl.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_pt_BR.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_ru.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_sk.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_sr_SP.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_sv_SE.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_tr.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_uk.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_zh_CN.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_zh_HK.ts
-        ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_zh_TW.ts)
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_bg.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_ca.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_cs.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_de_DE.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_el.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_es.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_eu.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_fa.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_fi.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_fr.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_gl.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_grc.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_he.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_hu.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_id.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_it_IT.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_ja.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_ka.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_ko.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_nb_NO.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_nl_NL.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_nl.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_pl.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_pt_BR.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_ru.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_sk.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_sr_SP.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_sv_SE.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_tr.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_uk.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_vi.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_zh_CN.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_zh_HK.ts
+      ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_zh_TW.ts
+         )
 
 if (GENERATE_TS)
     qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${FLAMESHOT_TS_FILES})
@@ -114,9 +126,9 @@ endif ()
 target_sources(
         flameshot
         PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/../external/Qt-Color-Widgets/src/color_utils.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/../external/Qt-Color-Widgets/src/color_wheel.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/../external/Qt-Color-Widgets/include/color_wheel.hpp
+        # ${CMAKE_CURRENT_SOURCE_DIR}/../external/Qt-Color-Widgets/src/QtColorWidgets/color_utils.cpp
+        # ${CMAKE_CURRENT_SOURCE_DIR}/../external/Qt-Color-Widgets/src/QtColorWidgets/color_wheel.cpp
+        # ${CMAKE_CURRENT_SOURCE_DIR}/../external/Qt-Color-Widgets/include/QtColorWidgets/color_wheel.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/../data/graphics.qrc
         ${CMAKE_CURRENT_SOURCE_DIR}/../data/flameshot.rc # windows binary icon resource file
         ${QM_FILES}
@@ -148,6 +160,7 @@ target_include_directories(
          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/tools/rectangle>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/tools/redo>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/tools/save>
+         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/tools/invert>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/tools/selection>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/tools/sizeindicator>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/tools/text>
@@ -159,6 +172,12 @@ target_include_directories(
          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/widgets/panel>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/widgets/capture>
          $<INSTALL_INTERFACE:include/mylib>)
+target_include_directories(
+    flameshot
+    PUBLIC
+         $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/>
+         )
+
 
 if (USE_EXTERNAL_SINGLEAPPLICATION)
     add_compile_definitions(USE_EXTERNAL_SINGLEAPPLICATION=1)
@@ -178,10 +197,22 @@ target_link_libraries(
         Qt5::Network
         Qt5::Widgets
         ${QTSINGLEAPPLICATION_LIBRARY}
-        spdlog::spdlog
+        QtColorWidgets
+
 )
 
+if (USE_WAYLAND_CLIPBOARD)
+  target_compile_definitions(flameshot PRIVATE USE_WAYLAND_CLIPBOARD=1)
+  target_link_libraries(flameshot KF5::GuiAddons)
+endif()
+
 if (APPLE)
+    set(MACOSX_BUNDLE_IDENTIFIER "org.flameshot")
+    set_target_properties(
+            flameshot
+            PROPERTIES
+            XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER ${MACOSX_BUNDLE_IDENTIFIER}
+    )
     target_link_libraries(
             flameshot
             qhotkey
@@ -205,6 +236,15 @@ if (WIN32)
     endif ()
 endif ()
 
+# Choose default color palette (small or large)
+if($ENV{FLAMESHOT_PREDEFINED_COLOR_PALETTE_LARGE})
+    set(FLAMESHOT_PREDEFINED_COLOR_PALETTE_LARGE true)
+else()
+    set(FLAMESHOT_PREDEFINED_COLOR_PALETTE_LARGE false)
+endif()
+message("Flameshot predefined color palette large: " ${FLAMESHOT_PREDEFINED_COLOR_PALETTE_LARGE})
+target_compile_definitions(flameshot PRIVATE PREDEFINED_COLOR_PALETTE_LARGE=${FLAMESHOT_PREDEFINED_COLOR_PALETTE_LARGE})
+
 find_package (Git)
 if (GIT_FOUND)
     message("git found: ${GIT_EXECUTABLE} in version     ${GIT_VERSION_STRING}")
@@ -221,6 +261,14 @@ target_compile_definitions(flameshot PRIVATE APP_VERSION="v${PROJECT_VERSION}")
 target_compile_definitions(flameshot PRIVATE IMGUR_CLIENT_ID="313baf0c7b4d3ff")
 #target_compile_definitions(flameshot PRIVATE QAPPLICATION_CLASS=QApplication)
 target_compile_definitions(flameshot PRIVATE FLAMESHOT_APP_VERSION_URL="${GIT_API_URL}")
+# Enable easier debugging of screenshot capture mode
+if (FLAMESHOT_DEBUG_CAPTURE)
+    target_compile_definitions(flameshot PRIVATE FLAMESHOT_DEBUG_CAPTURE)
+endif ()
+
+if (USE_MONOCHROME_ICON)
+    target_compile_definitions(flameshot PRIVATE USE_MONOCHROME_ICON)
+endif ()
 
 foreach (FILE ${QM_FILES})
     get_filename_component(F_NAME ${FILE} NAME)
@@ -249,54 +297,59 @@ install(TARGETS flameshot
         BUNDLE DESTINATION ${CMAKE_INSTALL_BINDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
-# Install desktop files, completion and dbus files
-configure_file(${CMAKE_SOURCE_DIR}/data/desktopEntry/package/org.flameshot.Flameshot.desktop
-        ${CMAKE_CURRENT_BINARY_DIR}/share/applications/org.flameshot.Flameshot.desktop @ONLY)
+if (UNIX)
+    # Install desktop files, completion and dbus files
+    configure_file(${CMAKE_SOURCE_DIR}/data/desktopEntry/package/org.flameshot.Flameshot.desktop
+            ${CMAKE_CURRENT_BINARY_DIR}/share/applications/org.flameshot.Flameshot.desktop @ONLY)
 
-configure_file(${CMAKE_SOURCE_DIR}/data/appdata/org.flameshot.Flameshot.metainfo.xml
-        ${CMAKE_CURRENT_BINARY_DIR}/share/metainfo/org.flameshot.Flameshot.metainfo.xml COPYONLY)
+    configure_file(${CMAKE_SOURCE_DIR}/data/appdata/org.flameshot.Flameshot.metainfo.xml
+            ${CMAKE_CURRENT_BINARY_DIR}/share/metainfo/org.flameshot.Flameshot.metainfo.xml COPYONLY)
 
-configure_file(${CMAKE_SOURCE_DIR}/data/shell-completion/flameshot
-        ${CMAKE_CURRENT_BINARY_DIR}/share/bash-completion/completions/flameshot COPYONLY)
+    configure_file(${CMAKE_SOURCE_DIR}/data/shell-completion/flameshot.bash
+            ${CMAKE_CURRENT_BINARY_DIR}/share/bash-completion/completions/flameshot COPYONLY)
 
-configure_file(${CMAKE_SOURCE_DIR}/data/shell-completion/flameshot
-        ${CMAKE_CURRENT_BINARY_DIR}/share/zsh/site-functions/_flameshot COPYONLY)
+    configure_file(${CMAKE_SOURCE_DIR}/data/shell-completion/flameshot.zsh
+            ${CMAKE_CURRENT_BINARY_DIR}/share/zsh/site-functions/_flameshot COPYONLY)
 
-configure_file(${CMAKE_SOURCE_DIR}/data/dbus/org.flameshot.Flameshot.xml
-        ${CMAKE_CURRENT_BINARY_DIR}/share/dbus-1/interfaces/org.flameshot.Flameshot.xml COPYONLY)
+    configure_file(${CMAKE_SOURCE_DIR}/data/shell-completion/flameshot.fish
+            ${CMAKE_CURRENT_BINARY_DIR}/share/fish/vendor_completions.d/flameshot.fish COPYONLY)
 
-configure_file(${CMAKE_SOURCE_DIR}/data/dbus/org.flameshot.Flameshot.service.in
-        ${CMAKE_CURRENT_BINARY_DIR}/share/dbus-1/services/org.flameshot.Flameshot.service)
+    configure_file(${CMAKE_SOURCE_DIR}/data/dbus/org.flameshot.Flameshot.xml
+            ${CMAKE_CURRENT_BINARY_DIR}/share/dbus-1/interfaces/org.flameshot.Flameshot.xml COPYONLY)
 
-# Install man pages
-configure_file(${CMAKE_SOURCE_DIR}/data/man/man1/flameshot.1
-        ${CMAKE_CURRENT_BINARY_DIR}/share/man/man1/flameshot.1 COPYONLY)
+    configure_file(${CMAKE_SOURCE_DIR}/data/dbus/org.flameshot.Flameshot.service.in
+            ${CMAKE_CURRENT_BINARY_DIR}/share/dbus-1/services/org.flameshot.Flameshot.service)
 
-# Install Icons
-configure_file(${CMAKE_SOURCE_DIR}/data/img/hicolor/48x48/apps/org.flameshot.Flameshot.png
-        ${CMAKE_CURRENT_BINARY_DIR}/share/icons/hicolor/48x48/apps/org.flameshot.Flameshot.png COPYONLY)
+    # Install man pages
+    configure_file(${CMAKE_SOURCE_DIR}/data/man/man1/flameshot.1
+            ${CMAKE_CURRENT_BINARY_DIR}/share/man/man1/flameshot.1 COPYONLY)
 
-configure_file(${CMAKE_SOURCE_DIR}/data/img/hicolor/128x128/apps/org.flameshot.Flameshot.png
-        ${CMAKE_CURRENT_BINARY_DIR}/share/icons/hicolor/128x128/apps/org.flameshot.Flameshot.png COPYONLY)
+    # Install Icons
+    configure_file(${CMAKE_SOURCE_DIR}/data/img/hicolor/48x48/apps/org.flameshot.Flameshot.png
+            ${CMAKE_CURRENT_BINARY_DIR}/share/icons/hicolor/48x48/apps/org.flameshot.Flameshot.png COPYONLY)
 
-configure_file(${CMAKE_SOURCE_DIR}/data/img/hicolor/scalable/apps/org.flameshot.Flameshot.svg
-        ${CMAKE_CURRENT_BINARY_DIR}/share/icons/hicolor/scalable/apps/org.flameshot.Flameshot.svg COPYONLY)
+    configure_file(${CMAKE_SOURCE_DIR}/data/img/hicolor/128x128/apps/org.flameshot.Flameshot.png
+            ${CMAKE_CURRENT_BINARY_DIR}/share/icons/hicolor/128x128/apps/org.flameshot.Flameshot.png COPYONLY)
 
-# Install icon with both names
-configure_file(${CMAKE_SOURCE_DIR}/data/img/hicolor/48x48/apps/flameshot.png
-        ${CMAKE_CURRENT_BINARY_DIR}/share/icons/hicolor/48x48/apps/flameshot.png COPYONLY)
+    configure_file(${CMAKE_SOURCE_DIR}/data/img/hicolor/scalable/apps/org.flameshot.Flameshot.svg
+            ${CMAKE_CURRENT_BINARY_DIR}/share/icons/hicolor/scalable/apps/org.flameshot.Flameshot.svg COPYONLY)
 
-configure_file(${CMAKE_SOURCE_DIR}/data/img/hicolor/128x128/apps/flameshot.png
-        ${CMAKE_CURRENT_BINARY_DIR}/share/icons/hicolor/128x128/apps/flameshot.png COPYONLY)
+    # Install icon with both names
+    configure_file(${CMAKE_SOURCE_DIR}/data/img/hicolor/48x48/apps/flameshot.png
+            ${CMAKE_CURRENT_BINARY_DIR}/share/icons/hicolor/48x48/apps/flameshot.png COPYONLY)
 
-configure_file(${CMAKE_SOURCE_DIR}/data/img/hicolor/scalable/apps/flameshot.svg
-        ${CMAKE_CURRENT_BINARY_DIR}/share/icons/hicolor/scalable/apps/flameshot.svg COPYONLY)
+    configure_file(${CMAKE_SOURCE_DIR}/data/img/hicolor/128x128/apps/flameshot.png
+            ${CMAKE_CURRENT_BINARY_DIR}/share/icons/hicolor/128x128/apps/flameshot.png COPYONLY)
 
-# Install assets
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/share/ DESTINATION ${CMAKE_INSTALL_DATAROOTDIR})
+    configure_file(${CMAKE_SOURCE_DIR}/data/img/hicolor/scalable/apps/flameshot.svg
+            ${CMAKE_CURRENT_BINARY_DIR}/share/icons/hicolor/scalable/apps/flameshot.svg COPYONLY)
 
-# Install Translations
-install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/flameshot/translations)
+    # Install assets
+    install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/share/ DESTINATION ${CMAKE_INSTALL_DATAROOTDIR})
+
+    # Install Translations
+    install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/flameshot/translations)
+endif ()
 
 # windeployqt
 if (WIN32)
@@ -323,11 +376,11 @@ if (WIN32)
 
 
         STRING(REGEX REPLACE "\\\\" "/" OPENSSL_ROOT_DIR "$ENV{OPENSSL_ROOT_DIR}" )
- 
+
         if (ENABLE_OPENSSL)
             if (EXISTS ${OPENSSL_ROOT_DIR}/bin)
 
-             install(
+                install(
                         DIRECTORY ${OPENSSL_ROOT_DIR}/bin/
                         DESTINATION bin
                         FILES_MATCHING

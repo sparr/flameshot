@@ -23,7 +23,7 @@ void showOpenWithMenu(const QPixmap& capture)
 {
 #if defined(Q_OS_WIN)
     QString tempFile =
-      FileNameHandler().generateAbsolutePath(QDir::tempPath()) + ".png";
+      FileNameHandler().properScreenshotPath(QDir::tempPath(), "png");
     bool ok = capture.save(tempFile);
     if (!ok) {
         QMessageBox::about(nullptr,
@@ -40,7 +40,7 @@ void showOpenWithMenu(const QPixmap& capture)
     info.oaifInFlags = OAIF_ALLOW_REGISTRATION | OAIF_EXEC;
     SHOpenWithDialog(nullptr, &info);
 #else
-    auto w = new AppLauncherWidget(capture);
+    auto* w = new AppLauncherWidget(capture);
     w->show();
 #endif
 }

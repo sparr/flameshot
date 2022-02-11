@@ -19,8 +19,9 @@ History::History()
 
     // Check if directory for history exists and create if doesn't
     QDir dir = QDir(m_historyPath);
-    if (!dir.exists())
+    if (!dir.exists()) {
         dir.mkpath(".");
+    }
 }
 
 const QString& History::path()
@@ -57,7 +58,7 @@ const QList<QString>& History::history()
                                              QDir::Files,
                                              QDir::Time);
     int cnt = 0;
-    int max = ConfigHandler().uploadHistoryMaxSizeValue();
+    int max = ConfigHandler().uploadHistoryMax();
     m_thumbs.clear();
     foreach (QString fileName, images) {
         if (++cnt <= max) {
@@ -70,7 +71,7 @@ const QList<QString>& History::history()
     return m_thumbs;
 }
 
-const HISTORY_FILE_NAME& History::unpackFileName(const QString& fileNamePacked)
+const HistoryFileName& History::unpackFileName(const QString& fileNamePacked)
 {
     int nPathIndex = fileNamePacked.lastIndexOf("/");
     QStringList unpackedFileName;

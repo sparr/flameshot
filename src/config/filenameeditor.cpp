@@ -21,7 +21,7 @@ FileNameEditor::FileNameEditor(QWidget* parent)
 void FileNameEditor::initLayout()
 {
     m_layout = new QVBoxLayout(this);
-    auto infoLabel = new QLabel(tr("Edit the name of your captures:"), this);
+    auto* infoLabel = new QLabel(tr("Edit the name of your captures:"), this);
     infoLabel->setFixedHeight(20);
     m_layout->addWidget(infoLabel);
     m_layout->addWidget(m_helperButtons);
@@ -30,7 +30,7 @@ void FileNameEditor::initLayout()
     m_layout->addWidget(new QLabel(tr("Preview:")));
     m_layout->addWidget(m_outputLabel);
 
-    QHBoxLayout* horizLayout = new QHBoxLayout();
+    auto* horizLayout = new QHBoxLayout();
     horizLayout->addWidget(m_saveButton);
     horizLayout->addWidget(m_resetButton);
     horizLayout->addWidget(m_clearButton);
@@ -92,7 +92,7 @@ void FileNameEditor::initWidgets()
 void FileNameEditor::savePattern()
 {
     QString pattern = m_nameEditor->text();
-    m_nameHandler->setPattern(pattern);
+    ConfigHandler().setFilenamePattern(pattern);
 }
 
 void FileNameEditor::showParsedPattern(const QString& p)
@@ -103,7 +103,7 @@ void FileNameEditor::showParsedPattern(const QString& p)
 
 void FileNameEditor::resetName()
 {
-    m_nameEditor->setText(ConfigHandler().filenamePatternValue());
+    m_nameEditor->setText(ConfigHandler().filenamePattern());
 }
 
 void FileNameEditor::addToNameEditor(QString s)
@@ -114,6 +114,6 @@ void FileNameEditor::addToNameEditor(QString s)
 
 void FileNameEditor::updateComponents()
 {
-    m_nameEditor->setText(ConfigHandler().filenamePatternValue());
+    m_nameEditor->setText(ConfigHandler().filenamePattern());
     m_outputLabel->setText(m_nameHandler->parsedPattern());
 }

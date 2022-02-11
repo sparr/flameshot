@@ -2,6 +2,36 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="hu_HU" sourcelanguage="en">
 <context>
+    <name>AbstractWidgetList</name>
+    <message>
+        <source>Add New</source>
+        <translation>Új hozzáadása</translation>
+    </message>
+    <message>
+        <source>Move Up</source>
+        <translation>Mozogj feljebb</translation>
+    </message>
+    <message>
+        <source>Move Down</source>
+        <translation>Mozgás lefelé</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>Eltávolítani</translation>
+    </message>
+</context>
+<context>
+    <name>AcceptTool</name>
+    <message>
+        <source>Accept</source>
+        <translation>Elfogadom</translation>
+    </message>
+    <message>
+        <source>Accept the capture</source>
+        <translation>Fogadja el az elfogást</translation>
+    </message>
+</context>
+<context>
     <name>AppLauncher</name>
     <message>
         <source>App Launcher</source>
@@ -65,7 +95,7 @@
     <name>CaptureLauncher</name>
     <message>
         <source>&lt;b&gt;Capture Mode&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Rögzítési mód&lt;/b&gt;</translation>
+        <translation type="vanished">&lt;b&gt;Rögzítési mód&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Rectangular Region</source>
@@ -103,6 +133,18 @@
         <source>Full Screen (Current Display)</source>
         <translation>Teljes képernyő (Jelenlegi kijelzőn)</translation>
     </message>
+    <message>
+        <source>Capture Launcher</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Capture Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CaptureWidget</name>
@@ -126,7 +168,7 @@ Press Enter to capture the screen.
 Press Right Click to show the color picker.
 Use the Mouse Wheel to change the thickness of your tool.
 Press Space to open the side panel.</source>
-        <translation>Jelölj ki egy területet az egérrel, vagy lépj ki az Esc billentyűvel.
+        <translation type="vanished">Jelölj ki egy területet az egérrel, vagy lépj ki az Esc billentyűvel.
 Nyomj Entert a képernyő rögzítéséhez.
 Nyomd meg a Jobb Egérgombot a szín választó megjelenítéséhez.
 Használd az egérgörgőt az eszköz vonalvastagságának változtatásáért.
@@ -135,6 +177,50 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     <message>
         <source>Tool Settings</source>
         <translation>Eszközbeállítások</translation>
+    </message>
+    <message>
+        <source>Mouse</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Select screenshot area</source>
+        <translation>Képernyőkép terület kiválasztása</translation>
+    </message>
+    <message>
+        <source>Mouse Wheel</source>
+        <translation type="unfinished">Görgő</translation>
+    </message>
+    <message>
+        <source>Change tool size</source>
+        <translation>Szerszámméret váltás</translation>
+    </message>
+    <message>
+        <source>Right Click</source>
+        <translation type="unfinished">jobb egérgomb</translation>
+    </message>
+    <message>
+        <source>Show color picker</source>
+        <translation type="unfinished">Színválasztó mutatása</translation>
+    </message>
+    <message>
+        <source>Open side panel</source>
+        <translation>Nyitott oldalfal</translation>
+    </message>
+    <message>
+        <source>Esc</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation type="unfinished">Bezárás</translation>
+    </message>
+    <message>
+        <source>Flameshot has lost focus. Keyboard shortcuts won&apos;t work until you click somewhere.</source>
+        <translation>Flameshot elvesztette a fókuszt. A billentyűparancsok nem működnek, amíg nem kattintasz valahol.</translation>
+    </message>
+    <message>
+        <source>Configuration error resolved. Launch `flameshot gui` again to apply it.</source>
+        <translation>Konfigurációs hiba megoldva. Indítsa el újra a `flameshot gui-t` az alkalmazáshoz.</translation>
     </message>
 </context>
 <context>
@@ -160,6 +246,198 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     </message>
 </context>
 <context>
+    <name>ColorDialog</name>
+    <message>
+        <source>Select Color</source>
+        <translation>Válasszon színt</translation>
+    </message>
+    <message>
+        <source>Saturation</source>
+        <translation>Telítettség</translation>
+    </message>
+    <message>
+        <source>Hue</source>
+        <translation>Árnyalat</translation>
+    </message>
+    <message>
+        <source>Hex</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Blue</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Value</source>
+        <translation>Érték</translation>
+    </message>
+    <message>
+        <source>Green</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Alpha</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Red</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>ColorGrabWidget</name>
+    <message>
+        <source>Accept color</source>
+        <translation>Szín elfogadása</translation>
+    </message>
+    <message>
+        <source>Precisely select color</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Toggle magnifier</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>ColorPickerEditor</name>
+    <message>
+        <source>Select Preset:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select preset using the spinbox</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Press button to delete the selected preset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add Preset:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter color manually or select it using the color-wheel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Press button to add preset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">Hiba</translation>
+    </message>
+    <message>
+        <source>Unable to add preset. Maximum limit reached.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unable to remove preset. Minimum limit reached.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ConfigErrorDetails</name>
+    <message>
+        <source>Configuration errors</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ConfigHandler</name>
+    <message>
+        <source>You have successfully resolved the configuration error.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Bad config key &apos;%1&apos; in ConfigHandler. Please report this as a bug.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Unrecognized setting: &apos;%1&apos;
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unrecognized shortcut name: &apos;%1&apos;.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shortcut conflict: &apos;%1&apos; and &apos;%2&apos; have the same shortcut: %3
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bad value in &apos;%1&apos;. Expected: %2
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The configuration contains an error. Open configuration to resolve.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ConfigResolver</name>
+    <message>
+        <source>Resolve configuration errors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;You must resolve all errors before continuing:&lt;/b&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Visszaállítás</translation>
+    </message>
+    <message>
+        <source>Reset to the default value.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation type="unfinished">Eltávolítani</translation>
+    </message>
+    <message>
+        <source>Remove this setting.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some keyboard shortcuts have conflicts.
+This will NOT prevent flameshot from starting.
+Please solve them manually in the configuration file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Resolve all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Resolve all listed errors.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Details</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ConfigWindow</name>
     <message>
         <source>Configuration</source>
@@ -180,6 +458,14 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     <message>
         <source>Shortcuts</source>
         <translation>Gyorsbillentyűk</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Configuration file has errors. Resolve them before continuing.&lt;/b&gt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Resolve</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -236,6 +522,10 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
         <source>Unable to close active modal widgets</source>
         <translation>Nem sikerült bezárni az aktív widgeteket</translation>
     </message>
+    <message>
+        <source>URL copied to clipboard.</source>
+        <translation type="unfinished">URL másolva a vágólapra.</translation>
+    </message>
 </context>
 <context>
     <name>CopyTool</name>
@@ -249,14 +539,18 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     </message>
     <message>
         <source>Copy the selection into the clipboard</source>
-        <translation>Vágolapra másolja a kijelölt területet</translation>
+        <translation type="vanished">Vágolapra másolja a kijelölt területet</translation>
+    </message>
+    <message>
+        <source>Copy selection to clipboard</source>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>DBusUtils</name>
     <message>
         <source>Unable to connect via DBus</source>
-        <translation>Nem lehet csatlakozni DBus-al</translation>
+        <translation type="vanished">Nem lehet csatlakozni DBus-al</translation>
     </message>
 </context>
 <context>
@@ -310,7 +604,7 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     </message>
     <message>
         <source>Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>Restore</translation>
     </message>
 </context>
 <context>
@@ -325,6 +619,13 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     <message>
         <source>Unable to capture screen</source>
         <translation type="vanished">Nem lehet képernyőképet készíteni</translation>
+    </message>
+</context>
+<context>
+    <name>FlameshotDaemon</name>
+    <message>
+        <source>Unable to connect via DBus</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -434,7 +735,7 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     </message>
     <message>
         <source>Show the help message at the beginning in the capture mode.</source>
-        <translation>Súgó üzenet mutatása rögzítő mód kezdetekor.</translation>
+        <translation type="vanished">Súgó üzenet mutatása rögzítő mód kezdetekor.</translation>
     </message>
     <message>
         <source>Show the side panel button</source>
@@ -442,7 +743,7 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     </message>
     <message>
         <source>Show the side panel toggle button in the capture mode.</source>
-        <translation>Oldalsó panel nyitó gomb megjelenítése rögzítő módban.</translation>
+        <translation type="vanished">Oldalsó panel nyitó gomb megjelenítése rögzítő módban.</translation>
     </message>
     <message>
         <source>Show desktop notifications</source>
@@ -454,7 +755,7 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     </message>
     <message>
         <source>Show the systemtray icon</source>
-        <translation>Ikon megjelenítése a tálcán</translation>
+        <translation type="vanished">Ikon megjelenítése a tálcán</translation>
     </message>
     <message>
         <source>Confirmation required to delete screenshot from the latest uploads</source>
@@ -482,7 +783,7 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     </message>
     <message>
         <source>Launch Flameshot</source>
-        <translation>Flameshot indítása</translation>
+        <translation type="vanished">Flameshot indítása</translation>
     </message>
     <message>
         <source>Show welcome message on launch</source>
@@ -494,7 +795,7 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     </message>
     <message>
         <source>Copy URL and close window after upload</source>
-        <translation>URL vágolapra másolása és ablak bezárása feltöltés után</translation>
+        <translation type="vanished">URL vágolapra másolása és ablak bezárása feltöltés után</translation>
     </message>
     <message>
         <source>Save image after copy</source>
@@ -502,7 +803,7 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     </message>
     <message>
         <source>Save image file after copying it</source>
-        <translation>Fénykép elmentése másolás után</translation>
+        <translation type="vanished">Fénykép elmentése másolás után</translation>
     </message>
     <message>
         <source>Save Path</source>
@@ -534,10 +835,106 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     </message>
     <message>
         <source>Latest Uploads Max Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Latest Uploads Max Size</translation>
     </message>
     <message>
         <source>Undo limit</source>
+        <translation>Undo limit</translation>
+    </message>
+    <message>
+        <source>Allow multiple flameshot GUI instances simultaneously</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Automatically close daemon when it is not needed</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Use large predefined color palette</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Preferred save file extension:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Anti-aliasing image when zoom the pinned image</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>After zooming the pinned image, should the image get smoothened or stay pixelated</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Upload image without confirmation</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Show the help message at the beginning in the capture mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show the side panel toggle button in the capture mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable desktop notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show icon in the system tray</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ask for confirmation to delete screenshot from the latest uploads</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Check for updates automatically</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This allows you to take screenshots of Flameshot itself for example</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Launch Flameshot daemon when computer is booted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show the welcome message box in the middle of the screen while taking a screenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use a large predefined color palette</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy URL and close window after uploading was successful</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>After copying the screenshot, save it to a file as well</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy the file path to clipboard after the file is saved</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show magnifier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable a magnifier while selecting the screenshot area</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Square shaped magnifier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Make the magnifier to be square-shaped</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -545,31 +942,31 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     <name>HistoryWidget</name>
     <message>
         <source>Latest Uploads</source>
-        <translation>Korábbi Feltöltések</translation>
+        <translation type="vanished">Korábbi Feltöltések</translation>
     </message>
     <message>
         <source>Screenshots history is empty</source>
-        <translation>Nincs korábbi képernyőmentésed</translation>
+        <translation type="vanished">Nincs korábbi képernyőmentésed</translation>
     </message>
     <message>
         <source>Copy URL</source>
-        <translation>URL másolása</translation>
+        <translation type="vanished">URL másolása</translation>
     </message>
     <message>
         <source>URL copied to clipboard.</source>
-        <translation>URL másolva a vágólapra.</translation>
+        <translation type="vanished">URL másolva a vágólapra.</translation>
     </message>
     <message>
         <source>Open in browser</source>
-        <translation>Megnyitás böngészőben</translation>
+        <translation type="vanished">Megnyitás böngészőben</translation>
     </message>
     <message>
         <source>Confirm to delete</source>
-        <translation>Törlés megerősítése</translation>
+        <translation type="vanished">Törlés megerősítése</translation>
     </message>
     <message>
         <source>Are you sure you want to delete a screenshot from the latest uploads and server?</source>
-        <translation>Biztosan törölni szeretnéd a képernyőmentést a korábbi feltöltések közül és a szerverről is?</translation>
+        <translation type="vanished">Biztosan törölni szeretnéd a képernyőmentést a korábbi feltöltések közül és a szerverről is?</translation>
     </message>
 </context>
 <context>
@@ -585,6 +982,21 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     <message>
         <source>Error</source>
         <translation type="obsolete">Hiba</translation>
+    </message>
+</context>
+<context>
+    <name>ImgUploadDialog</name>
+    <message>
+        <source>Upload Confirmation</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Do you want to upload this capture?</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Upload without confirmation</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -623,26 +1035,88 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     </message>
 </context>
 <context>
-    <name>ImgurUploader</name>
+    <name>ImgUploaderBase</name>
     <message>
-        <source>Upload to Imgur</source>
-        <translation>Feltöltés Imgur -ra</translation>
+        <source>Upload image</source>
+        <translation></translation>
     </message>
     <message>
         <source>Uploading Image</source>
-        <translation>Kép feltöltése</translation>
+        <translation type="unfinished">Kép feltöltése</translation>
     </message>
     <message>
         <source>Copy URL</source>
-        <translation>URL másolása</translation>
+        <translation type="unfinished">URL másolása</translation>
     </message>
     <message>
         <source>Open URL</source>
-        <translation>URL megnyitása</translation>
+        <translation type="unfinished">URL megnyitása</translation>
+    </message>
+    <message>
+        <source>Delete image</source>
+        <translation type="unfinished">Kép törlése</translation>
     </message>
     <message>
         <source>Image to Clipboard.</source>
-        <translation>Kép másolása a Vágolapra.</translation>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Unable to open the URL.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>URL copied to clipboard.</source>
+        <translation type="unfinished">URL másolva a vágólapra.</translation>
+    </message>
+    <message>
+        <source>Screenshot copied to clipboard.</source>
+        <translation type="unfinished">Képernyőmentés másolva a vágólapra.</translation>
+    </message>
+    <message>
+        <source>Save image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unable to save the screenshot to disk.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screenshot saved.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ImgUploaderTool</name>
+    <message>
+        <source>Image Uploader</source>
+        <translation type="unfinished">Kép Feltöltő</translation>
+    </message>
+    <message>
+        <source>Upload the selection</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>ImgurUploader</name>
+    <message>
+        <source>Upload to Imgur</source>
+        <translation type="vanished">Feltöltés Imgur -ra</translation>
+    </message>
+    <message>
+        <source>Uploading Image</source>
+        <translation type="vanished">Kép feltöltése</translation>
+    </message>
+    <message>
+        <source>Copy URL</source>
+        <translation type="vanished">URL másolása</translation>
+    </message>
+    <message>
+        <source>Open URL</source>
+        <translation type="vanished">URL megnyitása</translation>
+    </message>
+    <message>
+        <source>Image to Clipboard.</source>
+        <translation type="vanished">Kép másolása a Vágolapra.</translation>
     </message>
     <message>
         <source>Unable to open the URL.</source>
@@ -650,26 +1124,26 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     </message>
     <message>
         <source>URL copied to clipboard.</source>
-        <translation>URL másolva a vágólapra.</translation>
+        <translation type="vanished">URL másolva a vágólapra.</translation>
     </message>
     <message>
         <source>Screenshot copied to clipboard.</source>
-        <translation>Képernyőmentés másolva a vágólapra.</translation>
+        <translation type="vanished">Képernyőmentés másolva a vágólapra.</translation>
     </message>
     <message>
         <source>Delete image</source>
-        <translation>Kép törlése</translation>
+        <translation type="vanished">Kép törlése</translation>
     </message>
 </context>
 <context>
     <name>ImgurUploaderTool</name>
     <message>
         <source>Image Uploader</source>
-        <translation>Kép Feltöltő</translation>
+        <translation type="vanished">Kép Feltöltő</translation>
     </message>
     <message>
         <source>Upload the selection to Imgur</source>
-        <translation>Feltölti a kiválasztott képet az Imgur -ra</translation>
+        <translation type="vanished">Feltölti a kiválasztott képet az Imgur -ra</translation>
     </message>
 </context>
 <context>
@@ -728,11 +1202,11 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     </message>
     <message>
         <source>&lt;u&gt;&lt;b&gt;License&lt;/b&gt;&lt;/u&gt;</source>
-        <translation>&lt;u&gt;&lt;b&gt;Licensz&lt;/b&gt;&lt;/u&gt;</translation>
+        <translation type="vanished">&lt;u&gt;&lt;b&gt;Licensz&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
         <source>&lt;u&gt;&lt;b&gt;Version&lt;/b&gt;&lt;/u&gt;</source>
-        <translation>&lt;u&gt;&lt;b&gt;Verzió&lt;/b&gt;&lt;/u&gt;</translation>
+        <translation type="vanished">&lt;u&gt;&lt;b&gt;Verzió&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
         <source>&lt;u&gt;&lt;b&gt;Shortcuts&lt;/b&gt;&lt;/u&gt;</source>
@@ -741,6 +1215,45 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     <message>
         <source>Available shortcuts in the screen capture mode.</source>
         <translation type="vanished">Elérhető gyorsbillentyűk a képernyőfelvétel módban.</translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>License</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GPLv3+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flameshot v</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OS Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>InvertTool</name>
+    <message>
+        <source>Invert</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Set Inverter as the paint tool</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -833,7 +1346,7 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     </message>
     <message>
         <source>Error trying to save as </source>
-        <translation>Hiba a mentés közben a következőként </translation>
+        <translation>Hiba a mentésnél </translation>
     </message>
     <message>
         <source>Unable to connect via DBus</source>
@@ -853,7 +1366,7 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     </message>
     <message>
         <source>URL copied to clipboard.</source>
-        <translation>URL másolva a vágólapra.</translation>
+        <translation type="vanished">URL másolva a vágólapra.</translation>
     </message>
     <message>
         <source>Options</source>
@@ -905,7 +1418,7 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     </message>
     <message>
         <source>Path where the capture will be saved</source>
-        <translation>Rögzítés mentési helye</translation>
+        <translation type="vanished">Rögzítés mentési helye</translation>
     </message>
     <message>
         <source>Save the capture to the clipboard</source>
@@ -945,7 +1458,7 @@ Nyomd meg a Space billentyűt, hogy megnyisd az oldalsó panelt.</translation>
     </message>
     <message>
         <source>Define the screen to capture</source>
-        <translation>Rögzítési képernyő megadása</translation>
+        <translation type="vanished">Rögzítési képernyő megadása</translation>
     </message>
     <message>
         <source>default: screen containing the cursor</source>
@@ -973,7 +1486,7 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
     </message>
     <message>
         <source>Invalid delay, it must be higher than 0</source>
-        <translation>Érvénytelen késleltetés, 0-nál nagyobb értéknel kell lennie</translation>
+        <translation type="vanished">Érvénytelen késleltetés, 0-nál nagyobb értéknel kell lennie</translation>
     </message>
     <message>
         <source>Invalid screen number, it must be non negative</source>
@@ -981,7 +1494,7 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
     </message>
     <message>
         <source>Invalid path, it must be a real path in the system</source>
-        <translation>Érvénytelen elérési útvonal, nincs ilyen elérési útvonal ezen az eszközön</translation>
+        <translation type="vanished">Érvénytelen elérési útvonal, nincs ilyen elérési útvonal ezen az eszközön</translation>
     </message>
     <message>
         <source>Invalid value, it must be defined as &apos;true&apos; or &apos;false&apos;</source>
@@ -997,39 +1510,39 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
     </message>
     <message>
         <source>Toggle side panel</source>
-        <translation>Oldalsó panel ki- és bekapcsolása</translation>
+        <translation type="vanished">Oldalsó panel ki- és bekapcsolása</translation>
     </message>
     <message>
         <source>Resize selection left 1px</source>
-        <translation>Kijelölés átméretezése balra 1px-el</translation>
+        <translation type="vanished">Kijelölés átméretezése balra 1px-el</translation>
     </message>
     <message>
         <source>Resize selection right 1px</source>
-        <translation>Kijelölés átméretezése jobbra 1px-el</translation>
+        <translation type="vanished">Kijelölés átméretezése jobbra 1px-el</translation>
     </message>
     <message>
         <source>Resize selection up 1px</source>
-        <translation>Kijelölés átméretezése fel 1px-el</translation>
+        <translation type="vanished">Kijelölés átméretezése fel 1px-el</translation>
     </message>
     <message>
         <source>Resize selection down 1px</source>
-        <translation>Kijelölés átméretezése le 1px-el</translation>
+        <translation type="vanished">Kijelölés átméretezése le 1px-el</translation>
     </message>
     <message>
         <source>Move selection left 1px</source>
-        <translation>Kijelölés mozgatása balra 1px-el</translation>
+        <translation type="vanished">Kijelölés mozgatása balra 1px-el</translation>
     </message>
     <message>
         <source>Move selection right 1px</source>
-        <translation>Kijelölés mozgatása jobbra 1px-el</translation>
+        <translation type="vanished">Kijelölés mozgatása jobbra 1px-el</translation>
     </message>
     <message>
         <source>Move selection up 1px</source>
-        <translation>Kijelölés mozgatása fel 1px-el</translation>
+        <translation type="vanished">Kijelölés mozgatása fel 1px-el</translation>
     </message>
     <message>
         <source>Move selection down 1px</source>
-        <translation>Kijelölés mozgatása le 1px-el</translation>
+        <translation type="vanished">Kijelölés mozgatása le 1px-el</translation>
     </message>
     <message>
         <source>Quit capture</source>
@@ -1049,7 +1562,7 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
     </message>
     <message>
         <source>Change the tool&apos;s thickness</source>
-        <translation>Eszköz vonalvastagságának állítása</translation>
+        <translation type="vanished">Eszköz vonalvastagságának állítása</translation>
     </message>
     <message>
         <source>Save screenshot</source>
@@ -1057,7 +1570,7 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
     </message>
     <message>
         <source>Capture is saved and copied to the clipboard as </source>
-        <translation>A rögzítés mentve és vágolara másolva a következőként </translation>
+        <translation type="vanished">A rögzítés mentve és vágolara másolva a következőként </translation>
     </message>
     <message>
         <source>Per default runs Flameshot in the background and adds a tray icon for configuration.</source>
@@ -1069,11 +1582,11 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
     </message>
     <message>
         <source>Select entire screen</source>
-        <translation>Teljes kijelző kijelölése</translation>
+        <translation type="vanished">Teljes kijelző kijelölése</translation>
     </message>
     <message>
         <source>Commit text in text area</source>
-        <translation>Szöveg megadása a szöveg mezőben</translation>
+        <translation type="vanished">Szöveg megadása a szöveg mezőben</translation>
     </message>
     <message>
         <source>Error while saving to clipboard</source>
@@ -1081,14 +1594,66 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
     </message>
     <message>
         <source>Delete current tool</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Delete current tool</translation>
     </message>
     <message>
         <source>Saving canceled</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Saving canceled</translation>
     </message>
     <message>
         <source>Save canceled</source>
+        <translation type="vanished">Save canceled</translation>
+    </message>
+    <message>
+        <source>Change the tool&apos;s size</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Full screen screenshot pinned to screen</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Existing directory or new file to save to</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Pin the capture to the screen</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Upload screenshot</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Screenshot region to select</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Accept capture as soon as a selection is made</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Check the configuration for errors</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Define the screen to capture (starting from 0)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Invalid region, use &apos;WxH+X+Y&apos; or &apos;all&apos; or &apos;screen0/screen1/...&apos;.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Invalid path, must be an existing directory or a new file in an existing directory</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Path copied to clipboard as </source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Invalid delay, it must be a number greater than 0</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1122,7 +1687,11 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
     </message>
     <message>
         <source>Save the capture</source>
-        <translation>Menti a felvételt</translation>
+        <translation type="vanished">Menti a felvételt</translation>
+    </message>
+    <message>
+        <source>Save screenshot to a file</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1159,7 +1728,11 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
     </message>
     <message>
         <source>Press Esc to cancel or ⌘+Backspace to disable the keyboard shortcut.</source>
-        <translation type="unfinished"></translation>
+        <translation>Press Esc to cancel or ⌘+Backspace to disable the keyboard shortcut.</translation>
+    </message>
+    <message>
+        <source>Flameshot must be restarted for changes to take effect.</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1185,41 +1758,49 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
     <name>SidePanelWidget</name>
     <message>
         <source>Active thickness:</source>
-        <translation>Aktív vastagság:</translation>
+        <translation type="vanished">Aktív vastagság:</translation>
     </message>
     <message>
         <source>Active color:</source>
-        <translation>Aktív szín:</translation>
+        <translation type="vanished">Aktív szín:</translation>
     </message>
     <message>
         <source>Press ESC to cancel</source>
-        <translation>Nyomd meg az ESC-et a kilépéshez</translation>
+        <translation type="vanished">Nyomd meg az ESC-et a kilépéshez</translation>
     </message>
     <message>
         <source>Grab Color</source>
         <translation>Szín választása</translation>
+    </message>
+    <message>
+        <source>Active tool size: </source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Active Color: </source>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>SizeDecreaseTool</name>
     <message>
         <source>Decrease Tool Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Decrease Tool Size</translation>
     </message>
     <message>
         <source>Decrease the size of the other tools</source>
-        <translation type="unfinished"></translation>
+        <translation>Decrease the size of the other tools</translation>
     </message>
 </context>
 <context>
     <name>SizeIncreaseTool</name>
     <message>
         <source>Increase Tool Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Increase Tool Size</translation>
     </message>
     <message>
         <source>Increase the size of the other tools</source>
-        <translation type="unfinished"></translation>
+        <translation>Increase the size of the other tools</translation>
     </message>
 </context>
 <context>
@@ -1230,7 +1811,11 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
     </message>
     <message>
         <source>Show the dimensions of the selection (X Y)</source>
-        <translation>Mutatja a kijelölés pozícióját (X Y)</translation>
+        <translation type="vanished">Mutatja a kijelölés pozícióját (X Y)</translation>
+    </message>
+    <message>
+        <source>Show X and Y dimensions of the selection</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1353,6 +1938,18 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
         <source>Italic</source>
         <translation>Dőlt</translation>
     </message>
+    <message>
+        <source>Left Align</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Center Align</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Right Align</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>TextTool</name>
@@ -1369,7 +1966,7 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
     <name>UIcolorEditor</name>
     <message>
         <source>UI Color Editor</source>
-        <translation>Kezelőfelület Színeinek Szerkesztése</translation>
+        <translation type="vanished">Kezelőfelület Színeinek Szerkesztése</translation>
     </message>
     <message>
         <source>Change the color moving the selectors and see the changes in the preview buttons.</source>
@@ -1427,6 +2024,44 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
     </message>
 </context>
 <context>
+    <name>UploadHistory</name>
+    <message>
+        <source>Upload History</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screenshots history is empty</source>
+        <translation type="unfinished">Nincs korábbi képernyőmentésed</translation>
+    </message>
+</context>
+<context>
+    <name>UploadLineItem</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy URL</source>
+        <translation type="unfinished">URL másolása</translation>
+    </message>
+    <message>
+        <source>Open In Browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Confirm to delete</source>
+        <translation type="unfinished">Törlés megerősítése</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to delete a screenshot from the latest uploads and server?</source>
+        <translation type="unfinished">Biztosan törölni szeretnéd a képernyőmentést a korábbi feltöltések közül és a szerverről is?</translation>
+    </message>
+</context>
+<context>
     <name>UtilityPanel</name>
     <message>
         <source>Close</source>
@@ -1434,7 +2069,7 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
     </message>
     <message>
         <source>&lt;Empty&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;Empty&gt;</translation>
     </message>
 </context>
 <context>
@@ -1450,6 +2085,136 @@ Lehet, hogy meg kepp adnod egy &apos;\&apos; karaktert a &apos;#&apos; karakter 
     <message>
         <source>Select All</source>
         <translation>Összes kiválasztása</translation>
+    </message>
+    <message>
+        <source>UI Color Editor</source>
+        <translation type="unfinished">Kezelőfelület Színeinek Szerkesztése</translation>
+    </message>
+    <message>
+        <source>Colorpicker Editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>color_widgets::ColorDialog</name>
+    <message>
+        <source>Pick</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>color_widgets::ColorPalette</name>
+    <message>
+        <source>Unnamed</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>color_widgets::ColorPaletteModel</name>
+    <message>
+        <source>Unnamed</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>%1 (%2 colors)</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>color_widgets::ColorPaletteWidget</name>
+    <message>
+        <source>Open a new palette from file</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Create a new palette</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Duplicate the current palette</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Delete the current palette</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Revert changes to the current palette</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Save changes to the current palette</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Add a color to the palette</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Remove the selected color from the palette</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>New Palette</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>GIMP Palettes (*.gpl)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Palette Image (%1)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>All Files (*)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Open Palette</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Failed to load the palette file
+%1</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>color_widgets::GradientEditor</name>
+    <message>
+        <source>Add Color</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Remove Color</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Edit Color...</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>color_widgets::GradientListModel</name>
+    <message>
+        <source>%1 (%2 colors)</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>color_widgets::Swatch</name>
+    <message>
+        <source>Clear Color</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>%1 (%2)</source>
+        <translation></translation>
     </message>
 </context>
 </TS>

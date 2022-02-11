@@ -10,6 +10,7 @@ class ShortcutsWidget;
 class GeneralConf;
 class QFileSystemWatcher;
 class VisualsEditor;
+class QWidget;
 class ImgurConf;
 
 class ConfigWindow : public QWidget
@@ -25,11 +26,21 @@ protected:
     void keyPressEvent(QKeyEvent*);
 
 private:
-    QTabWidget* m_tabs;
+    QTabWidget* m_tabWidget;
+
     FileNameEditor* m_filenameEditor;
+    QWidget* m_filenameEditorTab;
+
     ShortcutsWidget* m_shortcuts;
+    QWidget* m_shortcutsTab;
+
     GeneralConf* m_generalConfig;
+    QWidget* m_generalConfigTab;
+
     VisualsEditor* m_visuals;
-    QFileSystemWatcher* m_configWatcher;
+    QWidget* m_visualsTab;
+
     ImgurConf *m_imgurConfig;
+
+    void initErrorIndicator(QWidget* tab, QWidget* widget);
 };

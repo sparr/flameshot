@@ -2,29 +2,38 @@
 // SPDX-FileCopyrightText: 2017-2019 Alejandro Sirgo Rica & Contributors
 
 #include "controller.h"
+#include "flameshotdaemon.h"
 
 #if defined(Q_OS_MACOS)
 #include "external/QHotkey/QHotkey"
 #endif
 
+#include "abstractlogger.h"
+#include "pinwidget.h"
+#include "screenshotsaver.h"
+#include "src/config/configresolver.h"
 #include "src/config/configwindow.h"
 #include "src/core/qguiappcurrentscreen.h"
+#include "src/tools/imgupload/imguploadermanager.h"
+#include "src/tools/imgupload/storages/imguploaderbase.h"
 #include "src/utils/confighandler.h"
+#include "src/utils/globalvalues.h"
 #include "src/utils/history.h"
 #include "src/utils/screengrabber.h"
-#include "src/utils/systemnotification.h"
 #include "src/widgets/capture/capturetoolbutton.h"
 #include "src/widgets/capture/capturewidget.h"
 #include "src/widgets/capturelauncher.h"
-#include "src/widgets/historywidget.h"
+#include "src/widgets/imguploaddialog.h"
 #include "src/widgets/infowindow.h"
-#include "src/widgets/notificationwidget.h"
+#include "src/widgets/uploadhistory.h"
 #include <QAction>
 #include <QApplication>
+#include <QBuffer>
 #include <QClipboard>
 #include <QDebug>
 #include <QDesktopServices>
 #include <QDesktopWidget>
+#include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QMenu>
@@ -51,7 +60,6 @@
 
 Controller::Controller()
   : m_captureWindow(nullptr)
-  , m_history(nullptr)
   , m_trayIcon(nullptr)
   , m_trayIconMenu(nullptr)
   , m_networkCheckUpdates(nullptr)
@@ -62,22 +70,6 @@ Controller::Controller()
 #endif
 {
     m_appLatestVersion = QStringLiteral(APP_VERSION).replace("v", "");
-    qApp->setQuitOnLastWindowClosed(false);
-
-    // init tray icon
-#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
-    if (!ConfigHandler().disabledTrayIconValue()) {
-        enableTrayIcon();
-    }
-#elif defined(Q_OS_WIN)
-    enableTrayIcon();
-
-    GlobalShortcutFilter* nativeFilter = new GlobalShortcutFilter(this);
-    qApp->installNativeEventFilter(nativeFilter);
-    connect(nativeFilter, &GlobalShortcutFilter::printPressed, this, [this]() {
-        this->requestCapture(CaptureRequest(CaptureRequest::GRAPHICAL_MODE));
-    });
-#endif
 
     QString StyleSheet = CaptureButton::globalStyleSheet();
     qApp->setStyleSheet(StyleSheet);
@@ -90,19 +82,30 @@ Controller::Controller()
     currentScreen->grabWindow(QApplication::desktop()->winId(), 0, 0, 1, 1);
 
     // set global shortcuts for MacOS
-    m_HotkeyScreenshotCapture =
-      new QHotkey(QKeySequence("Ctrl+Alt+Shift+4"), true, this);
+    m_HotkeyScreenshotCapture = new QHotkey(
+      QKeySequence(ConfigHandler().shortcut("TAKE_SCREENSHOT")), true, this);
     QObject::connect(m_HotkeyScreenshotCapture,
                      &QHotkey::activated,
                      qApp,
                      [&]() { this->startVisualCapture(); });
-    m_HotkeyScreenshotHistory =
-      new QHotkey(QKeySequence("Ctrl+Alt+Shift+H"), true, this);
+    m_HotkeyScreenshotHistory = new QHotkey(
+      QKeySequence(ConfigHandler().shortcut("SCREENSHOT_HISTORY")), true, this);
     QObject::connect(m_HotkeyScreenshotHistory,
                      &QHotkey::activated,
                      qApp,
-                     [&]() { this->showRecentScreenshots(); });
+                     [&]() { this->showRecentUploads(); });
 #endif
+    connect(ConfigHandler::getInstance(),
+            &ConfigHandler::fileChanged,
+            this,
+            [this]() {
+                ConfigHandler config;
+                if (config.disabledTrayIcon()) {
+                    disableTrayIcon();
+                } else {
+                    enableTrayIcon();
+                }
+            });
 
     if (ConfigHandler().checkForUpdates()) {
         getLatestAvailableVersion();
@@ -111,7 +114,6 @@ Controller::Controller()
 
 Controller::~Controller()
 {
-    delete m_history;
     delete m_trayIconMenu;
 }
 
@@ -119,14 +121,6 @@ Controller* Controller::getInstance()
 {
     static Controller c;
     return &c;
-}
-
-void Controller::enableExports()
-{
-    connect(
-      this, &Controller::captureTaken, this, &Controller::handleCaptureTaken);
-    connect(
-      this, &Controller::captureFailed, this, &Controller::handleCaptureFailed);
 }
 
 void Controller::setCheckForUpdatesEnabled(const bool enabled)
@@ -138,6 +132,16 @@ void Controller::setCheckForUpdatesEnabled(const bool enabled)
     if (enabled) {
         getLatestAvailableVersion();
     }
+}
+
+void Controller::setOrigin(Origin origin)
+{
+    m_origin = origin;
+}
+
+Controller::Origin Controller::origin()
+{
+    return m_origin;
 }
 
 void Controller::getLatestAvailableVersion()
@@ -158,6 +162,38 @@ void Controller::getLatestAvailableVersion()
             this->getLatestAvailableVersion();
         }
     });
+}
+
+/**
+ * @brief Prompt the user to resolve config errors if necessary.
+ * @return Whether errors were resolved.
+ */
+bool Controller::resolveAnyConfigErrors()
+{
+    bool resolved = true;
+    ConfigHandler config;
+    if (!config.checkUnrecognizedSettings() || !config.checkSemantics()) {
+        auto* resolver = new ConfigResolver();
+        QObject::connect(
+          resolver, &ConfigResolver::rejected, [resolver, &resolved]() {
+              resolved = false;
+              resolver->deleteLater();
+              if (origin() == CLI) {
+                  exit(1);
+              }
+          });
+        QObject::connect(
+          resolver, &ConfigResolver::accepted, [resolver, &resolved]() {
+              resolved = true;
+              resolver->close();
+              resolver->deleteLater();
+              // Ensure that the dialog is closed before starting capture
+              qApp->processEvents();
+          });
+        resolver->exec();
+        qApp->processEvents();
+    }
+    return resolved;
 }
 
 void Controller::handleReplyCheckUpdates(QNetworkReply* reply)
@@ -214,47 +250,48 @@ void Controller::appUpdates()
 
 void Controller::requestCapture(const CaptureRequest& request)
 {
-    uint id = request.id();
-    m_requestMap.insert(id, request);
+    if (!resolveAnyConfigErrors()) {
+        return;
+    }
 
     switch (request.captureMode()) {
         case CaptureRequest::FULLSCREEN_MODE:
-            doLater(request.delay(), this, [this, id]() {
-                this->startFullscreenCapture(id);
+            doLater(request.delay(), this, [this, request]() {
+                startFullscreenCapture(request);
             });
             break;
-            // TODO: Figure out the code path that gets here so the deprated
-            // warning can be fixed
         case CaptureRequest::SCREEN_MODE: {
             int&& number = request.data().toInt();
-            doLater(request.delay(), this, [this, id, number]() {
-                this->startScreenGrab(id, number);
+            doLater(request.delay(), this, [this, request, number]() {
+                startScreenGrab(request, number);
             });
             break;
         }
         case CaptureRequest::GRAPHICAL_MODE: {
-            QString&& path = request.path();
-            doLater(request.delay(), this, [this, id, path]() {
-                this->startVisualCapture(id, path);
+            doLater(request.delay(), this, [this, request]() {
+                startVisualCapture(request);
             });
             break;
         }
         default:
-            emit captureFailed(id);
+            handleCaptureFailed();
             break;
     }
 }
 
 // creation of a new capture in GUI mode
-void Controller::startVisualCapture(const uint id,
-                                    const QString& forcedSavePath)
+void Controller::startVisualCapture(const CaptureRequest& req)
 {
+    if (!resolveAnyConfigErrors()) {
+        return;
+    }
+
 #if defined(Q_OS_MACOS)
     // This is required on MacOS because of Mission Control. If you'll switch to
     // another Desktop you cannot take a new screenshot from the tray, you have
     // to switch back to the Flameshot Desktop manually. It is not obvious and a
     // large number of users are confused and report a bug.
-    if (m_captureWindow) {
+    if (m_captureWindow != nullptr) {
         m_captureWindow->close();
         delete m_captureWindow;
         m_captureWindow = nullptr;
@@ -262,6 +299,7 @@ void Controller::startVisualCapture(const uint id,
 #endif
 
     if (nullptr == m_captureWindow) {
+        // TODO is this unnecessary now?
         int timeout = 5000; // 5 seconds
         const int delay = 100;
         QWidget* modalWidget = nullptr;
@@ -280,17 +318,9 @@ void Controller::startVisualCapture(const uint id,
             return;
         }
 
-        m_captureWindow = new CaptureWidget(id, forcedSavePath);
-        // m_captureWindow = new CaptureWidget(id, forcedSavePath, false); //
+        m_captureWindow = new CaptureWidget(req);
+        // m_captureWindow = new CaptureWidget(forcedSavePath, false); //
         // debug
-        connect(m_captureWindow,
-                &CaptureWidget::captureFailed,
-                this,
-                &Controller::captureFailed);
-        connect(m_captureWindow,
-                &CaptureWidget::captureTaken,
-                this,
-                &Controller::captureTaken);
 
 #ifdef Q_OS_WIN
         m_captureWindow->show();
@@ -310,32 +340,60 @@ void Controller::startVisualCapture(const uint id,
                                                        m_appLatestUrl);
         }
     } else {
-        emit captureFailed(id);
+        emit captureFailed();
     }
 }
 
-void Controller::startScreenGrab(const uint id, const int screenNumber)
+void Controller::startScreenGrab(CaptureRequest req, const int screenNumber)
 {
-    bool ok = true;
-    int n = screenNumber;
-
-    if (n < 0) {
-        QPoint globalCursorPos = QCursor::pos();
-        n = qApp->desktop()->screenNumber(globalCursorPos);
+    if (!resolveAnyConfigErrors()) {
+        return;
     }
-    QPixmap p(ScreenGrabber().grabScreen(n, ok));
-    if (ok) {
-        QRect selection; // `flameshot screen` does not support --selection
-        emit captureTaken(id, p, selection);
+
+    bool ok = true;
+    QScreen* screen;
+
+    if (screenNumber < 0) {
+        QPoint globalCursorPos = QCursor::pos();
+#if QT_VERSION > QT_VERSION_CHECK(5, 10, 0)
+        screen = qApp->screenAt(globalCursorPos);
+#else
+        screen =
+          qApp->screens()[qApp->desktop()->screenNumber(globalCursorPos)];
+#endif
     } else {
-        emit captureFailed(id);
+        screen = qApp->screens()[screenNumber];
+    }
+    QPixmap p(ScreenGrabber().grabScreen(screen, ok));
+    if (ok) {
+        QRect geometry = ScreenGrabber().screenGeometry(screen);
+        QRect region = req.initialSelection();
+        if (region.isNull()) {
+            region = ScreenGrabber().screenGeometry(screen);
+        } else {
+            QRect screenGeom = ScreenGrabber().screenGeometry(screen);
+            screenGeom.moveTopLeft({ 0, 0 });
+            region = region.intersected(screenGeom);
+            p = p.copy(region);
+        }
+        if (req.tasks() & CaptureRequest::PIN) {
+            // change geometry for pin task
+            req.addPinTask(region);
+        }
+        exportCapture(p, geometry, req);
+    } else {
+        handleCaptureFailed();
     }
 }
 
 // creation of the configuration window
 void Controller::openConfigWindow()
 {
-    if (!m_configWindow) {
+    if (!resolveAnyConfigErrors()) {
+        return;
+    }
+
+    if (m_configWindow == nullptr) {
         m_configWindow = new ConfigWindow();
         m_configWindow->show();
 #if defined(Q_OS_MACOS)
@@ -348,7 +406,7 @@ void Controller::openConfigWindow()
 // creation of the window of information
 void Controller::openInfoWindow()
 {
-    if (!m_infoWindow) {
+    if (m_infoWindow == nullptr) {
         m_infoWindow = new InfoWindow();
 #if defined(Q_OS_MACOS)
         m_infoWindow->activateWindow();
@@ -359,7 +417,11 @@ void Controller::openInfoWindow()
 
 void Controller::openLauncherWindow()
 {
-    if (!m_launcherWindow) {
+    if (!resolveAnyConfigErrors()) {
+        return;
+    }
+
+    if (m_launcherWindow == nullptr) {
         m_launcherWindow = new CaptureLauncher();
     }
     m_launcherWindow->show();
@@ -369,10 +431,27 @@ void Controller::openLauncherWindow()
 #endif
 }
 
+void Controller::initTrayIcon()
+{
+#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
+    if (!ConfigHandler().disabledTrayIcon()) {
+        enableTrayIcon();
+    }
+#elif defined(Q_OS_WIN)
+    enableTrayIcon();
+
+    GlobalShortcutFilter* nativeFilter = new GlobalShortcutFilter(this);
+    qApp->installNativeEventFilter(nativeFilter);
+    connect(nativeFilter, &GlobalShortcutFilter::printPressed, this, [this]() {
+        this->requestCapture(CaptureRequest(CaptureRequest::GRAPHICAL_MODE));
+    });
+#endif
+}
+
 void Controller::enableTrayIcon()
 {
     ConfigHandler().setDisabledTrayIcon(false);
-    if (m_trayIcon) {
+    if (m_trayIcon != nullptr) {
         m_trayIcon->show();
         return;
     }
@@ -381,7 +460,7 @@ void Controller::enableTrayIcon()
         Q_ASSERT(m_trayIconMenu);
     }
 
-    QAction* captureAction = new QAction(tr("&Take Screenshot"), this);
+    auto* captureAction = new QAction(tr("&Take Screenshot"), this);
     connect(captureAction, &QAction::triggered, this, [this]() {
 #if defined(Q_OS_MACOS)
         auto currentMacOsVersion = QOperatingSystemVersion::current();
@@ -394,30 +473,29 @@ void Controller::enableTrayIcon()
         }
 #else
       // Wait 400 ms to hide the QMenu
-        doLater(400, this, [this]() { this->startVisualCapture(); });
+        doLater(400, this, [this]() { startVisualCapture(); });
 #endif
     });
-    QAction* launcherAction = new QAction(tr("&Open Launcher"), this);
+    auto* launcherAction = new QAction(tr("&Open Launcher"), this);
     connect(launcherAction,
             &QAction::triggered,
             this,
             &Controller::openLauncherWindow);
-    QAction* configAction = new QAction(tr("&Configuration"), this);
+    auto* configAction = new QAction(tr("&Configuration"), this);
     connect(
       configAction, &QAction::triggered, this, &Controller::openConfigWindow);
-    QAction* infoAction = new QAction(tr("&About"), this);
+    auto* infoAction = new QAction(tr("&About"), this);
     connect(infoAction, &QAction::triggered, this, &Controller::openInfoWindow);
 
     m_appUpdates = new QAction(tr("Check for updates"), this);
     connect(m_appUpdates, &QAction::triggered, this, &Controller::appUpdates);
 
-    QAction* quitAction = new QAction(tr("&Quit"), this);
+    auto* quitAction = new QAction(tr("&Quit"), this);
     connect(quitAction, &QAction::triggered, qApp, &QCoreApplication::quit);
 
     // recent screenshots
-    QAction* recentAction = new QAction(tr("&Latest Uploads"), this);
-    connect(
-      recentAction, SIGNAL(triggered()), this, SLOT(showRecentScreenshots()));
+    auto* recentAction = new QAction(tr("&Latest Uploads"), this);
+    connect(recentAction, SIGNAL(triggered()), this, SLOT(showRecentUploads()));
 
     // generate menu
     m_trayIconMenu->addAction(captureAction);
@@ -450,7 +528,7 @@ void Controller::enableTrayIcon()
     m_trayIcon->setContextMenu(m_trayIconMenu);
 #endif
     QIcon trayIcon =
-      QIcon::fromTheme("flameshot-tray", QIcon(":img/app/flameshot.png"));
+      QIcon::fromTheme("flameshot-tray", QIcon(GlobalValues::iconPathPNG()));
     m_trayIcon->setIcon(trayIcon);
 
 #if defined(Q_OS_MACOS)
@@ -498,87 +576,156 @@ void Controller::enableTrayIcon()
 
 void Controller::disableTrayIcon()
 {
-#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX) || defined(Q_OS_MACOS)
-    if (m_trayIcon) {
+    if (m_trayIcon != nullptr) {
         m_trayIcon->hide();
     }
     ConfigHandler().setDisabledTrayIcon(true);
-#endif
 }
 
 void Controller::sendTrayNotification(const QString& text,
                                       const QString& title,
                                       const int timeout)
 {
-    if (m_trayIcon) {
+    if (m_trayIcon != nullptr) {
         m_trayIcon->showMessage(
-          title, text, QIcon(":img/app/flameshot.svg"), timeout);
+          title, text, QIcon(GlobalValues::iconPath()), timeout);
     }
 }
 
-void Controller::updateConfigComponents()
+void Controller::showRecentUploads()
 {
-    if (m_configWindow) {
-        m_configWindow->updateChildren();
+    static UploadHistory* historyWidget = nullptr;
+    if (historyWidget == nullptr) {
+        historyWidget = new UploadHistory;
+        historyWidget->loadHistory();
+        connect(historyWidget, &QObject::destroyed, this, []() {
+            historyWidget = nullptr;
+        });
     }
-}
+    historyWidget->show();
 
-void Controller::updateRecentScreenshots()
-{
-    if (nullptr != m_history) {
-        if (m_history->isVisible()) {
-            m_history->loadHistory();
-        }
-    }
-}
-
-void Controller::showRecentScreenshots()
-{
-    if (nullptr == m_history) {
-        m_history = new HistoryWidget();
-    }
-    m_history->loadHistory();
-    m_history->show();
 #if defined(Q_OS_MACOS)
-    m_history->activateWindow();
-    m_history->raise();
+    historyWidget->activateWindow();
+    historyWidget->raise();
 #endif
 }
 
-void Controller::sendCaptureSaved(uint id, const QString& savePath)
+void Controller::exportCapture(QPixmap capture,
+                               QRect& selection,
+                               const CaptureRequest& req)
 {
-    emit captureSaved(id, savePath);
+    using CR = CaptureRequest;
+    int tasks = req.tasks(), mode = req.captureMode();
+    QString path = req.path();
+
+    if (tasks & CR::PRINT_GEOMETRY) {
+        QByteArray byteArray;
+        QBuffer buffer(&byteArray);
+        QTextStream(stdout)
+          << selection.width() << "x" << selection.height() << "+"
+          << selection.x() << "+" << selection.y() << "\n";
+    }
+
+    if (tasks & CR::PRINT_RAW) {
+        QByteArray byteArray;
+        QBuffer buffer(&byteArray);
+        capture.save(&buffer, "PNG");
+        QFile file;
+        file.open(stdout, QIODevice::WriteOnly);
+
+        file.write(byteArray);
+        file.close();
+    }
+
+    if (tasks & CR::SAVE) {
+        if (req.path().isEmpty()) {
+            saveToFilesystemGUI(capture);
+        } else {
+            saveToFilesystem(capture, path);
+        }
+    }
+
+    if (tasks & CR::COPY) {
+        FlameshotDaemon::copyToClipboard(capture);
+    }
+
+    if (tasks & CR::PIN) {
+        FlameshotDaemon::createPin(capture, selection);
+        if (mode == CR::SCREEN_MODE || mode == CR::FULLSCREEN_MODE) {
+            AbstractLogger::info()
+              << QObject::tr("Full screen screenshot pinned to screen");
+        }
+    }
+
+    if (tasks & CR::UPLOAD) {
+        if (!ConfigHandler().uploadWithoutConfirmation()) {
+            auto* dialog = new ImgUploadDialog();
+            if (dialog->exec() == QDialog::Rejected) {
+                return;
+            }
+        }
+
+        ImgUploaderBase* widget = ImgUploaderManager().uploader(capture);
+        widget->show();
+        widget->activateWindow();
+        // NOTE: lambda can't capture 'this' because it might be destroyed later
+        CR::ExportTask tasks = tasks;
+        QObject::connect(
+          widget, &ImgUploaderBase::uploadOk, [=](const QUrl& url) {
+              if (ConfigHandler().copyAndCloseAfterUpload()) {
+                  if (!(tasks & CR::COPY)) {
+                      FlameshotDaemon::copyToClipboard(
+                        url.toString(), tr("URL copied to clipboard."));
+                      widget->close();
+                  } else {
+                      widget->showPostUploadDialog();
+                  }
+              } else {
+                  widget->showPostUploadDialog();
+              }
+          });
+    }
+
+    if (!(tasks & CR::UPLOAD)) {
+        emit captureTaken(capture, selection);
+    }
 }
 
-void Controller::startFullscreenCapture(const uint id)
+void Controller::startFullscreenCapture(const CaptureRequest& req)
 {
+    if (!resolveAnyConfigErrors()) {
+        return;
+    }
+
     bool ok = true;
     QPixmap p(ScreenGrabber().grabEntireDesktop(ok));
+    QRect region = req.initialSelection();
+    if (!region.isNull()) {
+        p = p.copy(region);
+    }
     if (ok) {
         QRect selection; // `flameshot full` does not support --selection
-        emit captureTaken(id, p, selection);
+        exportCapture(p, selection, req);
     } else {
-        emit captureFailed(id);
+        handleCaptureFailed();
     }
 }
 
-void Controller::handleCaptureTaken(uint id, QPixmap p, QRect selection)
+void Controller::handleCaptureTaken(const CaptureRequest& req,
+                                    QPixmap p,
+                                    QRect selection)
 {
-    auto it = m_requestMap.find(id);
-    if (it != m_requestMap.end()) {
-        it.value().exportCapture(p);
-        m_requestMap.erase(it);
-    }
+    exportCapture(p, selection, req);
 }
 
-void Controller::handleCaptureFailed(uint id)
+void Controller::handleCaptureFailed()
 {
-    m_requestMap.remove(id);
+    emit captureFailed();
 }
 
 void Controller::doLater(int msec, QObject* receiver, lambda func)
 {
-    QTimer* timer = new QTimer(receiver);
+    auto* timer = new QTimer(receiver);
     QObject::connect(timer, &QTimer::timeout, receiver, [timer, func]() {
         func();
         timer->deleteLater();
@@ -586,3 +733,6 @@ void Controller::doLater(int msec, QObject* receiver, lambda func)
     timer->setInterval(msec);
     timer->start();
 }
+
+// STATIC ATTRIBUTES
+Controller::Origin Controller::m_origin = Controller::DAEMON;

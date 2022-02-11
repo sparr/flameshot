@@ -12,6 +12,7 @@ class QPushButton;
 class QLabel;
 class QLineEdit;
 class QSpinBox;
+class QComboBox;
 
 class GeneralConf : public QWidget
 {
@@ -26,11 +27,12 @@ private slots:
     void showHelpChanged(bool checked);
     void showSidePanelButtonChanged(bool checked);
     void showDesktopNotificationChanged(bool checked);
-    void showTrayIconChanged(bool checked);
     void checkForUpdatesChanged(bool checked);
+    void allowMultipleGuiInstancesChanged(bool checked);
+    void autoCloseIdleDaemonChanged(bool checked);
     void autostartChanged(bool checked);
     void historyConfirmationToDelete(bool checked);
-    void uploadHistoryMaxSizeChanged(int max);
+    void uploadHistoryMaxChanged(int max);
     void undoLimit(int limit);
     void saveAfterCopyChanged(bool checked);
     void changeSavePath();
@@ -39,6 +41,7 @@ private slots:
     void resetConfiguration();
     void togglePathFixed();
     void useJpgForClipboardChanged(bool checked);
+    void setSaveAsFileExtension(QString extension);
 
 private:
     const QString chooseFolder(const QString currentPath = "");
@@ -49,16 +52,23 @@ private:
     void initShowDesktopNotification();
     void initShowTrayIcon();
     void initHistoryConfirmationToDelete();
-    void initUploadHistoryMaxSize();
+    void inituploadHistoryMax();
     void initUndoLimit();
     void initConfigButtons();
     void initCheckForUpdates();
+    void initAllowMultipleGuiInstances();
+    void initAutoCloseIdleDaemon();
     void initAutostart();
     void initShowStartupLaunchMessage();
     void initCopyAndCloseAfterUpload();
     void initSaveAfterCopy();
     void initCopyPathAfterSave();
+    void initAntialiasingPinZoom();
     void initUseJpgForClipboard();
+    void initUploadWithoutConfirmation();
+    void initPredefinedColorPaletteLarge();
+    void initShowMagnifier();
+    void initSquareMagnifier();
 
     void _updateComponents(bool allowEmptySavePath);
 
@@ -71,10 +81,14 @@ private:
     QCheckBox* m_helpMessage;
     QCheckBox* m_sidePanelButton;
     QCheckBox* m_checkForUpdates;
+    QCheckBox* m_allowMultipleGuiInstances;
+    QCheckBox* m_autoCloseIdleDaemon;
     QCheckBox* m_autostart;
     QCheckBox* m_showStartupLaunchMessage;
     QCheckBox* m_copyAndCloseAfterUpload;
     QCheckBox* m_copyPathAfterSave;
+    QCheckBox* m_antialiasingPinZoom;
+    QCheckBox* m_uploadWithoutConfirmation;
     QPushButton* m_importButton;
     QPushButton* m_exportButton;
     QPushButton* m_resetButton;
@@ -84,6 +98,10 @@ private:
     QCheckBox* m_screenshotPathFixedCheck;
     QCheckBox* m_historyConfirmationToDelete;
     QCheckBox* m_useJpgForClipboard;
-    QSpinBox* m_uploadHistoryMaxSize;
+    QSpinBox* m_uploadHistoryMax;
     QSpinBox* m_undoLimit;
+    QComboBox* m_setSaveAsFileExtension;
+    QCheckBox* m_predefinedColorPaletteLarge;
+    QCheckBox* m_showMagnifier;
+    QCheckBox* m_squareMagnifier;
 };

@@ -39,10 +39,10 @@ AppLauncherWidget::AppLauncherWidget(const QPixmap& p, QWidget* parent)
   , m_pixmap(p)
 {
     setAttribute(Qt::WA_DeleteOnClose);
-    setWindowIcon(QIcon(":img/app/flameshot.svg"));
+    setWindowIcon(QIcon(GlobalValues::iconPath()));
     setWindowTitle(tr("Open With"));
 
-    m_keepOpen = ConfigHandler().keepOpenAppLauncherValue();
+    m_keepOpen = ConfigHandler().keepOpenAppLauncher();
 
     QString dirLocal = QDir::homePath() + "/.local/share/applications/";
     QDir appsDirLocal(dirLocal);
@@ -57,7 +57,7 @@ AppLauncherWidget::AppLauncherWidget(const QPixmap& p, QWidget* parent)
 
     m_terminalCheckbox = new QCheckBox(tr("Launch in terminal"), this);
     m_keepOpenCheckbox = new QCheckBox(tr("Keep open after selection"), this);
-    m_keepOpenCheckbox->setChecked(ConfigHandler().keepOpenAppLauncherValue());
+    m_keepOpenCheckbox->setChecked(ConfigHandler().keepOpenAppLauncher());
     connect(m_keepOpenCheckbox,
             &QCheckBox::clicked,
             this,
@@ -88,7 +88,7 @@ void AppLauncherWidget::launch(const QModelIndex& index)
 {
     if (!QFileInfo(m_tempFile).isReadable()) {
         m_tempFile =
-          FileNameHandler().generateAbsolutePath(QDir::tempPath()) + ".png";
+          FileNameHandler().properScreenshotPath(QDir::tempPath(), "png");
         bool ok = m_pixmap.save(m_tempFile);
         if (!ok) {
             QMessageBox::about(
@@ -167,7 +167,7 @@ void AppLauncherWidget::initListWidget()
             continue;
         }
 
-        QListWidget* itemsWidget = new QListWidget();
+        auto* itemsWidget = new QListWidget();
         configureListView(itemsWidget);
 
         const QVector<DesktopAppData>& appList = m_appsMap[cat];
@@ -234,7 +234,7 @@ void AppLauncherWidget::addAppsToListWidget(
   const QVector<DesktopAppData>& appList)
 {
     for (const DesktopAppData& app : appList) {
-        QListWidgetItem* buttonItem = new QListWidgetItem(widget);
+        auto* buttonItem = new QListWidgetItem(widget);
         buttonItem->setData(Qt::DecorationRole, app.icon);
         buttonItem->setData(Qt::DisplayRole, app.name);
         buttonItem->setData(Qt::UserRole, app.exec);

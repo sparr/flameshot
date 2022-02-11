@@ -7,7 +7,9 @@ target_sources(
         capturewidget.h
         colorpicker.h
         hovereventfilter.h
+        overlaymessage.h
         selectionwidget.h
+        magnifierwidget.h
         notifierbox.h
         modificationcommand.h)
 
@@ -19,6 +21,8 @@ target_sources(
         capturewidget.cpp
         colorpicker.cpp
         hovereventfilter.cpp
+        overlaymessage.cpp
         notifierbox.cpp
         selectionwidget.cpp
+        magnifierwidget.cpp
         modificationcommand.cpp)

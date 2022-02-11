@@ -32,14 +32,21 @@ public:
       QList<QPointer<CaptureTool>> captureToolObjectsHistory);
     void setActiveLayer(int index);
     int activeLayerIndex();
+    bool isVisible() const;
 
 signals:
     void layerChanged(int layer);
+    void moveUpClicked(int currentRow);
+    void moveDownClicked(int currentRow);
 
 public slots:
     void toggle();
     void slotButtonDelete(bool clicked);
-    void slotCaptureToolsCurrentRowChanged(int currentRow);
+    void onCurrentRowChanged(int currentRow);
+
+private slots:
+    void slotUpClicked(bool clicked);
+    void slotDownClicked(bool clicked);
 
 private:
     void initInternalPanel();
@@ -54,5 +61,7 @@ private:
     QVBoxLayout* m_layersLayout;
     QListWidget* m_captureTools;
     QPushButton* m_buttonDelete;
+    QPushButton* m_buttonMoveUp;
+    QPushButton* m_buttonMoveDown;
     CaptureWidget* m_captureWidget;
 };

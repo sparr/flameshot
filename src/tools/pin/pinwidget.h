@@ -13,7 +13,9 @@ class PinWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit PinWidget(const QPixmap& pixmap, QWidget* parent = nullptr);
+    explicit PinWidget(const QPixmap& pixmap,
+                       const QRect& geometry,
+                       QWidget* parent = nullptr);
 
     int margin() const;
 
@@ -26,7 +28,9 @@ protected:
     void leaveEvent(QEvent*);
 
 private:
-    void setScaledPixmap(const QSize& size);
+    void setScaledPixmapToLabel(const QSize& newSize,
+                                const qreal scale,
+                                const bool expanding);
 
     QPixmap m_pixmap;
     QVBoxLayout* m_layout;

@@ -19,6 +19,17 @@ void CaptureToolObjects::append(const QPointer<CaptureTool>& captureTool)
     }
 }
 
+void CaptureToolObjects::insert(int index,
+                                const QPointer<CaptureTool>& captureTool)
+{
+    if (!captureTool.isNull() && index >= 0 &&
+        index <= m_captureToolObjects.size()) {
+        m_captureToolObjects.insert(index,
+                                    captureTool->copy(captureTool->parent()));
+        m_imageCache.clear();
+    }
+}
+
 QPointer<CaptureTool> CaptureToolObjects::at(int index)
 {
     if (index >= 0 && index < m_captureToolObjects.size()) {
@@ -99,7 +110,7 @@ int CaptureToolObjects::findWithRadius(QPainter& painter,
             m_imageCache.insert(0, image);
         }
 
-        if (toolItem->type() == ToolType::TEXT) {
+        if (toolItem->type() == CaptureTool::TYPE_TEXT) {
             if (currentRadius > SEARCH_RADIUS_NEAR) {
                 // Text already has a big currentRadius and no need to search
                 // with a bit bigger currentRadius than

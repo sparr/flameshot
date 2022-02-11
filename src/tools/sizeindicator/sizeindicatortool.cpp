@@ -23,9 +23,9 @@ QString SizeIndicatorTool::name() const
     return tr("Selection Size Indicator");
 }
 
-ToolType SizeIndicatorTool::type() const
+CaptureTool::Type SizeIndicatorTool::type() const
 {
-    return ToolType::SIZEINDICATOR;
+    return CaptureTool::TYPE_SELECTIONINDICATOR;
 }
 
 QString SizeIndicatorTool::description() const
@@ -38,7 +38,7 @@ CaptureTool* SizeIndicatorTool::copy(QObject* parent)
     return new SizeIndicatorTool(parent);
 }
 
-void SizeIndicatorTool::pressed(const CaptureContext& context)
+void SizeIndicatorTool::pressed(CaptureContext& context)
 {
     Q_UNUSED(context)
 }

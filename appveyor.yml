@@ -12,7 +12,7 @@ build_script:
     mkdir build
 
     cd build
-    
+
     set QTDIR=%Qt5_INSTALL_DIR%
 
     set "VCINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC"
@@ -22,11 +22,11 @@ build_script:
     cmake c:\projects\source -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE:STRING=Release -DENABLE_OPENSSL=ON -DRUN_IN_PLACE=OFF
 
     cmake --build . --parallel 2 --config "Release"
- 
+
     cpack -G WIX -B package
 
     mkdir artifact
-    
+
     cp package/*.msi artifact/.
 
     cp src/Release/*.exe artifact/.
@@ -43,6 +43,7 @@ artifacts:
 
 deploy:
 - provider: Webhook
-  url: https://app.signpath.io/API/v1/042f605f-b378-45d8-ad16-b7695b071036/Integrations/AppVeyor?ProjectSlug=flameshot&SigningPolicySlug=release-signing
+  url: https://app.signpath.io/API/v1/042f605f-b378-45d8-ad16-b7695b071036/Integrations/AppVeyor?ProjectSlug=flameshot&SigningPolicySlug=test-signing
+    #url: https://app.signpath.io/API/v1/042f605f-b378-45d8-ad16-b7695b071036/Integrations/AppVeyor?ProjectSlug=flameshot&SigningPolicySlug=release-signing
   authorization:
     secure: G5nNnkfRSJ+EEx+7LlUSSoEyoL+pHYItvjrNxbWITE7RB+cm9qzuHRdwmrZdEDjdVCLZ2TkNawynMxYcGMZAQA==

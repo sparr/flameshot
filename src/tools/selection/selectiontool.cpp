@@ -25,9 +25,9 @@ QString SelectionTool::name() const
     return tr("Rectangular Selection");
 }
 
-ToolType SelectionTool::type() const
+CaptureTool::Type SelectionTool::type() const
 {
-    return ToolType::SELECTION;
+    return CaptureTool::TYPE_SELECTION;
 }
 
 QString SelectionTool::description() const
@@ -37,7 +37,7 @@ QString SelectionTool::description() const
 
 CaptureTool* SelectionTool::copy(QObject* parent)
 {
-    SelectionTool* tool = new SelectionTool(parent);
+    auto* tool = new SelectionTool(parent);
     copyParams(this, tool);
     return tool;
 }
@@ -46,11 +46,11 @@ void SelectionTool::process(QPainter& painter, const QPixmap& pixmap)
 {
     Q_UNUSED(pixmap)
     painter.setPen(
-      QPen(color(), thickness(), Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin));
+      QPen(color(), size(), Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin));
     painter.drawRect(QRect(points().first, points().second));
 }
 
-void SelectionTool::pressed(const CaptureContext& context)
+void SelectionTool::pressed(CaptureContext& context)
 {
     Q_UNUSED(context)
 }

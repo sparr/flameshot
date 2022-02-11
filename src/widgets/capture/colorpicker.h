@@ -3,30 +3,19 @@
 
 #pragma once
 
-#include <QWidget>
+#include "src/widgets/colorpickerwidget.h"
 
-class ColorPicker : public QWidget
+class ColorPicker : public ColorPickerWidget
 {
     Q_OBJECT
 public:
     explicit ColorPicker(QWidget* parent = nullptr);
 
-    void show();
-    void hide();
-
 signals:
     void colorSelected(QColor c);
 
 protected:
-    void paintEvent(QPaintEvent*);
-    void mouseMoveEvent(QMouseEvent*);
-
-    QVector<QRect> handleMask() const;
-
-private:
-    int m_colorAreaSize;
-    QVector<QRect> m_colorAreaList;
-    QVector<QColor> m_colorList;
-
-    QColor m_uiColor, m_drawColor;
+    void showEvent(QShowEvent* event) override;
+    void hideEvent(QHideEvent* event) override;
+    void mouseMoveEvent(QMouseEvent* e) override;
 };

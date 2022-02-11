@@ -3,6 +3,8 @@ target_sources(
   PRIVATE buttonlistview.cpp
           clickablelabel.cpp
           configwindow.cpp
+          configresolver.cpp
+          configerrordetails.cpp
           extendedslider.cpp
           filenameeditor.cpp
           generalconf.cpp
@@ -10,6 +12,7 @@ target_sources(
           strftimechooserwidget.cpp
           styleoverride.cpp
           uicoloreditor.cpp
+          colorpickereditor.cpp
           visualseditor.cpp
           shortcutswidget.cpp
           setshortcutwidget.cpp
