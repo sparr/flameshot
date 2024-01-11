@@ -25,7 +25,7 @@ public:
         CENTER = 0b10000,
     };
 
-    explicit SelectionWidget(const QColor& c, QWidget* parent = nullptr);
+    explicit SelectionWidget(QColor c, QWidget* parent = nullptr);
 
     SideType getMouseSide(const QPoint& mousePos) const;
     QVector<QRect> handlerAreas();
@@ -71,6 +71,11 @@ public slots:
     void resizeRight();
     void resizeUp();
     void resizeDown();
+
+    void symResizeLeft();
+    void symResizeRight();
+    void symResizeUp();
+    void symResizeDown();
 
 private:
     void updateAreas();

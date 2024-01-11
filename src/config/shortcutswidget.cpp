@@ -162,25 +162,35 @@ void ShortcutsWidget::loadShortcuts()
         QString shortcutName = QVariant::fromValue(t).toString();
         appendShortcut(shortcutName, tool->description());
         if (shortcutName == "TYPE_COPY") {
-            m_shortcuts << (QStringList() << "" << tool->description()
-                                          << "Left Double-click");
+            if (m_config.copyOnDoubleClick()) {
+                m_shortcuts << (QStringList() << "" << tool->description()
+                                              << tr("Left Double-click"));
+            }
         }
         delete tool;
     }
 
     // additional tools that don't have their own buttons
-    appendShortcut("TYPE_TOGGLE_PANEL", "Toggle side panel");
-    appendShortcut("TYPE_RESIZE_LEFT", "Resize selection left 1px");
-    appendShortcut("TYPE_RESIZE_RIGHT", "Resize selection right 1px");
-    appendShortcut("TYPE_RESIZE_UP", "Resize selection up 1px");
-    appendShortcut("TYPE_RESIZE_DOWN", "Resize selection down 1px");
-    appendShortcut("TYPE_SELECT_ALL", "Select entire screen");
-    appendShortcut("TYPE_MOVE_LEFT", "Move selection left 1px");
-    appendShortcut("TYPE_MOVE_RIGHT", "Move selection right 1px");
-    appendShortcut("TYPE_MOVE_UP", "Move selection up 1px");
-    appendShortcut("TYPE_MOVE_DOWN", "Move selection down 1px");
-    appendShortcut("TYPE_COMMIT_CURRENT_TOOL", "Commit text in text area");
-    appendShortcut("TYPE_DELETE_CURRENT_TOOL", "Delete current tool");
+    appendShortcut("TYPE_TOGGLE_PANEL", tr("Toggle side panel"));
+    appendShortcut("TYPE_RESIZE_LEFT", tr("Resize selection left 1px"));
+    appendShortcut("TYPE_RESIZE_RIGHT", tr("Resize selection right 1px"));
+    appendShortcut("TYPE_RESIZE_UP", tr("Resize selection up 1px"));
+    appendShortcut("TYPE_RESIZE_DOWN", tr("Resize selection down 1px"));
+    appendShortcut("TYPE_SYM_RESIZE_LEFT",
+                   tr("Symmetrically decrease width by 2px"));
+    appendShortcut("TYPE_SYM_RESIZE_RIGHT",
+                   tr("Symmetrically increase width by 2px"));
+    appendShortcut("TYPE_SYM_RESIZE_UP",
+                   tr("Symmetrically increase height by 2px"));
+    appendShortcut("TYPE_SYM_RESIZE_DOWN",
+                   tr("Symmetrically decrease height by 2px"));
+    appendShortcut("TYPE_SELECT_ALL", tr("Select entire screen"));
+    appendShortcut("TYPE_MOVE_LEFT", tr("Move selection left 1px"));
+    appendShortcut("TYPE_MOVE_RIGHT", tr("Move selection right 1px"));
+    appendShortcut("TYPE_MOVE_UP", tr("Move selection up 1px"));
+    appendShortcut("TYPE_MOVE_DOWN", tr("Move selection down 1px"));
+    appendShortcut("TYPE_COMMIT_CURRENT_TOOL", tr("Commit text in text area"));
+    appendShortcut("TYPE_DELETE_CURRENT_TOOL", tr("Delete current tool"));
 
     // non-editable shortcuts have an empty shortcut name
 
@@ -189,8 +199,8 @@ void ShortcutsWidget::loadShortcuts()
 
     // Global hotkeys
 #if defined(Q_OS_MACOS)
-    appendShortcut("TAKE_SCREENSHOT", "Capture screen");
-    appendShortcut("SCREENSHOT_HISTORY", "Screenshot history");
+    appendShortcut("TAKE_SCREENSHOT", tr("Capture screen"));
+    appendShortcut("SCREENSHOT_HISTORY", tr("Screenshot history"));
 #elif defined(Q_OS_WIN)
     m_shortcuts << (QStringList() << "" << QObject::tr("Screenshot history")
                                   << "Shift+Print Screen");

@@ -15,6 +15,7 @@ public:
         Stderr = 0x02,
         LogFile = 0x08,
         String = 0x10,
+        Stdout = 0x20,
         Default = Notification | LogFile | Stderr,
     };
 
@@ -36,14 +37,14 @@ public:
     static AbstractLogger warning(int targets = Default);
     static AbstractLogger error(int targets = Default);
 
-    AbstractLogger& sendMessage(QString msg, Channel channel);
-    AbstractLogger& operator<<(QString msg);
+    AbstractLogger& sendMessage(const QString& msg, Channel channel);
+    AbstractLogger& operator<<(const QString& msg);
     AbstractLogger& addOutputString(QString& str);
-    AbstractLogger& attachNotificationPath(QString path);
+    AbstractLogger& attachNotificationPath(const QString& path);
     AbstractLogger& enableMessageHeader(bool enable);
 
 private:
-    QString messageHeader(Channel type, Target channel);
+    QString messageHeader(Channel channel, Target target);
 
     int m_targets;
     Channel m_defaultChannel;

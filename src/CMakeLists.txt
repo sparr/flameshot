@@ -20,42 +20,45 @@ set(CMAKE_AUTOUIC ON)
 
 # set application icon
 if (APPLE)
+    set(FLAMESHOT_ICONSET ${CMAKE_BINARY_DIR}/flameshot.iconset)
+    set(FLAMESHOT_ICNS ${CMAKE_BINARY_DIR}/flameshot.icns)
+
     # generate iconset
     execute_process(
-            COMMAND bash "-c" "mkdir -p flameshot.iconset"
-    )
-    execute_process(
-            COMMAND bash "-c" "sips -z 16 16     \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome.png --out flameshot.iconset/icon_16x16.png"
-            COMMAND bash "-c" "sips -z 32 32     \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome.png --out flameshot.iconset/icon_16x16@2x.png"
-            COMMAND bash "-c" "sips -z 32 32     \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome.png --out flameshot.iconset/icon_32x32.png"
-            COMMAND bash "-c" "sips -z 64 64     \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome.png --out flameshot.iconset/icon_32x32@2x.png"
-            COMMAND bash "-c" "sips -z 64 64     \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome.png --out flameshot.iconset/icon_64x64x.png"
-            COMMAND bash "-c" "sips -z 128 128   \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome.png --out flameshot.iconset/icon_64x64@2.png"
-            COMMAND bash "-c" "sips -z 128 128   \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome-1024.png --out flameshot.iconset/icon_128x128.png"
-            COMMAND bash "-c" "sips -z 256 256   \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome-1024.png --out flameshot.iconset/icon_128x128@2x.png"
-            COMMAND bash "-c" "sips -z 256 256   \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome-1024.png --out flameshot.iconset/icon_256x256.png"
-            COMMAND bash "-c" "sips -z 512 512   \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome-1024.png --out flameshot.iconset/icon_256x256@2x.png"
-            COMMAND bash "-c" "sips -z 512 512   \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome-1024.png --out flameshot.iconset/icon_512x512.png"
-            COMMAND bash "-c" "sips -z 1024 1024 \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome-1024.png --out flameshot.iconset/icon_512x512@2x.png"
-
-
-            COMMAND bash "-c" "iconutil -c icns flameshot.iconset"
+            COMMAND bash "-c" "mkdir -p \"${FLAMESHOT_ICONSET}\""
     )
 
     execute_process(
-            COMMAND bash "-c" "rm -R flameshot.iconset"
+            COMMAND bash "-c" "sips -z 16 16     \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome.png --out \"${FLAMESHOT_ICONSET}\"/icon_16x16.png"
+            COMMAND bash "-c" "sips -z 32 32     \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome.png --out \"${FLAMESHOT_ICONSET}\"/icon_16x16@2x.png"
+            COMMAND bash "-c" "sips -z 32 32     \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome.png --out \"${FLAMESHOT_ICONSET}\"/icon_32x32.png"
+            COMMAND bash "-c" "sips -z 64 64     \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome.png --out \"${FLAMESHOT_ICONSET}\"/icon_32x32@2x.png"
+            COMMAND bash "-c" "sips -z 64 64     \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome.png --out \"${FLAMESHOT_ICONSET}\"/icon_64x64x.png"
+            COMMAND bash "-c" "sips -z 128 128   \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome.png --out \"${FLAMESHOT_ICONSET}\"/icon_64x64@2.png"
+            COMMAND bash "-c" "sips -z 128 128   \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome-1024.png --out \"${FLAMESHOT_ICONSET}\"/icon_128x128.png"
+            COMMAND bash "-c" "sips -z 256 256   \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome-1024.png --out \"${FLAMESHOT_ICONSET}\"/icon_128x128@2x.png"
+            COMMAND bash "-c" "sips -z 256 256   \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome-1024.png --out \"${FLAMESHOT_ICONSET}\"/icon_256x256.png"
+            COMMAND bash "-c" "sips -z 512 512   \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome-1024.png --out \"${FLAMESHOT_ICONSET}\"/icon_256x256@2x.png"
+            COMMAND bash "-c" "sips -z 512 512   \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome-1024.png --out \"${FLAMESHOT_ICONSET}\"/icon_512x512.png"
+            COMMAND bash "-c" "sips -z 1024 1024 \"${CMAKE_SOURCE_DIR}\"/data/img/app/flameshot.monochrome-1024.png --out \"${FLAMESHOT_ICONSET}\"/icon_512x512@2x.png"
+
+            COMMAND bash "-c" "iconutil -o \"${FLAMESHOT_ICNS}\" -c icns \"${FLAMESHOT_ICONSET}\""
     )
 
     execute_process(
-            # copy icon from cache generated on the localhost if generation on CI failed
-            COMMAND bash "-c" "[[ -r 'flameshot.icns' ]] || cp \"${CMAKE_SOURCE_DIR}\"/packaging/macos/flameshot.icns ./"
+        COMMAND bash "-c" "rm -R \"${FLAMESHOT_ICONSET}\""
+    )
+
+    execute_process(
+        # copy icon from cache generated on the localhost if generation on CI failed
+        COMMAND bash "-c" "[[ -r '\"${FLAMESHOT_ICNS}\"' ]] || cp \"${CMAKE_SOURCE_DIR}\"/packaging/macos/flameshot.icns \"${FLAMESHOT_ICNS}\""
     )
 
     # Set application icon
     set(MACOSX_BUNDLE_ICON_FILE flameshot.icns)
 
     # And this part tells CMake where to find and install the file itself
-    set(APP_ICON_MACOSX ${CMAKE_BINARY_DIR}/flameshot.icns)
+    set(APP_ICON_MACOSX ${FLAMESHOT_ICNS})
     set_source_files_properties(${APP_ICON_MACOSX} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
 
     add_executable(flameshot MACOSX_BUNDLE main.cpp ${APP_ICON_MACOSX})
@@ -65,12 +68,26 @@ endif ()
 
 add_executable(Flameshot::flameshot ALIAS flameshot)
 
+if(FLAMESHOT_ICON)
+  target_compile_definitions(flameshot PUBLIC FLAMESHOT_ICON="${FLAMESHOT_ICON}")
+endif()
+
 if (WIN32)
     set_property(TARGET flameshot PROPERTY WIN32_EXECUTABLE true)
     if (MSVC)
         target_compile_options(flameshot PRIVATE /source-charset:utf-8)
     endif ()
 endif ()
+
+if(MSVC)
+    OPTION(USE_MP "use multiple" ON)
+    OPTION(ProjectConfig_Global_COMPILE_FLAGS_WITH_MP
+            "Set The Global Option COMPILE_FLAGS /MP to target." ON)
+    if(ProjectConfig_Global_COMPILE_FLAGS_WITH_MP OR USE_MP)
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /MP")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
+    endif()
+endif()
 
 add_subdirectory(cli)
 add_subdirectory(config)
@@ -202,8 +219,15 @@ target_link_libraries(
 )
 
 if (USE_WAYLAND_CLIPBOARD)
+  if(!USE_WAYLAND_GRIM)
+    message(WARNING "You activated the USE_WAYLAND_CLIPBOARD option, but did not activate the USE_WAYLAND_GRIM option. Flameshot will use the dbus protocol to support wayland. If you use wlroots-based wayland, it is recommended to enable USE_WAYLAND_GRIM")
+  endif()
   target_compile_definitions(flameshot PRIVATE USE_WAYLAND_CLIPBOARD=1)
   target_link_libraries(flameshot KF5::GuiAddons)
+endif()
+
+if (USE_WAYLAND_GRIM)
+    target_compile_definitions(flameshot PRIVATE USE_WAYLAND_GRIM=1)
 endif()
 
 if (APPLE)
@@ -218,6 +242,15 @@ if (APPLE)
             qhotkey
     )
 endif ()
+
+
+set(_src_root_path ${CMAKE_CURRENT_SOURCE_DIR})
+file(GLOB_RECURSE _source_list LIST_DIRECTORIES false
+    "${_src_root_path}/*.cpp"
+    "${_src_root_path}/*.h")
+
+#  will be organized according to the actual directory structure, .h.cpp is put together
+source_group(TREE ${_src_root_path} FILES ${_source_list})
 
 if (WIN32)
     set(USE_OPENSSL FALSE)
@@ -258,7 +291,6 @@ else()
 endif ()
 target_compile_definitions(flameshot PRIVATE APP_PREFIX="${CMAKE_INSTALL_PREFIX}")
 target_compile_definitions(flameshot PRIVATE APP_VERSION="v${PROJECT_VERSION}")
-target_compile_definitions(flameshot PRIVATE IMGUR_CLIENT_ID="313baf0c7b4d3ff")
 #target_compile_definitions(flameshot PRIVATE QAPPLICATION_CLASS=QApplication)
 target_compile_definitions(flameshot PRIVATE FLAMESHOT_APP_VERSION_URL="${GIT_API_URL}")
 # Enable easier debugging of screenshot capture mode

@@ -24,8 +24,13 @@ class AbstractLogger;
  * as it appears in the config file, `TYPE` is the C++ type. At the same time
  * `KEY` is the name of the generated getter function.
  */
+// clang-format off
 #define CONFIG_GETTER(KEY, TYPE)                                               \
-    TYPE KEY() { return value(QStringLiteral(#KEY)).value<TYPE>(); }
+    TYPE KEY()                                                                 \
+    {                                                                          \
+        return value(QStringLiteral(#KEY)).value<TYPE>();                      \
+    }
+// clang-format on
 
 /**
  * Declare and implement a setter for a config option. `FUNC` is the name of the
@@ -86,7 +91,9 @@ public:
     CONFIG_GETTER_SETTER(drawThickness, setDrawThickness, int)
     CONFIG_GETTER_SETTER(drawFontSize, setDrawFontSize, int)
     CONFIG_GETTER_SETTER(keepOpenAppLauncher, setKeepOpenAppLauncher, bool)
+#if !defined(DISABLE_UPDATE_CHECKER)
     CONFIG_GETTER_SETTER(checkForUpdates, setCheckForUpdates, bool)
+#endif
     CONFIG_GETTER_SETTER(allowMultipleGuiInstances,
                          setAllowMultipleGuiInstances,
                          bool)
@@ -95,9 +102,7 @@ public:
                          setShowStartupLaunchMessage,
                          bool)
     CONFIG_GETTER_SETTER(contrastOpacity, setContrastOpacity, int)
-    CONFIG_GETTER_SETTER(copyAndCloseAfterUpload,
-                         setCopyAndCloseAfterUpload,
-                         bool)
+    CONFIG_GETTER_SETTER(copyURLAfterUpload, setCopyURLAfterUpload, bool)
     CONFIG_GETTER_SETTER(historyConfirmationToDelete,
                          setHistoryConfirmationToDelete,
                          bool)
@@ -117,6 +122,14 @@ public:
     CONFIG_GETTER_SETTER(buttons, setButtons, QList<CaptureTool::Type>)
     CONFIG_GETTER_SETTER(showMagnifier, setShowMagnifier, bool)
     CONFIG_GETTER_SETTER(squareMagnifier, setSquareMagnifier, bool)
+    CONFIG_GETTER_SETTER(copyOnDoubleClick, setCopyOnDoubleClick, bool)
+    CONFIG_GETTER_SETTER(uploadClientSecret, setUploadClientSecret, QString)
+    CONFIG_GETTER_SETTER(saveLastRegion, setSaveLastRegion, bool)
+    CONFIG_GETTER_SETTER(showSelectionGeometry, setShowSelectionGeometry, int)
+    CONFIG_GETTER_SETTER(jpegQuality, setJpegQuality, int)
+    CONFIG_GETTER_SETTER(showSelectionGeometryHideTime,
+                         showSelectionGeometryHideTime,
+                         int)
 
     // SPECIAL CASES
     bool startupLaunch();
@@ -170,6 +183,6 @@ private:
     QSharedPointer<ValueHandler> valueHandler(const QString& key) const;
     void assertKeyRecognized(const QString& key) const;
     bool isShortcut(const QString& key) const;
-    QString baseName(QString key) const;
+    QString baseName(const QString& key) const;
     void cleanUnusedKeys(const QString& group, const QSet<QString>& keys) const;
 };

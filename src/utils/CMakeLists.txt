@@ -27,5 +27,12 @@ target_sources(
           history.cpp
           imgurconfighandler.cpp
           strfparse.cpp
-        request.cpp
+          request.cpp
 )
+
+IF (WIN32)
+  target_sources(
+    flameshot
+    PRIVATE winlnkfileparse.cpp
+  )
+ENDIF()

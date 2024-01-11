@@ -79,20 +79,18 @@ static QMap<class QString, QSharedPointer<ValueHandler>>
     OPTION("showDesktopNotification"     ,Bool               ( true          )),
     OPTION("disabledTrayIcon"            ,Bool               ( false         )),
     OPTION("historyConfirmationToDelete" ,Bool               ( true          )),
+#if !defined(DISABLE_UPDATE_CHECKER)
     OPTION("checkForUpdates"             ,Bool               ( true          )),
+#endif
     OPTION("allowMultipleGuiInstances"   ,Bool               ( false         )),
     OPTION("showMagnifier"               ,Bool               ( false         )),
     OPTION("squareMagnifier"             ,Bool               ( false         )),
 #if !defined(Q_OS_WIN)
     OPTION("autoCloseIdleDaemon"         ,Bool               ( false         )),
 #endif
-#if defined(Q_OS_MACOS)
     OPTION("startupLaunch"               ,Bool               ( false         )),
-#else
-    OPTION("startupLaunch"               ,Bool               ( true          )),
-#endif
     OPTION("showStartupLaunchMessage"    ,Bool               ( true          )),
-    OPTION("copyAndCloseAfterUpload"     ,Bool               ( true          )),
+    OPTION("copyURLAfterUpload"          ,Bool               ( true          )),
     OPTION("copyPathAfterSave"           ,Bool               ( false         )),
     OPTION("antialiasingPinZoom"         ,Bool               ( true          )),
     OPTION("useJpgForClipboard"          ,Bool               ( false         )),
@@ -101,11 +99,12 @@ static QMap<class QString, QSharedPointer<ValueHandler>>
     OPTION("savePath"                    ,ExistingDir        (                   )),
     OPTION("savePathFixed"               ,Bool               ( false         )),
     OPTION("saveAsFileExtension"         ,SaveFileExtension  (                   )),
-    OPTION("uploadHistoryMax"            ,LowerBoundedInt    (0, 25          )),
+    OPTION("saveLastRegion"              ,Bool               (false          )),
+    OPTION("uploadHistoryMax"            ,LowerBoundedInt    (0, 25               )),
     OPTION("undoLimit"                   ,BoundedInt         (0, 999, 100    )),
-    // Interface tab
-    OPTION("uiColor"                     ,Color              ( {116, 0, 150} )),
-    OPTION("contrastUiColor"             ,Color              ( {39, 0, 50}   )),
+  // Interface tab
+    OPTION("uiColor"                     ,Color              ( {116, 0, 150}   )),
+    OPTION("contrastUiColor"             ,Color              ( {39, 0, 50}     )),
     OPTION("contrastOpacity"             ,BoundedInt         ( 0, 255, 190    )),
     OPTION("buttons"                     ,ButtonList         ( {}            )),
     // Filename Editor tab
@@ -122,6 +121,11 @@ static QMap<class QString, QSharedPointer<ValueHandler>>
     OPTION("predefinedColorPaletteLarge", Bool               ( PREDEFINED_COLOR_PALETTE_LARGE )),
     // NOTE: If another tool size is added besides drawThickness and
     // drawFontSize, remember to update ConfigHandler::toolSize
+    OPTION("copyOnDoubleClick"           ,Bool               ( false         )),
+    OPTION("uploadClientSecret"          ,String             ( "313baf0c7b4d3ff"            )),
+    OPTION("showSelectionGeometry"  , BoundedInt               (0,5,4)),
+    OPTION("showSelectionGeometryHideTime", LowerBoundedInt       (0, 3000)),
+    OPTION("jpegQuality", BoundedInt     (0,100,75))
 };
 
 static QMap<QString, QSharedPointer<KeySequence>> recognizedShortcuts = {
@@ -152,6 +156,10 @@ static QMap<QString, QSharedPointer<KeySequence>> recognizedShortcuts = {
     SHORTCUT("TYPE_RESIZE_RIGHT"        ,   "Shift+Right"           ),
     SHORTCUT("TYPE_RESIZE_UP"           ,   "Shift+Up"              ),
     SHORTCUT("TYPE_RESIZE_DOWN"         ,   "Shift+Down"            ),
+    SHORTCUT("TYPE_SYM_RESIZE_LEFT"     ,   "Ctrl+Shift+Left"       ),
+    SHORTCUT("TYPE_SYM_RESIZE_RIGHT"    ,   "Ctrl+Shift+Right"      ),
+    SHORTCUT("TYPE_SYM_RESIZE_UP"       ,   "Ctrl+Shift+Up"         ),
+    SHORTCUT("TYPE_SYM_RESIZE_DOWN"     ,   "Ctrl+Shift+Down"       ),
     SHORTCUT("TYPE_SELECT_ALL"          ,   "Ctrl+A"                ),
     SHORTCUT("TYPE_MOVE_LEFT"           ,   "Left"                  ),
     SHORTCUT("TYPE_MOVE_RIGHT"          ,   "Right"                 ),
@@ -314,9 +322,9 @@ void ConfigHandler::setStartupLaunch(const bool start)
 
 void ConfigHandler::setAllTheButtons()
 {
-    QList<CaptureTool::Type> buttons =
+    QList<CaptureTool::Type> buttonlist =
       CaptureToolButton::getIterableButtonTypes();
-    setValue(QStringLiteral("buttons"), QVariant::fromValue(buttons));
+    setValue(QStringLiteral("buttons"), QVariant::fromValue(buttonlist));
 }
 
 void ConfigHandler::setToolSize(CaptureTool::Type toolType, int size)
@@ -381,16 +389,16 @@ bool ConfigHandler::setShortcut(const QString& actionName,
         return false;
     }
 
-    bool error = false;
+    bool errorFlag = false;
 
     m_settings.beginGroup(CONFIG_GROUP_SHORTCUTS);
     if (shortcut.isEmpty()) {
         setValue(actionName, "");
     } else if (reservedShortcuts.contains(QKeySequence(shortcut))) {
         // do not allow to set reserved shortcuts
-        error = true;
+        errorFlag = true;
     } else {
-        error = false;
+        errorFlag = false;
         // Make no difference for Return and Enter keys
         QString newShortcut = KeySequence().value(shortcut).toString();
         for (auto& otherAction : m_settings.allKeys()) {
@@ -400,7 +408,7 @@ bool ConfigHandler::setShortcut(const QString& actionName,
             QString existingShortcut =
               KeySequence().value(m_settings.value(otherAction)).toString();
             if (newShortcut == existingShortcut) {
-                error = true;
+                errorFlag = true;
                 goto done;
             }
         }
@@ -408,7 +416,7 @@ bool ConfigHandler::setShortcut(const QString& actionName,
     }
 done:
     m_settings.endGroup();
-    return !error;
+    return !errorFlag;
 }
 
 QString ConfigHandler::shortcut(const QString& actionName)
@@ -516,7 +524,7 @@ QSet<QString> ConfigHandler::keysFromGroup(const QString& group) const
 
 bool ConfigHandler::checkForErrors(AbstractLogger* log) const
 {
-    return checkUnrecognizedSettings(log) & checkShortcutConflicts(log) &
+    return checkUnrecognizedSettings(log) && checkShortcutConflicts(log) &&
            checkSemantics(log);
 }
 
@@ -780,7 +788,7 @@ bool ConfigHandler::isShortcut(const QString& key) const
            key.startsWith(QStringLiteral(CONFIG_GROUP_SHORTCUTS "/"));
 }
 
-QString ConfigHandler::baseName(QString key) const
+QString ConfigHandler::baseName(const QString& key) const
 {
     return QFileInfo(key).baseName();
 }

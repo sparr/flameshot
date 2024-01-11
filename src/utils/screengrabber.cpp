@@ -10,6 +10,7 @@
 #include <QDesktopWidget>
 #include <QGuiApplication>
 #include <QPixmap>
+#include <QProcess>
 #include <QScreen>
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
@@ -24,6 +25,29 @@
 ScreenGrabber::ScreenGrabber(QObject* parent)
   : QObject(parent)
 {}
+
+void ScreenGrabber::generalGrimScreenshot(bool& ok, QPixmap& res)
+{
+#ifdef USE_WAYLAND_GRIM
+#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
+    QProcess Process;
+    QString program = "grim";
+    QStringList arguments;
+    arguments << "-";
+    Process.start(program, arguments);
+    if (Process.waitForFinished()) {
+        res.loadFromData(Process.readAll());
+        ok = true;
+    } else {
+        ok = false;
+        AbstractLogger::error()
+          << tr("The universal wayland screen capture adapter requires Grim as "
+                "the screen capture component of wayland. If the screen "
+                "capture component is missing, please install it!");
+    }
+#endif
+#endif
+}
 
 void ScreenGrabber::freeDesktopPortal(bool& ok, QPixmap& res)
 {
@@ -100,31 +124,39 @@ QPixmap ScreenGrabber::grabEntireDesktop(bool& ok)
         QPixmap res;
         // handle screenshot based on DE
         switch (m_info.windowManager()) {
-            case DesktopInfo::GNOME: {
+            case DesktopInfo::GNOME:
+            case DesktopInfo::KDE:
                 freeDesktopPortal(ok, res);
                 break;
-            }
-            case DesktopInfo::KDE: {
-                // https://github.com/KDE/spectacle/blob/517a7baf46a4ca0a45f32fd3f2b1b7210b180134/src/PlatformBackends/KWinWaylandImageGrabber.cpp#L145
-                QDBusInterface kwinInterface(
-                  QStringLiteral("org.kde.KWin"),
-                  QStringLiteral("/Screenshot"),
-                  QStringLiteral("org.kde.kwin.Screenshot"));
-                QDBusReply<QString> reply =
-                  kwinInterface.call(QStringLiteral("screenshotFullscreen"));
-                res = QPixmap(reply.value());
-                if (!res.isNull()) {
-                    QFile dbusResult(reply.value());
-                    dbusResult.remove();
-                }
-                break;
-            }
-            case DesktopInfo::SWAY: {
+            case DesktopInfo::QTILE:
+            case DesktopInfo::SWAY:
+            case DesktopInfo::HYPRLAND:
+            case DesktopInfo::OTHER: {
+#ifndef USE_WAYLAND_GRIM
+                AbstractLogger::warning() << tr(
+                  "If the USE_WAYLAND_GRIM option is not activated, the dbus "
+                  "protocol will be used. It should be noted that using the "
+                  "dbus protocol under wayland is not recommended. It is "
+                  "recommended to recompile with the USE_WAYLAND_GRIM flag to "
+                  "activate the grim-based general wayland screenshot adapter");
                 freeDesktopPortal(ok, res);
+#else
+                AbstractLogger::warning()
+                  << tr("grim's screenshot component is implemented based on "
+                        "wlroots, it may not be used in GNOME or similar "
+                        "desktop environments");
+                generalGrimScreenshot(ok, res);
+#endif
                 break;
             }
             default:
                 ok = false;
+                AbstractLogger::error()
+                  << tr("Unable to detect desktop environment (GNOME? KDE? "
+                        "Qile? Sway? ...)");
+                AbstractLogger::error()
+                  << tr("Hint: try setting the XDG_CURRENT_DESKTOP environment "
+                        "variable.");
                 break;
         }
         if (!ok) {
@@ -183,8 +215,11 @@ QPixmap ScreenGrabber::grabScreen(QScreen* screen, bool& ok)
         }
     } else {
         ok = true;
-        return screen->grabWindow(
-          0, geometry.x(), geometry.y(), geometry.width(), geometry.height());
+        return screen->grabWindow(QApplication::desktop()->winId(),
+                                  geometry.x(),
+                                  geometry.y(),
+                                  geometry.width(),
+                                  geometry.height());
     }
     return p;
 }

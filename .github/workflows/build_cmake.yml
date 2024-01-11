@@ -22,16 +22,16 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-20.04]
+        os: [ubuntu-22.04]
 
     steps:
       - name: Checkout Source code
         if: github.event_name == 'push'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Checkout Source code
         if: github.event_name == 'pull_request'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
@@ -42,7 +42,7 @@ jobs:
             cmake \
             extra-cmake-modules \
             build-essential \
-            qt5-default \
+            qtbase5-dev \
             qttools5-dev-tools \
             qttools5-dev \
             libqt5dbus5 \
@@ -95,19 +95,13 @@ jobs:
             cc: "cl", cxx: "cl",
             environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
           }
-        - {
-            name: "Windows 2019 MinGW",
-            artifact: "Windows-MinGW.tar.xz",
-            os: windows-2019,
-            cc: "gcc", cxx: "g++"
-          }
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Cache Qt
         id: cache-qt
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: ./build/Qt
           key: ${{ runner.os }}-QtCache

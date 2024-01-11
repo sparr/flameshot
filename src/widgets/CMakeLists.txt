@@ -13,33 +13,41 @@ target_sources(
         capturelauncher.h
         draggablewidgetmaker.h
         imagelabel.h
+        trayicon.h
         infowindow.h
         loadspinner.h
         notificationwidget.h
         orientablepushbutton.h
         uploadhistory.h
         uploadlineitem.h
-        updatenotificationwidget.h
         colorpickerwidget.h
-        colorspinbox.h
         imguploaddialog.h
         capture/capturetoolobjects.h
 )
 
 target_sources(
         flameshot
-        PRIVATE capturelauncher.cpp
+        PRIVATE
+        capturelauncher.cpp
         draggablewidgetmaker.cpp
         imagelabel.cpp
+        trayicon.cpp
         infowindow.cpp
         loadspinner.cpp
         notificationwidget.cpp
         orientablepushbutton.cpp
         uploadhistory.cpp
         uploadlineitem.cpp
-        updatenotificationwidget.cpp
         colorpickerwidget.cpp
-        colorspinbox.cpp
         imguploaddialog.cpp
         capture/capturetoolobjects.cpp
 )
+
+if (NOT DISABLE_UPDATE_CHECKER)
+    target_sources(
+            flameshot
+            PRIVATE
+            updatenotificationwidget.h
+            updatenotificationwidget.cpp
+    )
+endif()

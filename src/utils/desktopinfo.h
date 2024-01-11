@@ -15,7 +15,9 @@ public:
         GNOME,
         KDE,
         OTHER,
-        SWAY
+        QTILE,
+        SWAY,
+        HYPRLAND
     };
 
     bool waylandDetected();

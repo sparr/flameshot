@@ -15,7 +15,6 @@
 #include "src/utils/globalvalues.h"
 #include "src/utils/pathinfo.h"
 #include <QApplication>
-#include <QDialog>
 #include <QDialogButtonBox>
 #include <QFileSystemWatcher>
 #include <QIcon>
@@ -23,7 +22,6 @@
 #include <QLabel>
 #include <QSizePolicy>
 #include <QTabBar>
-#include <QTextEdit>
 #include <QTextStream>
 #include <QVBoxLayout>
 

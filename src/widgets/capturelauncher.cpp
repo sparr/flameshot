@@ -3,7 +3,8 @@
 
 #include "capturelauncher.h"
 #include "./ui_capturelauncher.h"
-#include "src/core/controller.h"
+#include "src/config/cacheutils.h"
+#include "src/core/flameshot.h"
 #include "src/utils/globalvalues.h"
 #include "src/utils/screengrabber.h"
 #include "src/utils/screenshotsaver.h"
@@ -57,6 +58,32 @@ CaptureLauncher::CaptureLauncher(QDialog* parent)
             this,
             &CaptureLauncher::startCapture);
 
+    connect(ui->captureType,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this,
+            [this]() {
+                auto mode = static_cast<CaptureRequest::CaptureMode>(
+                  ui->captureType->currentData().toInt());
+                if (mode == CaptureRequest::CaptureMode::GRAPHICAL_MODE) {
+                    ui->sizeLabel->show();
+                    ui->screenshotX->show();
+                    ui->screenshotY->show();
+                    ui->screenshotWidth->show();
+                    ui->screenshotHeight->show();
+                } else {
+                    ui->sizeLabel->hide();
+                    ui->screenshotX->hide();
+                    ui->screenshotY->hide();
+                    ui->screenshotWidth->hide();
+                    ui->screenshotHeight->hide();
+                }
+            });
+
+    auto lastRegion = getLastRegion();
+    ui->screenshotX->setText(QString::number(lastRegion.x()));
+    ui->screenshotY->setText(QString::number(lastRegion.y()));
+    ui->screenshotWidth->setText(QString::number(lastRegion.width()));
+    ui->screenshotHeight->setText(QString::number(lastRegion.height()));
     show();
 }
 
@@ -74,20 +101,28 @@ void CaptureLauncher::startCapture()
     CaptureRequest req(mode,
                        additionalDelayToHideUI +
                          ui->delayTime->value() * secondsToMilliseconds);
+
+    if (mode == CaptureRequest::CaptureMode::GRAPHICAL_MODE) {
+        req.setInitialSelection(QRect(ui->screenshotX->text().toInt(),
+                                      ui->screenshotY->text().toInt(),
+                                      ui->screenshotWidth->text().toInt(),
+                                      ui->screenshotHeight->text().toInt()));
+    }
+
     connectCaptureSlots();
-    Controller::getInstance()->requestCapture(req);
+    Flameshot::instance()->requestCapture(req);
 }
 
 void CaptureLauncher::connectCaptureSlots() const
 {
-    connect(Controller::getInstance(),
-            &Controller::captureTaken,
+    connect(Flameshot::instance(),
+            &Flameshot::captureTaken,
             this,
-            &CaptureLauncher::captureTaken);
-    connect(Controller::getInstance(),
-            &Controller::captureFailed,
+            &CaptureLauncher::onCaptureTaken);
+    connect(Flameshot::instance(),
+            &Flameshot::captureFailed,
             this,
-            &CaptureLauncher::captureFailed);
+            &CaptureLauncher::onCaptureFailed);
 }
 
 void CaptureLauncher::disconnectCaptureSlots() const
@@ -97,17 +132,17 @@ void CaptureLauncher::disconnectCaptureSlots() const
     // (random number, usually from 1 up to 20).
     // So now it enables signal on "Capture new screenshot" button and disables
     // on first success of fail.
-    disconnect(Controller::getInstance(),
-               &Controller::captureTaken,
+    disconnect(Flameshot::instance(),
+               &Flameshot::captureTaken,
                this,
-               &CaptureLauncher::captureTaken);
-    disconnect(Controller::getInstance(),
-               &Controller::captureFailed,
+               &CaptureLauncher::onCaptureTaken);
+    disconnect(Flameshot::instance(),
+               &Flameshot::captureFailed,
                this,
-               &CaptureLauncher::captureFailed);
+               &CaptureLauncher::onCaptureFailed);
 }
 
-void CaptureLauncher::captureTaken(QPixmap screenshot)
+void CaptureLauncher::onCaptureTaken(QPixmap const& screenshot)
 {
     // MacOS specific, more details in the function disconnectCaptureSlots()
     disconnectCaptureSlots();
@@ -124,7 +159,7 @@ void CaptureLauncher::captureTaken(QPixmap screenshot)
     ui->launchButton->setEnabled(true);
 }
 
-void CaptureLauncher::captureFailed()
+void CaptureLauncher::onCaptureFailed()
 {
     // MacOS specific, more details in the function disconnectCaptureSlots()
     disconnectCaptureSlots();
